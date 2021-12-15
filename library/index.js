@@ -4,7 +4,7 @@ const renderBooks = []; // books that are displayed
 const allBooks = [];    // all books in the library
 const booksContainer = document.querySelector(".books-container");
 
-function Book(title='', author='', pages=1, read=1, isFinished=false, imgURL='', description='') {
+function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 , description='') {
   this.title = title;
   this.author = author;
   this.pages = pages;
@@ -14,16 +14,17 @@ function Book(title='', author='', pages=1, read=1, isFinished=false, imgURL='',
   this.description = description;
 }
 
-renderBooks.push(new Book("Title", "Author", 13, 10, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
-renderBooks.push(new Book("Title", "Author", 143, 100, false, ))
-renderBooks.push(new Book("Title", "Author", 143, 100, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
-renderBooks.push(new Book("Title", "Author", 1413, 100, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
-renderBooks.push(new Book("Title", "Author", 143, 100, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+renderBooks.push(new Book("Title", "Author", 13, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+renderBooks.push(new Book("Title", "Author", 143, true, ))
+renderBooks.push(new Book("Title", "Author", 143, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+renderBooks.push(new Book("Title", "Author", 1413, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+renderBooks.push(new Book("Title", "Author", 143, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
 
 render()
 
 function render() {
   if (renderBooks.length) {
+    booksContainer.innerHTML = ''
     for (let book of renderBooks) {
       let html = `
           <li class="book">
@@ -44,14 +45,14 @@ function render() {
                 Finished
               </button> -->
               <label>
-                <input type="checkbox" name="">
+                <input type="checkbox" name="" ${book.isFinished ? "checked" : ""}>
                 <span>Finished</span>
               </label>
 
               <button>Delete</button>
             </div>
           </li>`;
-      booksContainer.innerHTML += html;
+      booksContainer.innerHTML = html + booksContainer.innerHTML;
     }
   } else {
     booksContainer.innerHTML = "No books here yet"
@@ -93,7 +94,18 @@ bookForm.querySelectorAll(".label-text").forEach(
 
 bookForm.addEventListener('submit', function(event) {
   event.preventDefault()
-  // adding book here
+  renderBooks.push(new Book(
+    this.title.value, 
+    this.author.value, 
+    this.pages.value, 
+    this.isFinished.checked, 
+    this.imgURL.value,
+    this.read.value, 
+    )
+  )
+  render()
+  bookForm.style.display = "none";
+    
 })
 bookForm.querySelector("[type='cancel']").addEventListener('click', function(event) {
   event.preventDefault()
