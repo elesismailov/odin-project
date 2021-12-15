@@ -67,4 +67,20 @@ header {
 
 main {
 
+	padding: 1.4rem 2.4rem;
+
+	.books-container {
+		display: grid;
+		width:  100%;
+		grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+		grid-gap: 28px;
+		justify-items: center;
+		
+		.book {
+			max-width: 400px;
+			width: 100%;
+			background: silver;
+			color: #000;
+		}
+	}
 }
