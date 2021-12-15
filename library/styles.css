@@ -121,7 +121,7 @@ main .top-bar #book-form .form-bg {
 }
 main .top-bar #book-form .wrapper {
   background-color: #1e1d15;
-  padding: 3.5rem 2.4rem;
+  padding: 4rem 2.4rem 3.5rem;
   border-radius: 1.5rem;
   max-width: 400px;
   min-width: 320px;
@@ -139,6 +139,10 @@ main .top-bar #book-form label .label-text {
   color: #aaa;
   transition: all 250ms ease-in-out;
 }
+main .top-bar #book-form label .label-text.active {
+  transform: translateY(-3.7rem) translateX(-1.5rem);
+  color: #fff;
+}
 main .top-bar #book-form label > input {
   background-color: #272121;
   border: none;
@@ -146,10 +150,6 @@ main .top-bar #book-form label > input {
   padding: 1.5rem;
   width: 100%;
   font-size: 1.6rem;
-  color: #fff;
-}
-main .top-bar #book-form label > input:focus ~ .label-text {
-  transform: translateY(-3.5rem) translateX(-1.5rem);
   color: #fff;
 }
 main .top-bar #book-form label input[type=checkbox] {

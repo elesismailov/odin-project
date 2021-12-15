@@ -123,7 +123,7 @@ main {
 			}
 			.wrapper {
 				background-color: #1e1d15;
-				padding: 3.5rem 2.4rem;
+				padding: 4rem 2.4rem 3.5rem;
 				border-radius: 1.5rem;
 				max-width: 400px;
 				min-width: 320px;
@@ -139,6 +139,10 @@ main {
 					left: 1.5rem;
 					color: #aaa;
 					transition: all 250ms ease-in-out;
+					&.active {
+						transform: translateY(-3.7rem) translateX(-1.5rem);
+						color: #fff;
+					}
 				}
 				> input {
 					background-color: #272121;
@@ -147,10 +151,6 @@ main {
 					padding: 1.5rem;
 					width: 100%;
 					font-size: 1.6rem;
-					color: #fff;
-				}
-				> input:focus ~ .label-text {
-					transform: translateY(-3.5rem) translateX(-1.5rem);
 					color: #fff;
 				}
 				input[type='checkbox'] {

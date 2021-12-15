@@ -78,7 +78,18 @@ bookForm.querySelector(".form-bg").addEventListener("click", function(event) {
   }
 })
 
-
+bookForm.querySelectorAll(".label-text").forEach(
+  label => {
+    label.previousElementSibling.addEventListener("focus", function(event) {
+      label.classList.toggle("active", true)
+    })
+    label.previousElementSibling.addEventListener("blur", function(event) {
+      if (!label.previousElementSibling.value.trim()) {
+        label.classList.toggle("active", false)
+      }
+    })
+  }
+)
 
 
 
