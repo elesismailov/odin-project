@@ -27,12 +27,40 @@ body {
   font-size: 1.6rem;
 }
 
+.toggle {
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+  background-color: rebeccapurple;
+  border-radius: 999px;
+  position: relative;
+  /*&[aria-checked="true"]*/
+}
+.toggle::before {
+  display: block;
+  background-color: #fff;
+  border-radius: 999px;
+  position: absolute;
+  content: "";
+  top: 2.5px;
+  left: 2.5px;
+  width: 23px;
+  height: 23px;
+}
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #FF4D00;
   padding: 1.4rem 2.4rem;
+}
+header > button {
+  display: flex;
+  align-items: center;
+}
+header > button .toggle {
+  margin-right: 0.8rem;
 }
 
 /*# sourceMappingURL=styles.css.map */
