@@ -113,8 +113,8 @@ main .books-container .book-description {
   color: #fff;
   /*.progress-bar*/
 }
-main .books-container .book-description .title {
-  margin-bottom: 2rem;
+main .books-container .book-description .title, main .books-container .book-description .author {
+  margin-bottom: 1rem;
 }
 main .books-container .book-description .pages {
   margin-bottom: 1.7rem;

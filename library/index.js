@@ -1,17 +1,56 @@
 
 
-function Book(title='', author='', pages=1, isFinished=false, description='') {
+const allBooks = [];
+const booksContainer = document.querySelector(".books-container");
+
+function Book(title='', author='', pages=1, read=1, isFinished=false, imgURL='', description='') {
   this.title = title;
   this.author = author;
   this.pages = pages;
+  this.read = read;
+  this.imgURL = imgURL;
   this.isFinished = isFinished;
   this.description = description;
 }
 
+allBooks.push(new Book("Title", "Author", 13, 10, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+allBooks.push(new Book("Title", "Author", 143, 100, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+allBooks.push(new Book("Title", "Author", 1413, 100, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+allBooks.push(new Book("Title", "Author", 143, 100, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
 
+render()
 
+function render() {
+  for (let book of allBooks) {
+    let html = `
+        <li class="book">
+          <div class="book-preview">
+            <img class="img-bg" src="${book.imgURL}" height="250">
+            <img src="${book.imgURL}" height="250">
+          </div>
 
+          <div class="book-description">
+            <h2 class="title">${book.title}</h2>
+            <p class="author">${book.author}</p>
+            <p class="pages">${book.read}/${book.pages} pages</p>
+            <div class="progress-bar">
+              <span class="progress"></span>
+            </div>
+  <!--          <button>
+              <span class="toggle"></span>
+              Finished
+            </button> -->
+            <label>
+              <input type="checkbox" name="">
+              <span>Finished</span>
+            </label>
 
+            <button>Delete</button>
+          </div>
+        </li>`;
+    booksContainer.innerHTML += html;
+  }
+}
 
 
 
