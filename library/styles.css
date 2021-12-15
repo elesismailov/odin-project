@@ -22,9 +22,15 @@ button, a {
 }
 
 body {
-  background-color: rebeccapurple;
+  background-color: #1e1d15;
   color: #fff;
   font-size: 1.6rem;
+}
+
+img {
+  width: 100%;
+  max-width: 100%;
+  vertical-align: middle;
 }
 
 .toggle {
@@ -42,10 +48,10 @@ body {
   border-radius: 999px;
   position: absolute;
   content: "";
-  top: 2.5px;
-  left: 2.5px;
-  width: 23px;
-  height: 23px;
+  top: 2px;
+  left: 2px;
+  width: 24px;
+  height: 24px;
 }
 
 header {
@@ -75,9 +81,44 @@ main .books-container {
 }
 main .books-container .book {
   max-width: 400px;
+  border-radius: 7px;
   width: 100%;
-  background: silver;
+  background: #272121;
   color: #000;
+  overflow: hidden;
+}
+main .books-container .book-preview {
+  max-height: 250px;
+  min-height: 250px;
+  height: 250px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+main .books-container .book-preview > img {
+  object-fit: contain;
+  position: relative;
+  z-index: 1;
+}
+main .books-container .book-preview .img-bg {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  object-fit: cover;
+  filter: blur(10px);
+}
+main .books-container .book-description {
+  padding: 2.4rem;
+  color: #fff;
+  /*.progress-bar*/
+}
+main .books-container .book-description .title {
+  margin-bottom: 2rem;
+}
+main .books-container .book-description .pages {
+  margin-bottom: 1.7rem;
+  font-size: 2rem;
 }
 
 /*# sourceMappingURL=styles.css.map */

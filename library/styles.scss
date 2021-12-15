@@ -23,9 +23,15 @@ button, a {
 }
 
 body {
-  	background-color:  rebeccapurple;
+  	background-color:  #1e1d15;
 	color: #fff;
 	font-size: 1.6rem;
+}
+
+img {
+	width: 100%;
+	max-width: 100%;
+	vertical-align: middle;
 }
 
 .toggle {
@@ -41,10 +47,10 @@ body {
 		border-radius: 999px;
 		position: absolute;
 		content: '';
-		top: 2.5px;
-		left: 2.5px;
-		width: 23px;
-		height: 23px;
+		top: 2px;
+		left: 2px;
+		width: 24px;
+		height: 24px;
 	}
 	/*&[aria-checked="true"]*/
 }
@@ -75,12 +81,49 @@ main {
 		grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
 		grid-gap: 28px;
 		justify-items: center;
-		
+
 		.book {
 			max-width: 400px;
+			border-radius: 7px;
 			width: 100%;
-			background: silver;
+			background: #272121;
 			color: #000;
+			overflow: hidden;
+
+			&-preview {
+				max-height: 250px;
+				min-height: 250px;
+				height: 250px;
+				width: 100%;
+				overflow: hidden;
+				position: relative;
+				> img {
+					object-fit: contain;
+					position: relative;
+					z-index: 1;
+				}
+				.img-bg {
+					width: 100%;
+					position: absolute;
+					left: 0;
+					top: 0;
+					object-fit: cover;
+					filter: blur(10px);
+				}
+			}
+			&-description {
+
+				padding: 2.4rem;
+				color: #fff;
+				.title {
+					margin-bottom: 2rem;
+				}
+				.pages {
+					margin-bottom: 1.7rem;
+					font-size: 2rem;
+				}
+				/*.progress-bar*/
+			}
 		}
 	}
 }
