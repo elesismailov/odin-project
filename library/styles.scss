@@ -175,6 +175,10 @@ main {
 				background-color: #FF4D00;
 				border-radius:  4px;
 				padding: 1rem;
+				&:last-child {
+					float: right;
+					background-color: #FF4D0050;
+				}
 			}
 		}
 	}

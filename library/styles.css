@@ -173,6 +173,10 @@ main .top-bar #book-form button {
   border-radius: 4px;
   padding: 1rem;
 }
+main .top-bar #book-form button:last-child {
+  float: right;
+  background-color: #FF4D0050;
+}
 main .books-container {
   display: grid;
   width: 100%;

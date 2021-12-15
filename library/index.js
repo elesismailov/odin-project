@@ -91,7 +91,14 @@ bookForm.querySelectorAll(".label-text").forEach(
   }
 )
 
-
+bookForm.addEventListener('submit', function(event) {
+  event.preventDefault()
+  // adding book here
+})
+bookForm.querySelector("[type='cancel']").addEventListener('click', function(event) {
+  event.preventDefault()
+  bookForm.style.display = "none";
+})
 
 
 
