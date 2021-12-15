@@ -60,9 +60,23 @@ function render() {
 
 
 
+const openBookForm = document.querySelector("#open-book-form");
+const bookForm = document.querySelector("#book-form");
 
+openBookForm.addEventListener('click', function(event) {
+  if (bookForm.style.display === "block") {
+    bookForm.style.display = "none"
+  } else {
+    bookForm.style.display = "block"
+  }
+})
 
-
+/// click away
+bookForm.querySelector(".form-bg").addEventListener("click", function(event) {
+  if (event.target.className === "form-bg") {
+    bookForm.style.display = "none"
+  }
+})
 
 
 

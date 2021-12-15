@@ -103,6 +103,7 @@ main .top-bar #open-book-form {
   padding: 1rem;
 }
 main .top-bar #book-form {
+  display: none;
   position: absolute;
 }
 main .top-bar #book-form .form-bg {
@@ -112,14 +113,15 @@ main .top-bar #book-form .form-bg {
   top: 0;
   left: 0;
   z-index: 11;
-  background-color: #00000050;
+  background-color: #00000080;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 2.4rem;
 }
 main .top-bar #book-form .wrapper {
   background-color: #1e1d15;
-  padding: 3.5rem 2.5rem;
+  padding: 3.5rem 2.4rem;
   border-radius: 1.5rem;
   max-width: 400px;
   min-width: 320px;
