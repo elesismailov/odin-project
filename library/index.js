@@ -1,5 +1,16 @@
 
 
+function Book(title='', author='', pages=1, isFinished=false, description='') {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.isFinished = isFinished;
+  this.description = description;
+}
+
+
+
+
 
 
 

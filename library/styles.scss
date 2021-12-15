@@ -1,16 +1,41 @@
 
+:root {
+	font-size: 62.5%;
+	font-family:  "Montserrat", "Helvetica", "Open Sans", sans-serif;
+}
+
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 }
 
+ul, li, ol {
+	list-style: none;
+}
+button, a {
+	text-decoration: none;
+	border: none;
+	background-color: transparent;
+	color: #fff;
+	cursor: pointer;
+}
 
 body {
   	background-color:  rebeccapurple;
 	color: #fff;
+	font-size: 1.6rem;
 }
 
 
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #FF4D00;
+	padding: 1.4rem 2.4rem;
+}
+
 main {
+
 }
