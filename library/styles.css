@@ -117,9 +117,59 @@ main .top-bar #book-form .form-bg {
   align-items: center;
   justify-content: center;
 }
+main .top-bar #book-form .wrapper {
+  background-color: #1e1d15;
+  padding: 3.5rem 2.5rem;
+  border-radius: 1.5rem;
+  max-width: 400px;
+  min-width: 320px;
+  width: 100%;
+}
 main .top-bar #book-form label {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+  position: relative;
+}
+main .top-bar #book-form label .label-text {
+  position: absolute;
+  top: 1.6rem;
+  left: 1.5rem;
+  color: #aaa;
+  transition: all 250ms ease-in-out;
+}
+main .top-bar #book-form label > input {
+  background-color: #272121;
+  border: none;
+  border-radius: 5px;
+  padding: 1.5rem;
+  width: 100%;
+  font-size: 1.6rem;
+  color: #fff;
+}
+main .top-bar #book-form label > input:focus ~ .label-text {
+  transform: translateY(-3.5rem) translateX(-1.5rem);
+  color: #fff;
+}
+main .top-bar #book-form label input[type=checkbox] {
+  display: inline-block;
+  border-radius: 10px;
+  width: 17px;
+  height: 17px;
+}
+main .top-bar #book-form label input[type=number] {
+  -moz-appearance: textfield;
+}
+main .top-bar #book-form label input::-webkit-outer-spin-button,
+main .top-bar #book-form label input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+main .top-bar #book-form button {
+  min-width: 10rem;
+  height: 100%;
+  display: inline-block;
+  background-color: #FF4D00;
+  border-radius: 4px;
+  padding: 1rem;
 }
 main .books-container {
   display: grid;

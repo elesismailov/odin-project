@@ -120,11 +120,59 @@ main {
 				justify-content: center;
 			}
 			.wrapper {
-				
+				background-color: #1e1d15;
+				padding: 3.5rem 2.5rem;
+				border-radius: 1.5rem;
+				max-width: 400px;
+				min-width: 320px;
+				width: 100%;
 			}
 			label {
 				display: block;
-				margin-bottom: 1rem;
+				margin-bottom: 3rem;
+				position: relative;
+				.label-text {
+					position: absolute;
+					top: 1.6rem;
+					left: 1.5rem;
+					color: #aaa;
+					transition: all 250ms ease-in-out;
+				}
+				> input {
+					background-color: #272121;
+					border: none;
+					border-radius: 5px;
+					padding: 1.5rem;
+					width: 100%;
+					font-size: 1.6rem;
+					color: #fff;
+				}
+				> input:focus ~ .label-text {
+					transform: translateY(-3.5rem) translateX(-1.5rem);
+					color: #fff;
+				}
+				input[type='checkbox'] {
+					display: inline-block;
+					border-radius: 10px;
+					width: 17px;
+					height: 17px;
+				}
+				input[type='number'] {
+				    -moz-appearance:textfield;
+				}
+
+				input::-webkit-outer-spin-button,
+				input::-webkit-inner-spin-button {
+				    -webkit-appearance: none;
+				}
+			}
+			button {
+				min-width: 10rem;
+				height: 100%;
+				display: inline-block;
+				background-color: #FF4D00;
+				border-radius:  4px;
+				padding: 1rem;
 			}
 		}
 	}
