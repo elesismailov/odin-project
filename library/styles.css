@@ -102,6 +102,25 @@ main .top-bar #open-book-form {
   border-radius: 4px;
   padding: 1rem;
 }
+main .top-bar #book-form {
+  position: absolute;
+}
+main .top-bar #book-form .form-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  z-index: 11;
+  background-color: #00000050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main .top-bar #book-form label {
+  display: block;
+  margin-bottom: 1rem;
+}
 main .books-container {
   display: grid;
   width: 100%;

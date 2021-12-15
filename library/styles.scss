@@ -105,6 +105,28 @@ main {
 			border-radius:  4px;
 			padding: 1rem;
 		}
+		#book-form {
+			position: absolute;
+			.form-bg {
+				position:  fixed;
+				width: 100vw;
+				height: 100vh;
+				top: 0;
+				left: 0;
+				z-index: 11;
+				background-color: #00000050;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+			}
+			.wrapper {
+				
+			}
+			label {
+				display: block;
+				margin-bottom: 1rem;
+			}
+		}
 	}
 
 	.books-container {
