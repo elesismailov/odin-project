@@ -24,8 +24,8 @@
 	--button-color: #fff;
 	--label-color: #9d9d9d;
 	--label-acive-color: #000;
-	--toggle-bg-color: #f4da04;
-	--toggle-color: #313330;
+	--toggle-bg-color: #fff;
+	--toggle-color: #f00;
 }
 
 * {
@@ -65,12 +65,13 @@ img {
 	background-color: var(--toggle-bg-color);
 	border-radius: 999px;
 	position: relative;
+		// transition: background-color transform 250ms ease-in-out;
 	&::before {
 		display: block;
 		background-color: var(--toggle-color);
 		border-radius: 999px;
 		position: absolute;
-		transition: background-color, transform 150ms ease-in-out;
+		transition: all 150ms ease-in-out;
 		content: '';
 		top: 2px;
 		left: 2px;
