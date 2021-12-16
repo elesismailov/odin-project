@@ -163,9 +163,9 @@ function render() {
       )
     } else {
       if (filters.search.trim()) {
-        booksContainer.innerHTML = "No such book. How about adding it?"
+        booksContainer.innerHTML = "<div class='no-books'><span>No such book.</span><span>How about adding it?</span></div>"
       } else{
-        booksContainer.innerHTML = "You haven't read a book:) <br> How about adding one?"
+        booksContainer.innerHTML = "<div class='no-books'>There aren't any books yet...</div>"
       }
     }
 }
