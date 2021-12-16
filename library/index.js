@@ -6,14 +6,30 @@ const booksContainer = document.querySelector(".books-container");
 
 function restore() {
   if (!localStorage.books || !localStorage.books.trim() || localStorage.books[0] !== "[") {
-    renderBooks = []
     localStorage.setItem("books", "[]")
   } else {
-    renderBooks = JSON.parse(localStorage.books);
+    data = JSON.parse(localStorage.books);
+    for (let book of data) {
+      renderBooks.push(new Book(
+          book.title, 
+          book.author, 
+          +book.pages, 
+          book.isFinished, 
+          book.imgURL,
+          +book.read, 
+        )
+      )
+    }
   }
+  console.log(renderBooks)
   render()
 }
 restore()
+
+
+/// save not objects but the data. when restored loop through 
+/// adding new Book() to renderBooks.
+
 
 function save() {
   localStorage.setItem("books", JSON.stringify(renderBooks));
