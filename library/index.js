@@ -49,11 +49,17 @@ function render() {
                 <span>Finished</span>
               </label>
 
-              <button class="delete">Delete</button>
+              <button class="delete" data-index="${renderBooks.indexOf(book)}">Delete</button>
             </div>
           </li>`;
       booksContainer.innerHTML = html + booksContainer.innerHTML;
+      
+
     }
+    document.querySelectorAll("[data-index]").forEach(
+      btn => btn.addEventListener("click", function(event) {deleteBook(+this.dataset.index)}
+      )
+    )
   } else {
     booksContainer.innerHTML = "No books here yet"
   }
@@ -100,18 +106,30 @@ bookForm.querySelectorAll(".label-text").forEach(
 bookForm.addEventListener('submit', function(event) {
   event.preventDefault()
   renderBooks.push(new Book(
-    this.title.value, 
-    this.author.value, 
-    this.pages.value, 
-    this.isFinished.checked, 
-    this.imgURL.value,
-    this.read.value, 
+      this.title.value, 
+      this.author.value, 
+      this.pages.value, 
+      this.isFinished.checked, 
+      this.imgURL.value,
+      this.read.value, 
     )
   )
   render()
   bookForm.style.display = "none";
 })
+
 bookForm.querySelector("[type='cancel']").addEventListener('click', function(event) {
   event.preventDefault()
   bookForm.style.display = "none";
 })
+
+document.querySelectorAll("[data-index]").forEach(
+  btn => btn.addEventListener("click", function(event) {deleteBook(+this.dataset.index)}
+  )
+)
+
+function deleteBook(index) {
+  renderBooks.splice(index, 1)
+  render()
+  console.log(index)
+}
