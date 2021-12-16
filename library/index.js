@@ -13,10 +13,47 @@ const filters = {
   search: "",
 }
 
+//// THEME SWITCH 
+
+const themeToggle = document.querySelector("#toggle-theme");
+
+function toggleTheme(theme) {
+  if (document.body.className === "light") {
+    themeToggle.setAttribute("aria-checked", true);
+    document.body.classList.toggle("light", false);
+    document.body.classList.toggle("dark", true);
+  } else {
+    themeToggle.setAttribute("aria-checked", false);
+    document.body.classList.toggle("dark", false);
+    document.body.classList.toggle("light", true);
+  }
+  saveTheme()
+}
+
+themeToggle.addEventListener("click", () => toggleTheme())
+
+function saveTheme() {
+  localStorage.setItem("theme", document.body.className);
+}
+
+function restoreTheme() {
+  if (!localStorage.theme) {
+    saveTheme();
+  } else {
+    console.log("this happened")
+    document.body.className = localStorage.theme;
+    console.log(document.body.className)
+    toggleTheme();
+    toggleTheme();
+  }
+}
+restoreTheme()
+
 searchBar.addEventListener("input", function(event) {
   filters.search = this.value;
   render()
 })
+
 
 function restore() {
   if (!localStorage.books || !localStorage.books.trim() || localStorage.books[0] !== "[") {
@@ -195,21 +232,3 @@ function deleteBook(index) {
   render()
 }
 
-
-//// THEME SWITCH 
-
-const themeToggle = document.querySelector("#toggle-theme");
-
-function toggleTheme(theme) {
-  if (themeToggle.getAttribute("aria-checked") === "false") {
-    themeToggle.setAttribute("aria-checked", true)
-    document.body.classList.toggle("light", false)
-    document.body.classList.toggle("dark", true)
-  } else {
-    themeToggle.setAttribute("aria-checked", false)
-    document.body.classList.toggle("dark", false)
-    document.body.classList.toggle("light", true)
-  }
-}
-
-themeToggle.addEventListener("click", () => toggleTheme())
