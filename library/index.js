@@ -16,11 +16,11 @@ function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 ,
 Book.prototype.changeFinished = function(value) {
   this.isFinished = value;
 }
-renderBooks.push(new Book("Title", "Author", 13, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
-renderBooks.push(new Book("Title", "Author", 143, true, ))
-renderBooks.push(new Book("Title", "Author", 143, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
-renderBooks.push(new Book("Title", "Author", 1413, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
-renderBooks.push(new Book("Title", "Author", 143, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
+renderBooks.push(new Book("Title", "Author", 66, false, "://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+renderBooks.push(new Book("Title", "Author", 143, true, 50))
+renderBooks.push(new Book("Title", "Author", 151, false, "htt.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+renderBooks.push(new Book("Title", "Author", 1413, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+renderBooks.push(new Book("Title", "Author", 78, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
 
 render()
 
@@ -31,9 +31,7 @@ function render() {
       let imgURL;
       try {
         imgURL = /http/.test(new URL(book.imgURL).protocol) ? book.imgURL : 0;
-      } catch {
-        imgURL = null;
-      }
+      } catch {imgURL = null;}
       let html = `
           <li class="book">
             ${imgURL ? 
@@ -64,6 +62,15 @@ function render() {
           </li>`;
       booksContainer.innerHTML = html + booksContainer.innerHTML;
     }
+    // setting the read progress indicator
+    document.querySelectorAll(".progress").forEach(
+      (prg, i) => {
+        let barWidth = prg.parentElement.offsetWidth;
+        let book = renderBooks.slice(-i-1)[0]
+        let progress = book.read/book.pages*barWidth;
+        prg.style.transform = `translateX(${progress}px)`;
+      }
+    )
     document.querySelectorAll("[data-index]").forEach(
       (btn, i) => {
         // deleting by data index
@@ -124,10 +131,10 @@ bookForm.addEventListener('submit', function(event) {
   renderBooks.push(new Book(
       this.title.value, 
       this.author.value, 
-      this.pages.value, 
+      +this.pages.value, 
       this.isFinished.checked, 
       this.imgURL.value,
-      this.read.value, 
+      +this.read.value, 
     )
   )
   render()
