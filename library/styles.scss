@@ -205,12 +205,16 @@ main {
 				width: 100%;
 				overflow: hidden;
 				position: relative;
+				&.none {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+				}
 				> img {
 					object-fit: contain;
 					position: relative;
 					z-index: 1;
 					border:  none;
-					appearence:  none;
 				}
 				.img-bg {
 					width: 100%;

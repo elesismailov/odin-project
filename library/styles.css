@@ -200,12 +200,16 @@ main .books-container .book-preview {
   overflow: hidden;
   position: relative;
 }
+main .books-container .book-preview.none {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 main .books-container .book-preview > img {
   object-fit: contain;
   position: relative;
   z-index: 1;
   border: none;
-  appearence: none;
 }
 main .books-container .book-preview .img-bg {
   width: 100%;

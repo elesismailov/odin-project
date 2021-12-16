@@ -26,12 +26,24 @@ function render() {
   if (renderBooks.length) {
     booksContainer.innerHTML = ''
     for (let book of renderBooks) {
+      let imgURL;
+      try {
+        imgURL = /http/.test(new URL(book.imgURL).protocol) ? book.imgURL : 0;
+      } catch {
+        imgURL = null;
+      }
       let html = `
           <li class="book">
-            <div class="book-preview">
-              <img class="img-bg" src="${book.imgURL}" height="250">
-              <img src="${book.imgURL}" height="250">
-            </div>
+            ${imgURL ? 
+              `<div class="book-preview">
+                <img class="img-bg" src="${imgURL}" height="250">
+                <img src="${imgURL}" height="250">
+              </div>`
+              :
+              `<div class="book-preview none">
+                <img src="./assets/book.svg" width="50" height="50">
+              </div>` 
+            }
 
             <div class="book-description">
               <h2 class="title">${book.title}</h2>
@@ -53,7 +65,7 @@ function render() {
             </div>
           </li>`;
       booksContainer.innerHTML = html + booksContainer.innerHTML;
-      
+
 
     }
     document.querySelectorAll("[data-index]").forEach(
