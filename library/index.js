@@ -64,6 +64,12 @@ Book.prototype.changeFinished = function(value) {
 // renderBooks.push(new Book("Title", "Author", 78, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
 
 
+function filter(arr) {
+  let array = [];
+  array = arr.filter(book => new RegExp(filters.search, "i").test(book.title + book.author))
+  return array
+}
+
 function render() {
   // if (filters.search) {
     let renderBooks = filters.search ? filter(allBooks) : allBooks;
