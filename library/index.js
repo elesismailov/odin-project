@@ -50,14 +50,10 @@ function render() {
             <div class="book-description">
               <h2 class="title">${book.title}</h2>
               <p class="author">${book.author}</p>
-              <p class="pages">${book.read}/${book.pages} pages</p>
+              <p class="pages">${book.read} / ${book.pages} pages</p>
               <div class="progress-bar">
                 <span class="progress"></span>
               </div>
-    <!--          <button>
-                <span class="toggle"></span>
-                Finished
-              </button> -->
               <label class="finished">
                 <input type="checkbox" name="" ${book.isFinished ? "checked" : ""}>
                 <span>Finished</span>
@@ -146,5 +142,4 @@ bookForm.querySelector("[type='cancel']").addEventListener('click', function(eve
 function deleteBook(index) {
   renderBooks.splice(index, 1)
   render()
-  console.log(index)
 }

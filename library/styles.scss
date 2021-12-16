@@ -233,10 +233,33 @@ main {
 					margin-bottom: 1rem;
 				}
 				.pages {
-					margin-bottom: 1.7rem;
 					font-size: 2rem;
 				}
-				/*.progress-bar*/
+				.progress-bar {
+					margin: 1rem 0;
+					height: 1px;
+					background-color: #bdbdbd;
+					position: relative;
+					&::before, &::after, .progress {
+						content: "";
+						display: block;
+						position: absolute;
+						height:5px;
+						width: 5px;
+						background-color: #bdbdbd;
+						border-radius: 6px;
+						top: -2px;
+					}
+					&::before {
+						left: 0;
+					}
+					&::after {
+						right: 0;
+					}
+					.progress {
+						transform: translateX(50px);
+					}
+				}
 				.finished {
 					display: block;
 					margin-bottom: 1rem;

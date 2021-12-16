@@ -222,14 +222,37 @@ main .books-container .book-preview .img-bg {
 main .books-container .book-description {
   padding: 2.4rem;
   color: #fff;
-  /*.progress-bar*/
 }
 main .books-container .book-description .title, main .books-container .book-description .author {
   margin-bottom: 1rem;
 }
 main .books-container .book-description .pages {
-  margin-bottom: 1.7rem;
   font-size: 2rem;
+}
+main .books-container .book-description .progress-bar {
+  margin: 1rem 0;
+  height: 1px;
+  background-color: #bdbdbd;
+  position: relative;
+}
+main .books-container .book-description .progress-bar::before, main .books-container .book-description .progress-bar::after, main .books-container .book-description .progress-bar .progress {
+  content: "";
+  display: block;
+  position: absolute;
+  height: 5px;
+  width: 5px;
+  background-color: #bdbdbd;
+  border-radius: 6px;
+  top: -2px;
+}
+main .books-container .book-description .progress-bar::before {
+  left: 0;
+}
+main .books-container .book-description .progress-bar::after {
+  right: 0;
+}
+main .books-container .book-description .progress-bar .progress {
+  transform: translateX(50px);
 }
 main .books-container .book-description .finished {
   display: block;
