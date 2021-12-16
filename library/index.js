@@ -194,3 +194,22 @@ function deleteBook(index) {
   save()
   render()
 }
+
+
+//// THEME SWITCH 
+
+const themeToggle = document.querySelector("#toggle-theme");
+
+function toggleTheme(theme) {
+  if (themeToggle.getAttribute("aria-checked") === "false") {
+    themeToggle.setAttribute("aria-checked", true)
+    document.body.classList.toggle("light", false)
+    document.body.classList.toggle("dark", true)
+  } else {
+    themeToggle.setAttribute("aria-checked", false)
+    document.body.classList.toggle("dark", false)
+    document.body.classList.toggle("light", true)
+  }
+}
+
+themeToggle.addEventListener("click", () => toggleTheme())

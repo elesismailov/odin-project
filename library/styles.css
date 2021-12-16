@@ -31,6 +31,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  transition: color, background-color 150ms ease-in-out;
 }
 
 ul, li, ol {
@@ -71,6 +72,7 @@ img {
   background-color: var(--toggle-color);
   border-radius: 999px;
   position: absolute;
+  transition: background-color, transform 150ms ease-in-out;
   content: "";
   top: 2px;
   left: 2px;
@@ -84,6 +86,7 @@ header {
   align-items: center;
   background-color: #FF4D00;
   padding: 1.4rem 2.4rem;
+  color: #fff;
 }
 header > button {
   display: flex;
@@ -91,6 +94,9 @@ header > button {
 }
 header > button .toggle {
   margin-right: 0.8rem;
+}
+header > button[aria-checked=true] .toggle::before {
+  transform: translatex(20px);
 }
 
 main {
