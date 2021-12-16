@@ -57,12 +57,6 @@ function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 ,
 Book.prototype.changeFinished = function(value) {
   this.isFinished = value;
 }
-// renderBooks.push(new Book("Title", "Author", 66, false, "://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-// renderBooks.push(new Book("Title", "Author", 143, true, 50))
-// renderBooks.push(new Book("Title", "Author", 151, false, "htt.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-// renderBooks.push(new Book("Title", "Author", 1413, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-// renderBooks.push(new Book("Title", "Author", 78, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-
 
 function filter(arr) {
   let array = [];
@@ -71,7 +65,6 @@ function filter(arr) {
 }
 
 function render() {
-  // if (filters.search) {
     let renderBooks = filters.search ? filter(allBooks) : allBooks;
     if (renderBooks.length) {
       booksContainer.innerHTML = ''
@@ -138,9 +131,6 @@ function render() {
         booksContainer.innerHTML = "You haven't read a book:) <br> How about adding one?"
       }
     }
-  // } else {
-
-  // }
 }
 
 
