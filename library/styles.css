@@ -227,5 +227,23 @@ main .books-container .book-description .pages {
   margin-bottom: 1.7rem;
   font-size: 2rem;
 }
+main .books-container .book-description .finished {
+  display: block;
+  margin-bottom: 1rem;
+}
+main .books-container .book-description .finished input {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+}
+main .books-container .book-description .delete {
+  min-width: 10rem;
+  height: 100%;
+  display: inline-block;
+  background-color: #F00;
+  border-radius: 4px;
+  padding: 1rem;
+}
 
 /*# sourceMappingURL=styles.css.map */

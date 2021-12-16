@@ -233,6 +233,24 @@ main {
 					font-size: 2rem;
 				}
 				/*.progress-bar*/
+				.finished {
+					display: block;
+					margin-bottom: 1rem;
+					input {
+						display: inline-block;
+						width: 20px;
+						height: 20px;
+						border-radius: 20px;
+					}
+				}
+				.delete {
+					min-width: 10rem;
+					height: 100%;
+					display: inline-block;
+					background-color: #F00;
+					border-radius:  4px;
+					padding: 1rem;
+				}
 			}
 		}
 	}

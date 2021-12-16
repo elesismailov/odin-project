@@ -44,12 +44,12 @@ function render() {
                 <span class="toggle"></span>
                 Finished
               </button> -->
-              <label>
+              <label class="finished">
                 <input type="checkbox" name="" ${book.isFinished ? "checked" : ""}>
                 <span>Finished</span>
               </label>
 
-              <button>Delete</button>
+              <button class="delete">Delete</button>
             </div>
           </li>`;
       booksContainer.innerHTML = html + booksContainer.innerHTML;
