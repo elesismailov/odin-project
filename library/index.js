@@ -13,7 +13,9 @@ function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 ,
   this.isFinished = isFinished;
   this.description = description;
 }
-
+Book.prototype.changeFinished = function(value) {
+  this.isFinished = value;
+}
 renderBooks.push(new Book("Title", "Author", 13, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
 renderBooks.push(new Book("Title", "Author", 143, true, ))
 renderBooks.push(new Book("Title", "Author", 143, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80"))
@@ -65,12 +67,18 @@ function render() {
             </div>
           </li>`;
       booksContainer.innerHTML = html + booksContainer.innerHTML;
-
-
     }
     document.querySelectorAll("[data-index]").forEach(
-      btn => btn.addEventListener("click", function(event) {deleteBook(+this.dataset.index)}
-      )
+      (btn, i) => {
+        // deleting by data index
+        btn.addEventListener("click", function(event) {
+          deleteBook(+this.dataset.index)
+        })
+        // changing the finished state of the object 
+        btn.previousElementSibling.firstElementChild.addEventListener('change', function(event) {
+          renderBooks.slice(-i-1)[0].changeFinished(this.checked)
+        })
+      }
     )
   } else {
     booksContainer.innerHTML = "No books here yet"
@@ -134,11 +142,6 @@ bookForm.querySelector("[type='cancel']").addEventListener('click', function(eve
   event.preventDefault()
   bookForm.style.display = "none";
 })
-
-document.querySelectorAll("[data-index]").forEach(
-  btn => btn.addEventListener("click", function(event) {deleteBook(+this.dataset.index)}
-  )
-)
 
 function deleteBook(index) {
   renderBooks.splice(index, 1)
