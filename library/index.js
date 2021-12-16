@@ -15,6 +15,10 @@ function restore() {
 }
 restore()
 
+function save() {
+  localStorage.setItem("books", JSON.stringify(renderBooks));
+}
+
 function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 , description='') {
   this.title = title;
   this.author = author;
@@ -147,6 +151,7 @@ bookForm.addEventListener('submit', function(event) {
       +this.read.value, 
     )
   )
+  save()
   render()
   bookForm.style.display = "none";
 })
@@ -158,5 +163,6 @@ bookForm.querySelector("[type='cancel']").addEventListener('click', function(eve
 
 function deleteBook(index) {
   renderBooks.splice(index, 1)
+  save()
   render()
 }
