@@ -1,8 +1,19 @@
 
 
-const renderBooks = []; // books that are displayed
+let renderBooks = []; // books that are displayed
 const allBooks = [];    // all books in the library
 const booksContainer = document.querySelector(".books-container");
+
+function restore() {
+  if (!localStorage.books || !localStorage.books.trim() || localStorage.books[0] !== "[") {
+    renderBooks = []
+    localStorage.setItem("books", "[]")
+  } else {
+    renderBooks = JSON.parse(localStorage.books);
+  }
+  render()
+}
+restore()
 
 function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 , description='') {
   this.title = title;
@@ -16,13 +27,12 @@ function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 ,
 Book.prototype.changeFinished = function(value) {
   this.isFinished = value;
 }
-renderBooks.push(new Book("Title", "Author", 66, false, "://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-renderBooks.push(new Book("Title", "Author", 143, true, 50))
-renderBooks.push(new Book("Title", "Author", 151, false, "htt.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-renderBooks.push(new Book("Title", "Author", 1413, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
-renderBooks.push(new Book("Title", "Author", 78, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+// renderBooks.push(new Book("Title", "Author", 66, false, "://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+// renderBooks.push(new Book("Title", "Author", 143, true, 50))
+// renderBooks.push(new Book("Title", "Author", 151, false, "htt.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+// renderBooks.push(new Book("Title", "Author", 1413, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
+// renderBooks.push(new Book("Title", "Author", 78, false, "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1374&q=80", 50))
 
-render()
 
 function render() {
   if (renderBooks.length) {
