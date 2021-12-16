@@ -4,6 +4,29 @@
 	font-family:  "Montserrat", "Helvetica", "Open Sans", sans-serif;
 }
 
+.dark {
+	--main-bg-color: #1e1d15;
+	--elements-color: #272121;
+	--form-bg-color: #1e1d15;
+	--text-color: #fff;
+	--button-color: #fff;
+	--label-color: #aaa;
+	--label-acive-color: #fff;
+	--toggle-bg-color: #f4da04;
+	--toggle-color: #313330;
+}
+
+.light {
+	--main-bg-color: #bdbdbd;
+	--elements-color: #fff;
+	--form-bg-color: #bdbdbd;
+	--text-color: #000;
+	--button-color: #fff;
+	--label-color: #9d9d9d;
+	--label-acive-color: #000;
+	--toggle-bg-color: #f4da04;
+	--toggle-color: #313330;
+}
 
 * {
 	box-sizing: border-box;
@@ -18,13 +41,13 @@ button, a {
 	text-decoration: none;
 	border: none;
 	background-color: transparent;
-	color: #fff;
+	color: var(--button-color);
 	cursor: pointer;
 }
 
 body {
-  	background-color:  #1e1d15;
-	color: #fff;
+  	background-color:  var(--main-bg-color);
+	color: var(--text-color);
 	font-size: 1.6rem;
 }
 
@@ -38,12 +61,12 @@ img {
 	display: inline-block;
 	width: 48px;
 	height: 28px;
-	background-color: rebeccapurple;
+	background-color: var(--toggle-bg-color);
 	border-radius: 999px;
 	position: relative;
 	&::before {
 		display: block;
-		background-color: #fff;
+		background-color: var(--toggle-color);
 		border-radius: 999px;
 		position: absolute;
 		content: '';
@@ -90,10 +113,10 @@ main {
 				padding: 1rem;
 				border-radius: 4px;
 				border: none;
-				background: #272121;
-				color: #fff;
+				background: var(--elements-color);
+				color: var(--text-color);
 				&::placeholder {
-					color: #fff;
+					color: var(--text-color);
 				}
 			}
 		}
@@ -122,7 +145,7 @@ main {
 				padding: 2.4rem;
 			}
 			.wrapper {
-				background-color: #1e1d15;
+				background-color: var(--form-bg-color);
 				padding: 4rem 2.4rem 3.5rem;
 				border-radius: 1.5rem;
 				max-width: 400px;
@@ -137,21 +160,21 @@ main {
 					position: absolute;
 					top: 1.6rem;
 					left: 1.5rem;
-					color: #aaa;
+					color: var(--label-color);
 					transition: all 250ms ease-in-out;
 					&.active {
 						transform: translateY(-3.7rem) translateX(-1.5rem);
-						color: #fff;
+						color: var(--label-active-color);
 					}
 				}
 				> input {
-					background-color: #272121;
+					background-color: var(--elements-color);
 					border: none;
 					border-radius: 5px;
 					padding: 1.5rem;
 					width: 100%;
 					font-size: 1.6rem;
-					color: #fff;
+					color: var(--text-color);
 				}
 				input[type='checkbox'] {
 					display: inline-block;
@@ -194,8 +217,7 @@ main {
 			max-width: 400px;
 			border-radius: 7px;
 			width: 100%;
-			background: #272121;
-			color: #000;
+			background: var(--elements-color);
 			overflow: hidden;
 
 			&-preview {
@@ -228,7 +250,7 @@ main {
 			&-description {
 
 				padding: 2.4rem;
-				color: #fff;
+				color: var(--text-color);
 				.title, .author {
 					margin-bottom: 1rem;
 				}

@@ -60,7 +60,7 @@ Book.prototype.changeFinished = function(value) {
 
 function filter(arr) {
   let array = [];
-  array = arr.filter(book => new RegExp(filters.search, "i").test(book.title + book.author))
+  array = arr.filter(book => new RegExp(filters.search.trim(), "i").test(book.title + book.author))
   return array
 }
 
