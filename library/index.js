@@ -1,8 +1,22 @@
 
 
-let renderBooks = []; // books that are displayed
+// let renderBooks = []; // books that are displayed
 const allBooks = [];    // all books in the library
 const booksContainer = document.querySelector(".books-container");
+
+const openBookForm = document.querySelector("#open-book-form");
+const bookForm = document.querySelector("#book-form");
+
+const searchBar = document.querySelector("#search-bar");
+
+const filters = {
+  search: "",
+}
+
+searchBar.addEventListener("input", function(event) {
+  filters.search = this.value;
+  render()
+})
 
 function restore() {
   if (!localStorage.books || !localStorage.books.trim() || localStorage.books[0] !== "[") {
@@ -10,7 +24,7 @@ function restore() {
   } else {
     data = JSON.parse(localStorage.books);
     for (let book of data) {
-      renderBooks.push(new Book(
+      allBooks.push(new Book(
           book.title, 
           book.author, 
           +book.pages, 
@@ -21,18 +35,14 @@ function restore() {
       )
     }
   }
-  console.log(renderBooks)
+  console.log(allBooks)
   render()
 }
 restore()
 
 
-/// save not objects but the data. when restored loop through 
-/// adding new Book() to renderBooks.
-
-
 function save() {
-  localStorage.setItem("books", JSON.stringify(renderBooks));
+  localStorage.setItem("books", JSON.stringify(allBooks));
 }
 
 function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 , description='') {
@@ -55,73 +65,75 @@ Book.prototype.changeFinished = function(value) {
 
 
 function render() {
-  if (renderBooks.length) {
-    booksContainer.innerHTML = ''
-    for (let book of renderBooks) {
-      let imgURL;
-      try {
-        imgURL = /http/.test(new URL(book.imgURL).protocol) ? book.imgURL : 0;
-      } catch {imgURL = null;}
-      let html = `
-          <li class="book">
-            ${imgURL ? 
-              `<div class="book-preview">
-                <img class="img-bg" src="${imgURL}" height="250">
-                <img src="${imgURL}" height="250">
-              </div>`
-              :
-              `<div class="book-preview none">
-                <img src="./assets/book.svg" width="50" height="50">
-              </div>` 
-            }
+  // if (filters.search) {
+    let renderBooks = filters.search ? filter(allBooks) : allBooks;
+    if (renderBooks.length) {
+      booksContainer.innerHTML = ''
+      for (let book of renderBooks) {
+        let imgURL;
+        try {
+          imgURL = /http/.test(new URL(book.imgURL).protocol) ? book.imgURL : 0;
+        } catch {imgURL = null;}
+        let html = `
+            <li class="book">
+              ${imgURL ? 
+                `<div class="book-preview">
+                  <img class="img-bg" src="${imgURL}" height="250">
+                  <img src="${imgURL}" height="250">
+                </div>`
+                :
+                `<div class="book-preview none">
+                  <img src="./assets/book.svg" width="50" height="50">
+                </div>` 
+              }
 
-            <div class="book-description">
-              <h2 class="title">${book.title}</h2>
-              <p class="author">${book.author}</p>
-              <p class="pages">${book.read} / ${book.pages} pages</p>
-              <div class="progress-bar">
-                <span class="progress"></span>
+              <div class="book-description">
+                <h2 class="title">${book.title}</h2>
+                <p class="author">${book.author}</p>
+                <p class="pages">${book.read} / ${book.pages} pages</p>
+                <div class="progress-bar">
+                  <span class="progress"></span>
+                </div>
+                <label class="finished">
+                  <input type="checkbox" name="" ${book.isFinished ? "checked" : ""}>
+                  <span>Finished</span>
+                </label>
+
+                <button class="delete" data-index="${renderBooks.indexOf(book)}">Delete</button>
               </div>
-              <label class="finished">
-                <input type="checkbox" name="" ${book.isFinished ? "checked" : ""}>
-                <span>Finished</span>
-              </label>
-
-              <button class="delete" data-index="${renderBooks.indexOf(book)}">Delete</button>
-            </div>
-          </li>`;
-      booksContainer.innerHTML = html + booksContainer.innerHTML;
+            </li>`;
+        booksContainer.innerHTML = html + booksContainer.innerHTML;
+      }
+      // setting the read progress indicator
+      document.querySelectorAll(".progress").forEach(
+        (prg, i) => {
+          let barWidth = prg.parentElement.offsetWidth;
+          let book = renderBooks.slice(-i-1)[0]
+          let progress = book.read/book.pages*barWidth;
+          prg.style.transform = `translateX(${progress}px)`;
+        }
+      )
+      document.querySelectorAll("[data-index]").forEach(
+        (btn, i) => {
+          // deleting by data index
+          btn.addEventListener("click", function(event) {
+            deleteBook(+this.dataset.index)
+          })
+          // changing the finished state of the object 
+          btn.previousElementSibling.firstElementChild.addEventListener('change', function(event) {
+            renderBooks.slice(-i-1)[0].changeFinished(this.checked)
+          })
+        }
+      )
+    } else {
+      booksContainer.innerHTML = "No books here yet"
     }
-    // setting the read progress indicator
-    document.querySelectorAll(".progress").forEach(
-      (prg, i) => {
-        let barWidth = prg.parentElement.offsetWidth;
-        let book = renderBooks.slice(-i-1)[0]
-        let progress = book.read/book.pages*barWidth;
-        prg.style.transform = `translateX(${progress}px)`;
-      }
-    )
-    document.querySelectorAll("[data-index]").forEach(
-      (btn, i) => {
-        // deleting by data index
-        btn.addEventListener("click", function(event) {
-          deleteBook(+this.dataset.index)
-        })
-        // changing the finished state of the object 
-        btn.previousElementSibling.firstElementChild.addEventListener('change', function(event) {
-          renderBooks.slice(-i-1)[0].changeFinished(this.checked)
-        })
-      }
-    )
-  } else {
-    booksContainer.innerHTML = "No books here yet"
-  }
+  // } else {
+
+  // }
 }
 
 
-
-const openBookForm = document.querySelector("#open-book-form");
-const bookForm = document.querySelector("#book-form");
 
 openBookForm.addEventListener('click', function(event) {
   if (bookForm.style.display === "block") {
@@ -158,7 +170,7 @@ bookForm.querySelectorAll(".label-text").forEach(
 
 bookForm.addEventListener('submit', function(event) {
   event.preventDefault()
-  renderBooks.push(new Book(
+  allBooks.push(new Book(
       this.title.value, 
       this.author.value, 
       +this.pages.value, 
@@ -178,7 +190,7 @@ bookForm.querySelector("[type='cancel']").addEventListener('click', function(eve
 })
 
 function deleteBook(index) {
-  renderBooks.splice(index, 1)
+  allBooks.splice(index, 1)
   save()
   render()
 }
