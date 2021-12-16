@@ -51,6 +51,10 @@ body {
 	color: var(--text-color);
 	font-size: 1.6rem;
 }
+.body-wrapper, .header-wrapper {
+	max-width: 1500px;
+	margin: auto;
+}
 
 img {
 	width: 100%;
@@ -82,6 +86,10 @@ img {
 }
 
 header {
+	background-color: #FF4D00;
+}
+
+.header-wrapper {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;

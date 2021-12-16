@@ -9,22 +9,24 @@
 	<script type="text/javascript" defer src="./index.js"></script>
 </head>
 <body class="light">
-
 	<header>
+		<div class="header-wrapper">
 		<h1>My books</h1>
 		<button id="toggle-theme" aria-checked="false">
 			<span class="toggle"></span>
 			<span>Dark mode</span>
 		</button>
+		</div>
 	</header>
+	<div class="body-wrapper">
 
 	<main>
 
 		<div class="top-bar">
 			<form id="search-form">
-				<input id="search-bar" type="search" name="search-input" placeholder="Search for a book...">
+				<input id="search-bar" type="search" name="search-input" aria-label="Search a book by title and name" placeholder="Search for a book...">
 			</form>
-			<button id="open-book-form">Add a Book</button>
+			<button id="open-book-form" aria-label="Add a new book">Add a Book</button>
 			<form id="book-form">
 				<div class="form-bg">
 					<div class="wrapper">
@@ -62,6 +64,6 @@
 		<ul class="books-container">
 		</ul>
 	</main>
-
+	</div>
 </body>
 </html>

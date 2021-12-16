@@ -113,29 +113,29 @@ function render() {
         let html = `
             <li class="book">
               ${imgURL ? 
-                `<div class="book-preview">
+                `<div class="book-preview" aria-hidden="true">
                   <img class="img-bg" src="${imgURL}" height="250">
                   <img src="${imgURL}" height="250">
                 </div>`
                 :
-                `<div class="book-preview none">
+                `<div class="book-preview none" aria-hidden="true">
                   <img src="./assets/book.svg" width="50" height="50">
                 </div>` 
               }
 
               <div class="book-description">
-                <h2 class="title">${book.title}</h2>
-                <p class="author">${book.author}</p>
-                <p class="pages">${book.read} / ${book.pages} pages</p>
-                <div class="progress-bar">
+                <h2 class="title" aria-label="Book title">${book.title}</h2>
+                <p class="author" aria-label="Book Author">${book.author}</p>
+                <p class="pages" aria-label="You have read ${book.read} out of ${book.pages} pages.">${book.read} / ${book.pages} pages</p>
+                <div class="progress-bar" aria-hidden="true">
                   <span class="progress"></span>
                 </div>
                 <label class="finished">
-                  <input type="checkbox" name="" ${book.isFinished ? "checked" : ""}>
+                  <input type="checkbox" aria-label="Have finished reading" aria-checked=${book.isFinished} name="" ${book.isFinished ? "checked" : ""}>
                   <span>Finished</span>
                 </label>
 
-                <button class="delete" data-index="${renderBooks.indexOf(book)}">Delete</button>
+                <button aria-label="Delete this book" class="delete" data-index="${renderBooks.indexOf(book)}">Delete</button>
               </div>
             </li>`;
         booksContainer.innerHTML = html + booksContainer.innerHTML;
@@ -157,6 +157,7 @@ function render() {
           })
           // changing the finished state of the object 
           btn.previousElementSibling.firstElementChild.addEventListener('change', function(event) {
+            this.setAttribute("aria-checked", this.checked)
             renderBooks.slice(-i-1)[0].changeFinished(this.checked)
           })
         }
