@@ -132,7 +132,11 @@ function render() {
         }
       )
     } else {
-      booksContainer.innerHTML = "No books here yet"
+      if (filters.search.trim()) {
+        booksContainer.innerHTML = "No such book. How about adding it?"
+      } else{
+        booksContainer.innerHTML = "You haven't read a book:) <br> How about adding one?"
+      }
     }
   // } else {
 
