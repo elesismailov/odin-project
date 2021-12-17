@@ -4,10 +4,15 @@ const gameboard = document.querySelector("#gameboard");
 
 const Game = (function() {
 	const players = [Player("First", true), Player("Second", false)]
+	// const board = [
+	// 	1,    0,    1,
+	// 	null, 1,    0,
+	// 	0,    null, 1,
+	// ];
 	const board = [
-		1, 0, 1,
-		null, 1, 0,
-		0, 0, 1,
+		null, null, null,
+		null, null, null,
+		null, null, null,
 	];
 
 	function Player(name, first) {
@@ -30,6 +35,8 @@ const Game = (function() {
 })()
 
 function renderGameBoard() {
+	// got iterator because the gameboard has 18 children, and there are 9 cells
+	// iterator gives a value every time the node is the div
 	const positions = Game.getBoard()[Symbol.iterator]()
 	gameboard.childNodes.forEach((node, i) => {
 		if (node.nodeName === "DIV") {

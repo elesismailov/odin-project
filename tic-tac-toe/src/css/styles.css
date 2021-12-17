@@ -4,7 +4,6 @@ body {
 }
 
 #gameboard {
-  background: silver;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   width: max-content;
@@ -15,6 +14,10 @@ body {
   width: 100px;
   height: 100px;
   background: #fff;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /*# sourceMappingURL=styles.css.map */
