@@ -14,6 +14,7 @@ const Game = (function() {
 	// 	null, null, null,
 	// 	null, null, null,
 	// ];
+	let firstTurns = true;
 
 	function Player(name, first) {
 		const getName = () => name;
@@ -24,12 +25,25 @@ const Game = (function() {
 			getValue,
 		});
 	}
+	function makeMove(index) {
+		if (board[index] === null) {
+			board[index] = firstTurns ? 1 : 0;
+			firstTurns = !firstTurns;
+			renderGameBoard()
+		}
+		// else {
+		// 	console.log("You can't put it there")
+		// 	console.log(firstTurns ? "X" : "O")
+		// }
+	}
 
 	const getBoard = () => board;
 
 	return ({
 		getBoard,
+		// board,
 		// players,
+		makeMove
 
 	});
 })()
@@ -53,5 +67,6 @@ renderGameBoard()
 gameboard.addEventListener("click", function(event) {
 	if (event.target.classList.contains("cell")) {
 		console.log(event.target)
+		Game.makeMove(event.target.dataset.index)
 	}
 })

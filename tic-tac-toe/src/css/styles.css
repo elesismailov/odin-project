@@ -28,10 +28,5 @@ body {
 #gameboard .cell .cross > img, #gameboard .cell .circle > img {
   width: 80%;
 }
-#gameboard .cell .circle {
-  background: black;
-  width: 100%;
-  height: 100%;
-}
 
 /*# sourceMappingURL=styles.css.map */
