@@ -43,8 +43,7 @@ const Game = (function() {
 		getBoard,
 		// board,
 		// players,
-		makeMove
-
+		makeMove,
 	});
 })()
 
@@ -53,7 +52,7 @@ function renderGameBoard() {
 	// iterator gives a value every time the node is the div
 	const positions = Game.getBoard()[Symbol.iterator]()
 	gameboard.childNodes.forEach((node, i) => {
-		if (node.nodeName === "DIV") {
+		if (node.nodeName === "BUTTON") {
 			let value = positions.next().value;
 			if (value === null) return ;
 			node.innerHTML = value === 1 ? `<div class='cross'><img src="./assets/images/x.png" alt=""></div>` : `<div class='circle'><img src="./assets/images/o.png" alt=""></div>`;
