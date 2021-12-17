@@ -1,6 +1,7 @@
 
 
 const gameboard = document.querySelector("#gameboard");
+const indicator = document.querySelector("#indicator");
 
 const Game = (function() {
 	const players = [Player("First", true), Player("Second", false)]
@@ -68,10 +69,12 @@ const Game = (function() {
 
 	const getBoard = () => board;
 	const getWinner = () => winner;
+	const getCurrent = () => firstTurns ? 1 : 0;
 
 	return ({
 		getBoard,
 		getWinner,
+		getCurrent,
 		// board,
 		// players,
 		makeMove,
@@ -89,6 +92,8 @@ function renderGameBoard() {
 			node.innerHTML = value === 1 ? `<div class='cross'><img src="./assets/images/x.png" alt=""></div>` : `<div class='circle'><img src="./assets/images/o.png" alt=""></div>`;
 		}
 	})
+
+	indicator.innerHTML = Game.getCurrent() === 1 ? `<div class='cross'><img src="./assets/images/x.png" alt=""></div>` : `<div class='circle'><img src="./assets/images/o.png" alt=""></div>`;
 
 	// turn off gameboard
 	if (Game.getWinner() !== null) {
