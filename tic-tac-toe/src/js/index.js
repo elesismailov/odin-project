@@ -4,16 +4,16 @@ const gameboard = document.querySelector("#gameboard");
 
 const Game = (function() {
 	const players = [Player("First", true), Player("Second", false)]
-	// const board = [
-	// 	1,    0,    1,
-	// 	null, 1,    0,
-	// 	0,    null, 1,
-	// ];
 	const board = [
-		null, null, null,
-		null, null, null,
-		null, null, null,
+		1,    0,    1,
+		null, 1,    0,
+		0,    null, 1,
 	];
+	// const board = [
+	// 	null, null, null,
+	// 	null, null, null,
+	// 	null, null, null,
+	// ];
 
 	function Player(name, first) {
 		const getName = () => name;
@@ -42,9 +42,16 @@ function renderGameBoard() {
 		if (node.nodeName === "DIV") {
 			let value = positions.next().value;
 			if (value === null) return ;
-			node.innerHTML = value === 1 ? "X" : "O";
+			node.innerHTML = value === 1 ? `<div class='cross'><img src="./assets/images/x.png" alt=""></div>` : `<div class='circle'><img src="./assets/images/o.png" alt=""></div>`;
 		}
 	})
 }
 
 renderGameBoard()
+
+
+gameboard.addEventListener("click", function(event) {
+	if (event.target.classList.contains("cell")) {
+		console.log(event.target)
+	}
+})
