@@ -19,4 +19,14 @@ const Game = (function() {
 	};
 })()
 
+function renderGameBoard() {
+	const positions = Game.getBoard()[Symbol.iterator]()
+	gameboard.childNodes.forEach((node, i) => {
+		if (node.nodeName === "DIV") {
+			let value = positions.next().value;
+			node.innerHTML = value === 1 ? "X" : "O";
+		}
+	})
+}
 
+renderGameBoard()
