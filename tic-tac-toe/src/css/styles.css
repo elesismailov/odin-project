@@ -1,0 +1,20 @@
+body {
+  background: #ccc;
+  padding: 100px 0;
+}
+
+#gameboard {
+  background: silver;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  width: max-content;
+  grid-gap: 10px;
+  margin: auto;
+}
+#gameboard .cell {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+}
+
+/*# sourceMappingURL=styles.css.map */
