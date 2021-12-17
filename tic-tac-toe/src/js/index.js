@@ -4,17 +4,19 @@ const gameboard = document.querySelector("#gameboard");
 
 const Game = (function() {
 	const players = [Player("First", true), Player("Second", false)]
-	const board = [
-		1,    0,    1,
-		null, 1,    0,
-		0,    null, 1,
-	];
 	// const board = [
-	// 	null, null, null,
-	// 	null, null, null,
-	// 	null, null, null,
+	// 	1,    0,    1,
+	// 	null, 1,    0,
+	// 	0,    null, 1,
 	// ];
+	const board = [
+		null, null, null,
+		null, null, null,
+		null, null, null,
+	];
 	let firstTurns = true;
+	let winner = null;
+	// let winner = 1;
 
 	function Player(name, first) {
 		const getName = () => name;
@@ -25,10 +27,37 @@ const Game = (function() {
 			getValue,
 		});
 	}
+	function checkWin() {
+		let wins = [
+			[ 0, 3, 6 ],
+			[ 1, 4, 7 ],
+			[ 2, 5, 8 ],
+			[ 0, 1, 2 ],
+			[ 3, 4, 5 ],
+			[ 6, 7, 8 ],
+			[ 0, 4, 8 ],
+			[ 2, 4, 6 ],
+		];
+		// console.log(wins)
+		for (const win of wins) {
+			let current = 1;
+			for (const index of win) {
+				if (board[index] !== current) current = 0;
+			}
+			for (const index of win) {
+				if (board[index] !== current) current = null;
+			}
+			if (current !== null) {
+				winner = current
+				return
+			}
+		}
+	}
 	function makeMove(index) {
 		if (board[index] === null) {
 			board[index] = firstTurns ? 1 : 0;
 			firstTurns = !firstTurns;
+			checkWin()
 			renderGameBoard()
 		}
 		// else {
@@ -38,9 +67,11 @@ const Game = (function() {
 	}
 
 	const getBoard = () => board;
+	const getWinner = () => winner;
 
 	return ({
 		getBoard,
+		getWinner,
 		// board,
 		// players,
 		makeMove,
@@ -54,10 +85,20 @@ function renderGameBoard() {
 	gameboard.childNodes.forEach((node, i) => {
 		if (node.nodeName === "BUTTON") {
 			let value = positions.next().value;
-			if (value === null) return ;
+			if (value === null) return -1;
 			node.innerHTML = value === 1 ? `<div class='cross'><img src="./assets/images/x.png" alt=""></div>` : `<div class='circle'><img src="./assets/images/o.png" alt=""></div>`;
 		}
 	})
+
+	// turn off gameboard
+	if (Game.getWinner() !== null) {
+		console.log("winner", Game.getWinner())
+		gameboard.childNodes.forEach((node, i) => {
+			if (node.nodeName === "BUTTON") {
+				node.disabled = true;
+			}
+		})
+	}
 }
 
 renderGameBoard()
@@ -65,7 +106,6 @@ renderGameBoard()
 
 gameboard.addEventListener("click", function(event) {
 	if (event.target.classList.contains("cell")) {
-		console.log(event.target)
 		Game.makeMove(event.target.dataset.index)
 	}
 })
