@@ -6,6 +6,7 @@
 
 body {
   background: #333;
+  font-family: sans-serif;
 }
 
 #gameboard {
@@ -37,7 +38,13 @@ body {
 }
 
 #indicator {
-  margin: 50px auto;
+  margin: 0 auto 50px;
+}
+
+#text-indicator {
+  margin: 50px auto 10px;
+  text-align: center;
+  color: #fff;
 }
 
 /*# sourceMappingURL=styles.css.map */

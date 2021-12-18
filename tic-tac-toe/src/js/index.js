@@ -2,6 +2,7 @@
 
 const gameboard = document.querySelector("#gameboard");
 const indicator = document.querySelector("#indicator");
+const textIndicator = document.querySelector("#text-indicator");
 
 const Game = (function() {
 	const players = [Player("First", true), Player("Second", false)]
@@ -98,6 +99,8 @@ function renderGameBoard() {
 	// turn off gameboard
 	if (Game.getWinner() !== null) {
 		console.log("winner", Game.getWinner())
+		indicator.innerHTML = Game.getCurrent() === 0 ? `<div class='cross'><img src="./assets/images/x.png" alt=""></div>` : `<div class='circle'><img src="./assets/images/o.png" alt=""></div>`;
+		textIndicator.innerHTML = "Winner is:"
 		gameboard.childNodes.forEach((node, i) => {
 			if (node.nodeName === "BUTTON") {
 				node.disabled = true;
