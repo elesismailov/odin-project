@@ -13,6 +13,21 @@ const filters = {
   search: "",
 }
 
+class Book {
+  constructor(title='', author='', pages=1, isFinished=false, imgURL='',read=1 , description='') {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.imgURL = imgURL;
+    this.isFinished = isFinished;
+    this.description = description;
+  }
+  
+  changeFinished = function(value) {
+    this.isFinished = value;
+  }
+}
 //// THEME SWITCH 
 
 const themeToggle = document.querySelector("#toggle-theme");
@@ -82,18 +97,6 @@ function save() {
   localStorage.setItem("books", JSON.stringify(allBooks));
 }
 
-function Book(title='', author='', pages=1, isFinished=false, imgURL='',read=1 , description='') {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.imgURL = imgURL;
-  this.isFinished = isFinished;
-  this.description = description;
-}
-Book.prototype.changeFinished = function(value) {
-  this.isFinished = value;
-}
 
 function filter(arr) {
   let array = [];
