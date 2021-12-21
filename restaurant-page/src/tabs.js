@@ -17,9 +17,15 @@ export default function Tabs() {
 	menu.setAttribute("data-tab", "1")
 	reserve.setAttribute("data-tab", "2")
 
+	home.onclick = function() {console.log("this is home")}
+
 	nav.appendChild(home)
 	nav.appendChild(menu)
 	nav.appendChild(reserve)
+
+	nav.home = home;
+	nav.menu = menu;
+	nav.reserve = reserve;
 
 	return nav
 }

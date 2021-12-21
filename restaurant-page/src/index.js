@@ -11,9 +11,19 @@ const landing = LandingPage()
 const tabs = Tabs()
 const menu = Menu()
 
-// document.body.appendChild(LandingPage())
 content.appendChild(tabs)
-content.appendChild(menu)
-// content.appendChild(landing)
+content.appendChild(landing)
 
-// setTimeout(() => landing.remove(), 2000)
+tabs.home.onclick = function(event) {
+	menu.remove()
+	content.appendChild(landing)
+}
+tabs.menu.onclick = function(event) {
+	landing.remove()
+	content.appendChild(menu)
+}
+tabs.reserve.onclick = function(event) {
+	// menu.remove()
+	// content.appendChild(landing)
+}
+
