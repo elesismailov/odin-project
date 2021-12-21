@@ -18,6 +18,7 @@ body {
   background: url("./assets/images/hero-intro.jpg") no-repeat;
   background-size: cover;
   background-position: center;
+  background-color: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,6 +38,29 @@ body {
 }
 #description p {
   margin-bottom: 2rem;
+}
+
+#tabs {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #42432470;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 1rem;
+}
+#tabs button {
+  background: rebeccapurple;
+  border: none;
+  padding: 1rem;
+  border-radius: 5px;
+  appearance: none;
+  color: white;
+  min-width: 90px;
 }
 
 /*# sourceMappingURL=style.css.map */
