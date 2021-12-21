@@ -12,6 +12,9 @@ body {
 	font-size: 1.6rem;
 	font-family: "Times New Roman", serif;
 }
+img {
+	vertical-align: middle;
+}
 
 #intro {
 	height: 400px;
@@ -82,11 +85,13 @@ body {
 
 	.grid-wrapper {
 		display: grid;
-		grid-template-columns: repeat(auto-fit,minmax(300px, 1fr));
+		grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
 		gap: 30px;
 	}
 
 	.menu-item {
+
+		max-width: 350px;
 		height: 100%;
 		width: 100%;
 		position: relative;
