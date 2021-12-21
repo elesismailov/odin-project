@@ -15,7 +15,7 @@ body {
 
 #intro {
   height: 400px;
-  background: url("../assets/images/hero-intro.jpg") no-repeat;
+  background: url("./assets/images/hero-intro.jpg") no-repeat;
   background-size: cover;
   background-position: center;
   display: flex;
