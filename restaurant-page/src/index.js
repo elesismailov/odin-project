@@ -8,13 +8,14 @@ LandingPage()
 
 const content = document.querySelector("#content");
 
-const landing = LandingPage()
 const tabs = Tabs()
+const landing = LandingPage()
 const menu = Menu()
 const reserve = ReservePage()
 
 content.appendChild(tabs)
 content.appendChild(landing)
+// content.appendChild(reserve)
 
 tabs.home.onclick = function(event) {
 	reserve.remove()
