@@ -12,7 +12,7 @@ const tabs = Tabs()
 
 
 // document.body.appendChild(LandingPage())
-content.appendChild(landing)
 content.appendChild(tabs)
+content.appendChild(landing)
 
 // setTimeout(() => landing.remove(), 2000)
