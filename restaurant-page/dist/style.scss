@@ -11,6 +11,7 @@
 body {
 	font-size: 1.6rem;
 	font-family: "Times New Roman", serif;
+	background-color: #fff;
 }
 img {
 	vertical-align: middle;
@@ -68,13 +69,25 @@ img {
 		appearance: none;
 		color: white;
 		min-width: 90px;
+		position: relative;
 		&:hover {
 			filter: brightness(1.1);
 		}
 		&:active {
 			filter: brightness(0.9);
 		}
+		#tab-sticky {
+			width: 130%;
+			display: inline-block;
+			position: absolute;
+			height: 1.4rem;
+			background-color: #ffa800;
+			bottom: -1rem;
+			left: -15%;
+			border-radius: 100px 100px 0 0;
+		}
 	}
+
 }
 
 #menu {

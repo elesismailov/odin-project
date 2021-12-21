@@ -6,6 +6,9 @@ export default function Tabs() {
 	const home = document.createElement("button");
 	const menu = document.createElement("button");
 	const reserve = document.createElement("button");
+	const follow = document.createElement("span");
+
+	follow.id = "tab-sticky";
 
 	nav.id = "tabs";
 
@@ -26,6 +29,11 @@ export default function Tabs() {
 	nav.home = home;
 	nav.menu = menu;
 	nav.reserve = reserve;
+
+	nav.sticky = function(el) {
+		follow.remove()
+		el.appendChild(follow)
+	}
 
 	return nav
 }
