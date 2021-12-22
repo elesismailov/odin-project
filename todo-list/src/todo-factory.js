@@ -1,6 +1,6 @@
 
 
-export default function Todo(title, description, date, priority, subtasks) {
+export default function Todo(title, description, date, priority, subtasks, project) {
 
 	let todo = {
 		title,
