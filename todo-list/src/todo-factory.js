@@ -1,15 +1,30 @@
+const proto = {
+	edit() {
+		console.log("edit me");
+	},
+	markComplete() {
+		this.isComplete = true;
+	},
+};
 
-
-export default function Todo(title, description, date, priority, subtasks, project) {
-
+export default function Todo(
+	title = "New task",
+	date = new Date(),
+	priority = 0,
+	isComplete = false,
+	description = "",
+	subtasks = [],
+	project = "personal",
+) {
 	let todo = {
 		title,
 		description,
 		date,
 		priority,
 		subtasks,
-		project
+		project,
+		isComplete,
 	};
 
-	return todo;
+	return Object.assign({}, proto, todo);
 }
