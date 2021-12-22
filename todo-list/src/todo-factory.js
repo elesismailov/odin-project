@@ -12,9 +12,9 @@ export default function Todo(
 	date = new Date(),
 	priority = 0,
 	isComplete = false,
+	project = "Personal",
 	description = "",
 	subtasks = [],
-	project = "Personal",
 ) {
 	let todo = {
 		title,
@@ -24,6 +24,7 @@ export default function Todo(
 		subtasks,
 		project,
 		isComplete,
+		id: new Date().getTime(),
 	};
 
 	return Object.assign({}, proto, todo);

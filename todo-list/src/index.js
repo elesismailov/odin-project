@@ -16,11 +16,11 @@ const projects = {
 // console.log(Project())
 
 console.log(projects)
+
 projects.personal.addTask(Todo("1"))
-projects.personal.addTask(Todo("2"))
-projects.personal.addTask(Todo("3"))
-projects.personal.addTask(Todo("4"))
-// console.table(projects)
+setTimeout(() => projects.personal.addTask(Todo("2")), 0);
+setTimeout(() => projects.personal.addTask(Todo("3")), 0);
+setTimeout(() => projects.personal.addTask(Todo("4")), 0);
 
 console.log(projects)
 // console.log(Todo())
