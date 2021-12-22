@@ -2,9 +2,8 @@
 
 const proto = {
 	addTask(task) {
-		console.log("added")
-		console.log(this.tasks)
-		console.log(this.title)
+		task.project = this.title;
+		this.tasks.push(task);
 	},
 	deleteTask(id) {
 		console.log("deleted")

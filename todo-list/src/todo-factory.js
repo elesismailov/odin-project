@@ -14,7 +14,7 @@ export default function Todo(
 	isComplete = false,
 	description = "",
 	subtasks = [],
-	project = "personal",
+	project = "Personal",
 ) {
 	let todo = {
 		title,

@@ -7,16 +7,20 @@ document.body.innerHTML = "<div id='root'></div>"
 
 
 const projects = {
-	personal: Project("personal", [1,2,3]),
-	perso2nal: Project("personal", [1,2,3]),
-	pe1rsonal: Project("personal", [1,2,3]),
-	perso3nal: Project("personal", [1,2,3]),
+	personal: Project("Personal", [
+		Todo("Initial task", 0, 0,true),
+	]),
 };
 
 
 // console.log(Project())
-// console.log(projects)
-// console.table(projects)
-console.log()
 
-console.log(Todo())
+console.log(projects)
+projects.personal.addTask(Todo("1"))
+projects.personal.addTask(Todo("2"))
+projects.personal.addTask(Todo("3"))
+projects.personal.addTask(Todo("4"))
+// console.table(projects)
+
+console.log(projects)
+// console.log(Todo())
