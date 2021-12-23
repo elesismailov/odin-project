@@ -10,7 +10,12 @@
 
 body {
   background: #a300ff none repeat scroll 0% 0%;
+  font-family: "Helvetica", sans-serif;
   font-size: 1.6rem;
+}
+
+ul, ol, li {
+  list-style: none;
 }
 
 button {
@@ -45,6 +50,34 @@ button {
 }
 #sidebar nav .sidebar-icon:hover {
   border-radius: 1rem;
+}
+
+#all-projects {
+  margin-left: 6.4rem;
+}
+#all-projects > ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+  gap: 2rem;
+  padding: 2.4rem;
+  justify-items: center;
+}
+#all-projects > ul > li {
+  width: 25rem;
+  height: 25rem;
+}
+#all-projects > ul .project {
+  width: 25rem;
+  height: 25rem;
+  background: #fff;
+  border-radius: 0.8rem;
+  padding: 2rem;
+}
+#all-projects > ul .project h2 {
+  font-size: 2rem;
+}
+#all-projects > ul .project > ul {
+  padding: 1.4rem;
 }
 
 /*# sourceMappingURL=style.css.map */

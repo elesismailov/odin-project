@@ -13,6 +13,10 @@ const root = document.querySelector('#root');
 
 const projects = {
 	personal: Project("Personal"),
+	perso1nal: Project("Personal"),
+	person2al: Project("Personal"),
+	personal4: Project("Personal"),
+	persona3l: Project("Personal"),
 };
 
 projects.personal.addTask(Todo("First task", undefined, 3, true, ""))

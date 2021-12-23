@@ -10,9 +10,13 @@
 
 body {
 	background: rgb(163, 0, 255) none repeat scroll 0% 0%;
+	font-family: "Helvetica", sans-serif;
 	font-size: 1.6rem;
 }
 
+ul, ol, li {
+	list-style: none;
+}
 button {
 	appearance: none;
 	border: none;
@@ -48,5 +52,34 @@ button {
 			}
 		}
 	}
+}
 
+
+#all-projects {
+	margin-left: 6.4rem;
+
+	> ul {
+		display: grid;
+		grid-template-columns: repeat(auto-fill,minmax(25rem, 1fr));
+		gap: 2rem;
+		padding: 2.4rem;
+		justify-items: center;
+		> li {
+			width: 25rem;
+			height: 25rem;
+		}
+		.project {
+			width: 25rem;
+			height: 25rem;
+			background: #fff;
+			border-radius: .8rem;
+			padding: 2rem;
+			h2{
+				font-size: 2rem;
+			}
+			> ul {
+				padding: 1.4rem;
+			}
+		}
+	}
 }

@@ -13,11 +13,22 @@ export default function ProjectsComponent(projects) {
 		const li = document.createElement("li");
 		const project = document.createElement("div");
 		const title = document.createElement("h2");
+		const taskUl = document.createElement("ul");
+		const tasks = projects[key].tasks.slice(0,8);
+
+		tasks.forEach(task => {
+			const title = document.createElement("p");
+			const taskLi = document.createElement("li");
+			title.innerHTML = task.title;
+			taskLi.appendChild(title)
+			taskUl.appendChild(taskLi);
+		})
 
 		project.className = "project";
 		title.innerHTML = projects[key].title;
-		console.log(projects[key])
 		project.appendChild(title);
+		project.appendChild(taskUl);
+
 		li.appendChild(project)
 		ul.appendChild(li)
 	})

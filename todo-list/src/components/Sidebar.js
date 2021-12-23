@@ -9,7 +9,7 @@ export default function Sidebar() {
 
 	nav.appendChild(SidebarIcon("P"))
 	nav.appendChild(SidebarIcon("T"))
-	nav.appendChild(SidebarIcon("A"))
+	nav.appendChild(SidebarIcon("#"))
 
 	wrapper.appendChild(nav)
 	return (wrapper);
