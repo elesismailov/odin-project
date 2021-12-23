@@ -1,19 +1,16 @@
 
 import Todo from "./todo-factory.js";
 import Project from "./project-factory.js";
+import Sidebar from "./components/Sidebar.js";
 
 document.body.style.background = "rgb(163, 0, 255)";
 document.body.innerHTML = "<div id='root'></div>"
 
+const root = document.querySelector('#root');
+
 
 const projects = {
-	personal: Project("Personal", [
-		// Todo("First task", undefined, 3, true, ""),
-		// Todo("Second task", undefined, 0, false, ""),
-		// Todo("Third task", undefined, 1, false, ""),
-		// Todo("Forth task", undefined, 2, true, ""),
-		// Todo("Fifth task", undefined, 0, false, ""),
-	]),
+	personal: Project("Personal"),
 };
 
 projects.personal.addTask(Todo("First task", undefined, 3, true, ""))
@@ -33,3 +30,7 @@ projects.personal.addTask(Todo("1"))
 setTimeout(() => console.log(projects.personal.tasks[3]), 1500);
 setTimeout(() => (projects.personal.tasks[3].edit("Title update", 3)), 2000);
 setTimeout(() => console.log(projects.personal.tasks[3]), 3000);
+
+
+// root.innerHTML = JSON.stringify(projects)
+root.appendChild(Sidebar())
