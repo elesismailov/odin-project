@@ -3,7 +3,8 @@ import Todo from "./todo-factory.js";
 import Project from "./project-factory.js";
 import Sidebar from "./components/Sidebar.js";
 
-document.body.style.background = "rgb(163, 0, 255)";
+import "./style.css";
+
 document.body.innerHTML = "<div id='root'></div>"
 
 const root = document.querySelector('#root');
