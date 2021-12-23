@@ -2,6 +2,7 @@
 import Todo from "./todo-factory.js";
 import Project from "./project-factory.js";
 import Sidebar from "./components/Sidebar.js";
+import Projects from "./components/Projects.js";
 
 import "./style.css";
 
@@ -33,5 +34,8 @@ setTimeout(() => (projects.personal.tasks[3].edit("Title update", 3)), 2000);
 setTimeout(() => console.log(projects.personal.tasks[3]), 3000);
 
 
-// root.innerHTML = JSON.stringify(projects)
-root.appendChild(Sidebar())
+const sidebar = Sidebar(),
+	  projectsComponent = Projects();
+
+root.appendChild(sidebar)
+root.appendChild(projectsComponent)
