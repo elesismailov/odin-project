@@ -165,5 +165,15 @@ button {
 		button:last-child {
 			margin: 0 0 0 1rem;
 		}
+		.priority {
+			width: .5rem;
+			height: 3rem;
+			display: inline-block;
+			margin-right: 0.5rem;
+			&-3{background: red;}
+			&-2{background: yellow;}
+			&-1{background: green;}
+			&-0{background: transparent;}
+		}
 	}
 }

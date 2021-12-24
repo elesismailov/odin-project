@@ -33,7 +33,7 @@ function task(t) {
 	const li = document.createElement('li')
 	li.innerHTML = `
 		<div class='task'>
-			<span class="priority-${t.priority}"></span>
+			<span class="priority priority-${t.priority}"></span>
 			<input type="checkbox" ${t.isComplete ? 'checked':""}>
 			<p class="task-title ${t.isComplete ? 'line-through':""}">${t.title}</p>
 			<button class="edit-task"></button>

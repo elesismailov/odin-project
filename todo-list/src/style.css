@@ -162,5 +162,23 @@ button {
 #project-page .task button:last-child {
   margin: 0 0 0 1rem;
 }
+#project-page .task .priority {
+  width: 0.5rem;
+  height: 3rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+#project-page .task .priority-3 {
+  background: red;
+}
+#project-page .task .priority-2 {
+  background: yellow;
+}
+#project-page .task .priority-1 {
+  background: green;
+}
+#project-page .task .priority-0 {
+  background: transparent;
+}
 
 /*# sourceMappingURL=style.css.map */
