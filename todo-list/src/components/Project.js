@@ -19,7 +19,7 @@ export default function ProjectComponent(project) {
 	})
 
 	wrapper.id = 'project-page';
-
+	
 	return wrapper;
 }
 

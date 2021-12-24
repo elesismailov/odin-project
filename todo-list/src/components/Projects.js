@@ -1,3 +1,4 @@
+import ProjectComponent from "./Project.js";
 
 
 export default function ProjectsComponent(projects) {
@@ -11,12 +12,16 @@ export default function ProjectsComponent(projects) {
 
 	keys.forEach( key => {
 		const li = document.createElement("li");
-		const project = document.createElement("button");
+		const project = document.createElement("div");
 		const title = document.createElement("h2");
 		const taskUl = document.createElement("ul");
 		const tasks = projects[key].tasks.slice(0,8);
 		
-		project.onclick = ()=> {console.log("but ")}
+		project.onclick = ()=> {
+			// wrapper.innerHTML = '';
+			wrapper.appendChild(ProjectComponent(projects[key]))
+			// wrapper.style.overflow = "hidden";
+		}
 
 		tasks.forEach(task => {
 			const title = document.createElement("p");
