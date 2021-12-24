@@ -113,4 +113,38 @@ button {
 
 #project-page {
 	margin-left: 6.4rem;
+
+	padding: 2.4rem;
+
+	h1 {
+		max-width: 60rem;
+		margin: auto;
+		margin-bottom: 3rem;
+	}
+	.task {
+		display: flex;
+		align-items: center;
+		background: #ffffff40;
+		max-width: 60rem;
+		margin: auto;
+		margin-bottom: 2rem;
+		color: #fff;
+		.line-through {
+			text-decoration: line-through;
+		}
+		input, button {
+			width: 3rem;
+			height: 3rem;
+			background: #fff;
+		}
+		input {
+			margin-right: 2rem;
+		}
+		button {
+			margin-left: auto;
+		}
+		button:last-child {
+			margin: 0 0 0 1rem;
+		}
+	}
 }

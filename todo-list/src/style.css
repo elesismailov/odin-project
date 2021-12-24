@@ -105,6 +105,38 @@ button {
 
 #project-page {
   margin-left: 6.4rem;
+  padding: 2.4rem;
+}
+#project-page h1 {
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+#project-page .task {
+  display: flex;
+  align-items: center;
+  background: #ffffff40;
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  color: #fff;
+}
+#project-page .task .line-through {
+  text-decoration: line-through;
+}
+#project-page .task input, #project-page .task button {
+  width: 3rem;
+  height: 3rem;
+  background: #fff;
+}
+#project-page .task input {
+  margin-right: 2rem;
+}
+#project-page .task button {
+  margin-left: auto;
+}
+#project-page .task button:last-child {
+  margin: 0 0 0 1rem;
 }
 
 /*# sourceMappingURL=style.css.map */

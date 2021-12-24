@@ -27,9 +27,9 @@ function task(t) {
 	const li = document.createElement('li')
 	li.innerHTML = `
 		<div class='task'>
-			<span class="priority"></span>
-			<input type="checkbox" name="" id="" ${t.isComplete ? 'checked':""}>
-			<p>${t.title}</p>
+			<span class="priority-${t.priority}"></span>
+			<input type="checkbox" ${t.isComplete ? 'checked':""}>
+			<p class="task-title ${t.isComplete ? 'line-through':""}">${t.title}</p>
 			<button class="edit-task"></button>
 			<button class="delete-task"></button>
 		</div>
