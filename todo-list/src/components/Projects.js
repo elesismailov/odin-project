@@ -11,10 +11,12 @@ export default function ProjectsComponent(projects) {
 
 	keys.forEach( key => {
 		const li = document.createElement("li");
-		const project = document.createElement("div");
+		const project = document.createElement("button");
 		const title = document.createElement("h2");
 		const taskUl = document.createElement("ul");
 		const tasks = projects[key].tasks.slice(0,8);
+		
+		project.onclick = ()=> {console.log("but ")}
 
 		tasks.forEach(task => {
 			const title = document.createElement("p");

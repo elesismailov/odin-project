@@ -90,6 +90,11 @@ button {
   background: #fff;
   border-radius: 0.8rem;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 1.6rem;
+  text-align: left;
+  color: #333;
 }
 #all-projects > ul .project h2 {
   font-size: 2rem;
