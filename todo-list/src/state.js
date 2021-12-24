@@ -15,10 +15,9 @@ const state = {
 
 	projects: {
 		personal: Project("First Project"),
-		perso1nal: Project("Personal"),
-		person2al: Project("Personal"),
-		personal4: Project("Personal"),
-		persona3l: Project("Personal"),
+		second: Project("Second"),
+		first: Project("Third"),
+		third: Project("Forth"),
 	},
 }
 state.setTab = state.setTab.bind(state);

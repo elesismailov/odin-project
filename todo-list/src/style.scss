@@ -122,6 +122,15 @@ button {
 	width: 100%;
 	left: 0;
 	top: 0;
+	.back {
+		width: 4rem;
+		height: 4rem;
+		background: #fff;
+		border-radius: 10rem;
+		margin-bottom: 2.4rem;
+		&:hover {filter: brightness(0.9)}
+		&:active {filter: brightness(0.8)}
+	}
 	h1 {
 		max-width: 60rem;
 		margin: auto;
@@ -130,7 +139,6 @@ button {
 	ul {
 		max-height: 500px;
 		overflow: auto;
-
 	}
 	.task {
 		display: flex;

@@ -20,7 +20,7 @@ export default function ProjectsComponent(projects) {
 		project.onclick = ()=> {
 			// wrapper.innerHTML = '';
 			wrapper.appendChild(ProjectComponent(projects[key]))
-			// wrapper.style.overflow = "hidden";
+			document.body.style.overflow = "hidden";
 		}
 
 		tasks.forEach(task => {

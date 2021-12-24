@@ -6,7 +6,13 @@ export default function ProjectComponent(project) {
 	const wrapper = document.createElement("div");
 	const h1 = document.createElement('h1');
 	const ul = document.createElement('ul');
+	const backBtn = document.createElement('button');
 
+	backBtn.innerHTML = "<";
+	backBtn.className = "back"
+	wrapper.appendChild(backBtn);
+
+	backBtn.onclick = () => wrapper.remove();
 
 	h1.innerHTML = project.title
 
@@ -19,7 +25,7 @@ export default function ProjectComponent(project) {
 	})
 
 	wrapper.id = 'project-page';
-	
+
 	return wrapper;
 }
 

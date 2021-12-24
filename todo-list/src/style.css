@@ -114,6 +114,19 @@ button {
   left: 0;
   top: 0;
 }
+#project-page .back {
+  width: 4rem;
+  height: 4rem;
+  background: #fff;
+  border-radius: 10rem;
+  margin-bottom: 2.4rem;
+}
+#project-page .back:hover {
+  filter: brightness(0.9);
+}
+#project-page .back:active {
+  filter: brightness(0.8);
+}
 #project-page h1 {
   max-width: 60rem;
   margin: auto;

@@ -20,14 +20,9 @@ state.projects.personal.addTask(Todo("Forth task", undefined, 2, true, ""))
 state.projects.personal.addTask(Todo("Fifth task", undefined, 0, false, ""))
 state.projects.personal.addTask(Todo("1"))
 
-// setTimeout(() => projects.personal.addTask(Todo("2")), 0);
-// setTimeout(() => projects.personal.addTask(Todo("3")), 500);
-// setTimeout(() => projects.personal.addTask(Todo("This wont be here")), 1000);
-// setTimeout(() => projects.personal.addTask(Todo("4")), 1500);
-// setTimeout(() => console.table(projects.personal.tasks), 1500);
-// setTimeout(() => console.log(projects.personal.tasks[3]), 1500);
-// setTimeout(() => (projects.personal.tasks[3].edit("Title update", 3)), 2000);
-// setTimeout(() => console.log(projects.personal.tasks[3]), 3000);
+
+
+
 
 
 const sidebar = Sidebar((tab) => {
@@ -38,10 +33,10 @@ const sidebar = Sidebar((tab) => {
 });
 
 
-// const tabs = [ProjectsComponent(state.projects), document.createElement('span'),document.createElement('span')];
-const tabs = [ProjectsComponent(state.projects), ProjectComponent(state.projects.personal), document.createElement('span')];
+const tabs = [ProjectsComponent(state.projects), document.createElement('span'), document.createElement('span')];
+
+
 root.appendChild(sidebar)
-// root.appendChild(projectsComponent)
 
 function render() {
 
