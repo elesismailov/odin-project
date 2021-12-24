@@ -37,8 +37,14 @@ projects.personal.addTask(Todo("1"))
 // setTimeout(() => (projects.personal.tasks[3].edit("Title update", 3)), 2000);
 // setTimeout(() => console.log(projects.personal.tasks[3]), 3000);
 
+let activeTab = 0;
+function setTab(tab) {
+	console.log(activeTab)
+	console.log(tab)
+	activeTab = tab;
+}
 
-const sidebar = Sidebar(),
+const sidebar = Sidebar(setTab),
 	  projectsComponent = ProjectsComponent(projects);
 
 root.appendChild(sidebar)
