@@ -29,15 +29,23 @@ state.projects.personal.addTask(Todo("1"))
 // setTimeout(() => console.log(projects.personal.tasks[3]), 3000);
 
 
-const sidebar = Sidebar(state.setTab),
-	  projectsComponent = ProjectsComponent(state.projects);
+const sidebar = Sidebar((tab) => {
+	state.setTab(tab)
+	render()
+});
+const projectsComponent = ProjectsComponent(state.projects);
 
-// root.appendChild(sidebar)
+root.appendChild(sidebar)
 // root.appendChild(projectsComponent)
 
 function render() {
-	root.innerHTML = '';
-	root.appendChild(sidebar)
+	// root.innerHTML = '';
+	// console.log(root.childNodes)
+	// root.appendChild(sidebar)
+	root.childNodes.forEach(node => {
+		if(node.id !== "sidebar") node.remove();
+	})
+	
 	// root.appendChild(projectsComponent)
 
 }
