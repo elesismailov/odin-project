@@ -4,6 +4,7 @@ import Todo from "./todo-factory.js";
 import Project from "./project-factory.js";
 import Sidebar from "./components/Sidebar.js";
 import ProjectsComponent from "./components/Projects.js";
+import ProjectComponent from "./components/Project.js";
 
 import "./style.css";
 
@@ -35,15 +36,15 @@ const sidebar = Sidebar((tab) => {
 		render();
 	}
 });
-// const projectsComponent = ProjectsComponent(state.projects);
-const tabs = [ProjectsComponent(state.projects), document.createElement('span'),document.createElement('span')];
+
+
+// const tabs = [ProjectsComponent(state.projects), document.createElement('span'),document.createElement('span')];
+const tabs = [ProjectComponent(state.projects), document.createElement('span'),document.createElement('span')];
 root.appendChild(sidebar)
 // root.appendChild(projectsComponent)
 
 function render() {
-	// root.innerHTML = '';
-	// console.log(root.childNodes)
-	// root.appendChild(sidebar)
+
 	root.childNodes.forEach(node => {
 		if(node.id !== "sidebar") node.remove();
 	})
