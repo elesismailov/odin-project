@@ -36,3 +36,7 @@ export default function ProjectsComponent(projects) {
 	return wrapper;
 
 }
+
+function Project() {
+
+}

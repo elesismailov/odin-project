@@ -21,10 +21,17 @@ function SidebarIcon(i) {
 
 	icon.innerHTML = i;
 
+	icon.appendChild(IconTooltip("💡 " + i))
+
 	return (icon);
 }
 
 
-// function IconTooltip() {
-	
-// }
+function IconTooltip(i) {
+	const span = document.createElement('span');
+
+	span.className = "tooltip";
+	span.innerHTML = i;
+
+	return span
+}
