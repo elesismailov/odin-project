@@ -12,7 +12,10 @@ export default function ProjectComponent(project) {
 	backBtn.className = "back"
 	wrapper.appendChild(backBtn);
 
-	backBtn.onclick = () => wrapper.remove();
+	backBtn.onclick = () => {
+		document.body.style.overflow = "auto";
+		wrapper.remove();
+	}
 
 	h1.innerHTML = project.title
 
