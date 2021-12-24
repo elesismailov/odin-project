@@ -11,7 +11,7 @@ const state = {
 		this.activeTab = tab;
 	},
 
-	tabs: [],
+	// tabs: [ProjectsComponent(this.projects), document.createElement('span')],
 
 	projects: {
 		personal: Project("Personal"),
@@ -19,7 +19,7 @@ const state = {
 		person2al: Project("Personal"),
 		personal4: Project("Personal"),
 		persona3l: Project("Personal"),
-	}
+	},
 }
 state.setTab = state.setTab.bind(state);
 

@@ -30,11 +30,13 @@ state.projects.personal.addTask(Todo("1"))
 
 
 const sidebar = Sidebar((tab) => {
-	state.setTab(tab)
-	render()
+	if(state.activeTab !== tab) {
+		state.setTab(tab)
+		render();
+	}
 });
-const projectsComponent = ProjectsComponent(state.projects);
-
+// const projectsComponent = ProjectsComponent(state.projects);
+const tabs = [ProjectsComponent(state.projects), document.createElement('span'),document.createElement('span')];
 root.appendChild(sidebar)
 // root.appendChild(projectsComponent)
 
@@ -45,8 +47,8 @@ function render() {
 	root.childNodes.forEach(node => {
 		if(node.id !== "sidebar") node.remove();
 	})
-	
-	// root.appendChild(projectsComponent)
+
+	root.appendChild(tabs[state.activeTab])
 
 }
 
