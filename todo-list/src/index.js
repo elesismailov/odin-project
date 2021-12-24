@@ -39,7 +39,7 @@ const sidebar = Sidebar((tab) => {
 
 
 // const tabs = [ProjectsComponent(state.projects), document.createElement('span'),document.createElement('span')];
-const tabs = [ProjectComponent(state.projects), document.createElement('span'),document.createElement('span')];
+const tabs = [ProjectsComponent(state.projects), ProjectComponent(state.projects.personal), document.createElement('span')];
 root.appendChild(sidebar)
 // root.appendChild(projectsComponent)
 

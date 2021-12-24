@@ -5,7 +5,7 @@ import ProjectsComponent from "./components/Projects.js";
 // import ProjectComponent from "./components/Project.js";
 
 const state = {
-	activeTab: 0,
+	activeTab: 1,
 	setTab(tab) {
 		console.log(this.activeTab, tab)
 		this.activeTab = tab;
@@ -14,7 +14,7 @@ const state = {
 	// tabs: [ProjectsComponent(this.projects), document.createElement('span')],
 
 	projects: {
-		personal: Project("Personal"),
+		personal: Project("First Project"),
 		perso1nal: Project("Personal"),
 		person2al: Project("Personal"),
 		personal4: Project("Personal"),
