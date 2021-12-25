@@ -31,8 +31,9 @@ export default function ProjectComponent(project) {
                 allTasks.push(t)
                 ul.appendChild(task(t, renderUl));
             });
-            console.log(sortByComplete(allTasks))
-            // console.log(allTasks)
+            // let done = sortByComplete(allTasks)[1]
+            // let undone = sortByComplete(allTasks)[0]
+            // console.log(sortByDate(undone))
         }
     }
     renderUl()
@@ -63,4 +64,8 @@ function sortByComplete(arr) {
     let arr1 = arr.filter(task => !task.isComplete)
     let arr2 = arr.filter(task => task.isComplete)
     return [arr1, arr2]
+}
+
+function sortByDate(arr) {
+    return arr.sort((a,b) => a.date.getTime() - b.date.getTime())
 }
