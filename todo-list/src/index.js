@@ -21,7 +21,26 @@ state.projects.personal.addTask(Todo("Fifth task", new Date('01, 02, 2111'), 3, 
 state.projects.personal.addTask(Todo("Forth task", new Date('01, 02, 2021'), 2, true, ""))
 state.projects.personal.addTask(Todo("Second task", new Date('01, 02, 2041'), 3, false, ""))
 
+state.projects.second.addTask(Todo("Change the name", new Date('01, 02, 2061')))
+state.projects.second.addTask(Todo("Third task", new Date('01, 02, 2031'), 1, false, ""))
+state.projects.second.addTask(Todo("First task", new Date('01, 02, 2051'), 3, true, ""))
+state.projects.second.addTask(Todo("Fifth task", new Date('01, 02, 2111'), 3, false, ""))
+state.projects.second.addTask(Todo("Forth task", new Date('01, 02, 2021'), 2, true, ""))
+state.projects.second.addTask(Todo("Second task", new Date('01, 02, 2041'), 3, false, ""))
 
+state.projects.third.addTask(Todo("Change the name", new Date('01, 02, 2061')))
+state.projects.third.addTask(Todo("Third task", new Date('01, 02, 2031'), 1, false, ""))
+state.projects.third.addTask(Todo("First task", new Date('01, 02, 2051'), 3, true, ""))
+state.projects.third.addTask(Todo("Fifth task", new Date('01, 02, 2111'), 3, false, ""))
+state.projects.third.addTask(Todo("Forth task", new Date('01, 02, 2021'), 2, true, ""))
+state.projects.third.addTask(Todo("Second task", new Date('01, 02, 2041'), 3, false, ""))
+
+state.projects.first.addTask(Todo("Change the name", new Date('01, 02, 2061')))
+state.projects.first.addTask(Todo("Third task", new Date('01, 02, 2031'), 1, false, ""))
+state.projects.first.addTask(Todo("First task", new Date('01, 02, 2051'), 3, true, ""))
+state.projects.first.addTask(Todo("Fifth task", new Date('01, 02, 2111'), 3, false, ""))
+state.projects.first.addTask(Todo("Forth task", new Date('01, 02, 2021'), 2, true, ""))
+state.projects.first.addTask(Todo("Second task", new Date('01, 02, 2041'), 3, false, ""))
 
 
 
@@ -36,7 +55,7 @@ const sidebar = Sidebar((tab) => {
 
 const tabs = [
 	ProjectsComponent(state.projects), 
-	AllTasks(),
+	AllTasks(state.projects, render),
 	document.createElement('span'),
 ];
 
