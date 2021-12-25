@@ -9,8 +9,10 @@ export default function QuickTask(project, rerender) {
     let html = `
         <form>
 			<span class="priority"></span>
-			<span class="plus">+</span>
-            <input name='title' type="text" placeholder="New Task..."/>
+            <label>
+                <span class="plus">+</span>
+                <input name='title' type="text" placeholder="New Task..."/>
+            </label>
 			<input name='isComplete' type="checkbox" ${0 ? "checked" : ""}>
             <select name='priority'>
                 <option value='0'>None</option>
