@@ -1,4 +1,5 @@
 
+import state from "../state.js";
 import Todo from "../todo-factory.js";
 
 export default function QuickTask(project, rerender) {
@@ -13,6 +14,7 @@ export default function QuickTask(project, rerender) {
                 <span class="plus">+</span>
                 <input name='title' type="text" placeholder="New Task..."/>
             </label>
+            ${!project ? `<p>project</p>`/* here is supposed to be a project select dropdown */ : ''}
 			<input name='isComplete' type="checkbox" ${0 ? "checked" : ""}>
             <select name='priority'>
                 <option value='0'>None</option>
@@ -24,11 +26,14 @@ export default function QuickTask(project, rerender) {
     `;
     wrapper.innerHTML = html;
 
+    // delete
+    project = !project ? state.projects.personal : project;
+
     wrapper.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault()
-        console.log(project)
-        console.log(this.isComplete.checked)
-        console.log(this.priority.value)
+        
+        // project = !project ? state.projects[this.project.value] : project;
+
         project.addTask(
             Todo(
                 this.title.value.trim() ? this.title.value : "New Task",

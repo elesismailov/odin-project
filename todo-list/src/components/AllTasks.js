@@ -16,9 +16,11 @@ export default function AllTasks(projects, rerender) {
     msg.innerHTML = "No tasks yet!";
     
     const tasks = [];
-    Object.keys(projects).forEach((key) => tasks.push(...projects[key].tasks));
+    // Object.keys(projects).forEach((key) => tasks.push(...projects[key].tasks));
 
     function renderUl() {
+        tasks.length = 0;
+        Object.keys(projects).forEach((key) => tasks.push(...projects[key].tasks));
         ul.innerHTML = "";
         if (!tasks.length) {
             wrapper.appendChild(msg);
@@ -38,7 +40,7 @@ export default function AllTasks(projects, rerender) {
         }
     }
     renderUl();
-    wrapper.appendChild(ul)
+    wrapper.appendChild(QuickTask(undefined, renderUl))
     wrapper.appendChild(ul)
     return wrapper;
 }
