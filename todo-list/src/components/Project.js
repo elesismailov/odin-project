@@ -34,10 +34,10 @@ export default function ProjectComponent(project) {
                 sortByDate(sortByComplete(project.tasks)[0])
             );
             undone.forEach((t) => {
-                ul.appendChild(task(t, renderUl));
+                ul.appendChild(task(t, renderUl, project));
             });
             done.forEach((t) => {
-                ul.appendChild(task(t, renderUl));
+                ul.appendChild(task(t, renderUl, project));
             });
         }
     }
@@ -46,7 +46,7 @@ export default function ProjectComponent(project) {
     return wrapper;
 }
 
-function task(t, rerender) {
+function task(t, rerender, pr) {
     const li = document.createElement("li");
     li.innerHTML = `
 		<div class='task'>
@@ -54,13 +54,17 @@ function task(t, rerender) {
 			<input type="checkbox" ${t.isComplete ? "checked" : ""}>
 			<p class="task-title ${t.isComplete ? "line-through" : ""}">${t.title}</p>
 			<button class="edit-task"></button>
-			<button class="delete-task"></button>
+			<button class="delete-task" data-id="${t.id}"></button>
 		</div>
 	`;
     li.querySelector("input").addEventListener("change", function (event) {
         t.markComplete(this.checked);
         rerender();
     });
+    li.querySelector('.delete-task').addEventListener('click', function(event) {
+        pr.deleteTask(+this.dataset.id)
+        rerender()
+    })
     return li;
 }
 
