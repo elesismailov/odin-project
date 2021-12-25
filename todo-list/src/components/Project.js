@@ -23,7 +23,7 @@ export default function ProjectComponent(project) {
     h1.innerHTML = project.title;
 
     wrapper.appendChild(h1);
-    wrapper.appendChild(QuickTask());
+    wrapper.appendChild(QuickTask(project, renderUl));
 
     function renderUl() {
         ul.innerHTML = "";
