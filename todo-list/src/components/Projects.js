@@ -13,37 +13,41 @@ export default function ProjectsComponent(projects) {
 	h1.innerHTML = "All Projects";
 	wrapper.appendChild(h1)
 
-	wrapper.appendChild(ProjectComponent(projects[keys[0]]))
+	wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
 	document.body.style.overflow = "hidden";
 
-	keys.forEach( key => {
-		const li = document.createElement("li");
-		const project = document.createElement("div");
-		const title = document.createElement("h2");
-		const taskUl = document.createElement("ul");
-		const tasks = projects[key].tasks.slice(0,8);
-		
-		project.onclick = ()=> {
-			wrapper.appendChild(ProjectComponent(projects[key]))
-			document.body.style.overflow = "hidden";
-		}
+	function renderUl() {
+		ul.innerHTML = '';
+		keys.forEach( key => {
+			const li = document.createElement("li");
+			const project = document.createElement("div");
+			const title = document.createElement("h2");
+			const taskUl = document.createElement("ul");
+			const tasks = projects[key].tasks.slice(0,8);
+			
+			project.onclick = ()=> {
+				wrapper.appendChild(ProjectComponent(projects[key], renderUl))
+				document.body.style.overflow = "hidden";
+			}
 
-		tasks.forEach(task => {
-			const title = document.createElement("p");
-			const taskLi = document.createElement("li");
-			title.innerHTML = task.title;
-			taskLi.appendChild(title)
-			taskUl.appendChild(taskLi);
+			tasks.forEach(task => {
+				const title = document.createElement("p");
+				const taskLi = document.createElement("li");
+				title.innerHTML = task.title;
+				taskLi.appendChild(title)
+				taskUl.appendChild(taskLi);
+			})
+
+			project.className = "project";
+			title.innerHTML = projects[key].title;
+			project.appendChild(title);
+			project.appendChild(taskUl);
+
+			li.appendChild(project)
+			ul.appendChild(li)
 		})
-
-		project.className = "project";
-		title.innerHTML = projects[key].title;
-		project.appendChild(title);
-		project.appendChild(taskUl);
-
-		li.appendChild(project)
-		ul.appendChild(li)
-	})
+	}
+	renderUl()
 	wrapper.appendChild(ul);
 	return wrapper;
 

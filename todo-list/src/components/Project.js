@@ -2,7 +2,7 @@
 import {sortByPriority, sortByDateDone, sortByDate, sortByComplete} from "../sort.js"
 import QuickTask from './QuickTask.js'
 
-export default function ProjectComponent(project) {
+export default function ProjectComponent(project, rerender) {
     const wrapper = document.createElement("div");
     const h1 = document.createElement("h1");
     const ul = document.createElement("ul");
@@ -13,6 +13,7 @@ export default function ProjectComponent(project) {
     backBtn.onclick = () => {
         document.body.style.overflow = "auto";
         wrapper.remove();
+        rerender();
     };
 
     backBtn.innerHTML = "<";
