@@ -39,6 +39,7 @@ export default function AllTasks(projects, rerender) {
     }
     renderUl();
     wrapper.appendChild(ul)
+    wrapper.appendChild(ul)
     return wrapper;
 }
 

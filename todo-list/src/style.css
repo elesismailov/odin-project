@@ -255,4 +255,73 @@ button {
   background: #fff;
 }
 
+#all-tasks {
+  margin-left: 6.4rem;
+  padding: 2.4rem;
+  background-color: magenta;
+  height: 100vh;
+}
+#all-tasks h1, #all-tasks h2 {
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+#all-tasks .msg {
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+#all-tasks ul {
+  max-height: 400px;
+  overflow: auto;
+}
+#all-tasks .task {
+  display: flex;
+  align-items: center;
+  background: #ffffff40;
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 2rem;
+  color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+}
+#all-tasks .task .line-through {
+  text-decoration: line-through;
+}
+#all-tasks .task .project-title {
+  margin: 0 1rem 0 auto;
+}
+#all-tasks .task input, #all-tasks .task button {
+  width: 3rem;
+  height: 3rem;
+  background: #fff;
+}
+#all-tasks .task input {
+  margin-right: 2rem;
+}
+#all-tasks .task button:last-child {
+  margin: 0 0 0 1rem;
+}
+#all-tasks .task .priority {
+  width: 0.5rem;
+  height: 3rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+}
+#all-tasks .task .priority-3 {
+  background: red;
+}
+#all-tasks .task .priority-2 {
+  background: yellow;
+}
+#all-tasks .task .priority-1 {
+  background: green;
+}
+#all-tasks .task .priority-0 {
+  background: transparent;
+}
+
 /*# sourceMappingURL=style.css.map */
