@@ -1,25 +1,29 @@
 
 import {sortByPriority, sortByDateDone, sortByDate, sortByComplete} from "../sort.js"
+import QuickTask from './QuickTask.js'
 
 export default function ProjectComponent(project) {
     const wrapper = document.createElement("div");
     const h1 = document.createElement("h1");
     const ul = document.createElement("ul");
     const backBtn = document.createElement("button");
-
-    backBtn.innerHTML = "<";
-    backBtn.className = "back";
-    wrapper.appendChild(backBtn);
+    wrapper.id = "project-page";
 
     backBtn.onclick = () => {
         document.body.style.overflow = "auto";
         wrapper.remove();
     };
 
+
+    backBtn.innerHTML = "<";
+    backBtn.className = "back";
+    wrapper.appendChild(backBtn);
+
+
     h1.innerHTML = project.title;
 
     wrapper.appendChild(h1);
-    wrapper.id = "project-page";
+    wrapper.appendChild(QuickTask());
 
     function renderUl() {
         ul.innerHTML = "";

@@ -13,6 +13,9 @@ export default function ProjectsComponent(projects) {
 	h1.innerHTML = "All Projects";
 	wrapper.appendChild(h1)
 
+	wrapper.appendChild(ProjectComponent(projects[keys[0]]))
+	document.body.style.overflow = "hidden";
+
 	keys.forEach( key => {
 		const li = document.createElement("li");
 		const project = document.createElement("div");
@@ -21,9 +24,7 @@ export default function ProjectsComponent(projects) {
 		const tasks = projects[key].tasks.slice(0,8);
 		
 		project.onclick = ()=> {
-			// wrapper.innerHTML = '';
 			wrapper.appendChild(ProjectComponent(projects[key]))
-			// ul.style.display = "none";
 			document.body.style.overflow = "hidden";
 		}
 
