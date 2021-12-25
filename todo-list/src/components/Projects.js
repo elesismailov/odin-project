@@ -13,8 +13,8 @@ export default function ProjectsComponent(projects) {
 	h1.innerHTML = "All Projects";
 	wrapper.appendChild(h1)
 
-	wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
-	document.body.style.overflow = "hidden";
+	// wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
+	// document.body.style.overflow = "hidden";
 
 	function renderUl() {
 		ul.innerHTML = '';

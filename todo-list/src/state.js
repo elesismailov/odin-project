@@ -5,9 +5,8 @@ import ProjectsComponent from "./components/Projects.js";
 // import ProjectComponent from "./components/Project.js";
 
 const state = {
-	activeTab: 0,
+	activeTab: 2,
 	setTab(tab) {
-		console.log(this.activeTab, tab)
 		this.activeTab = tab;
 	},
 

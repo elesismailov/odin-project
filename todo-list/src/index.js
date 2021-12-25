@@ -5,6 +5,7 @@ import Project from "./project-factory.js";
 import Sidebar from "./components/Sidebar.js";
 import ProjectsComponent from "./components/Projects.js";
 import ProjectComponent from "./components/Project.js";
+import AllTasks from "./components/AllTasks.js";
 
 import "./style.css";
 
@@ -33,7 +34,11 @@ const sidebar = Sidebar((tab) => {
 });
 
 
-const tabs = [ProjectsComponent(state.projects), document.createElement('span'), document.createElement('span')];
+const tabs = [
+	ProjectsComponent(state.projects), 
+	AllTasks(),
+	document.createElement('span'),
+];
 
 
 root.appendChild(sidebar)
