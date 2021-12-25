@@ -18,7 +18,7 @@ state.projects.personal.addTask(Todo("Second task", undefined, 0, false, ""))
 state.projects.personal.addTask(Todo("Third task", undefined, 1, false, ""))
 state.projects.personal.addTask(Todo("Forth task", undefined, 2, true, ""))
 state.projects.personal.addTask(Todo("Fifth task", undefined, 0, false, ""))
-state.projects.personal.addTask(Todo("1"))
+state.projects.personal.addTask(Todo("Change the name"))
 
 
 

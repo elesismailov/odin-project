@@ -26,9 +26,13 @@ export default function ProjectComponent(project) {
             wrapper.appendChild(msg);
         } else {
             wrapper.appendChild(ul);
+            const allTasks = [];
             project.tasks.forEach((t) => {
+                allTasks.push(t)
                 ul.appendChild(task(t, renderUl));
             });
+            console.log(sortByComplete(allTasks))
+            // console.log(allTasks)
         }
     }
     renderUl()
@@ -52,4 +56,11 @@ function task(t, rerender) {
         rerender()
     })
     return li;
+}
+
+
+function sortByComplete(arr) {
+    let arr1 = arr.filter(task => !task.isComplete)
+    let arr2 = arr.filter(task => task.isComplete)
+    return [arr1, arr2]
 }
