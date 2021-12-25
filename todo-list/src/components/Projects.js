@@ -4,11 +4,14 @@ import ProjectComponent from "./Project.js";
 export default function ProjectsComponent(projects) {
 
 	const wrapper = document.createElement("div");
-	const ul = document.createElement("ul")
+	const ul = document.createElement("ul");
+	const h1 = document.createElement('h1');
 
 	const keys = Object.keys(projects);
 
 	wrapper.id = "all-projects";
+	h1.innerHTML = "All Projects";
+	wrapper.appendChild(h1)
 
 	keys.forEach( key => {
 		const li = document.createElement("li");

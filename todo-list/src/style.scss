@@ -80,11 +80,14 @@ button {
 #all-projects {
 	margin-left: 6.4rem;
 	position: relative;
+	padding: 2.4rem;
+	h1 {
+		margin-bottom: 2rem;
+	}
 	> ul {
 		display: grid;
 		grid-template-columns: repeat(auto-fill,minmax(25rem, 1fr));
 		gap: 2rem;
-		padding: 2.4rem;
 		justify-items: center;
 		> li {
 			width: 25rem;

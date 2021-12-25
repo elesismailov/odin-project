@@ -74,12 +74,15 @@ button {
 #all-projects {
   margin-left: 6.4rem;
   position: relative;
+  padding: 2.4rem;
+}
+#all-projects h1 {
+  margin-bottom: 2rem;
 }
 #all-projects > ul {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
   gap: 2rem;
-  padding: 2.4rem;
   justify-items: center;
 }
 #all-projects > ul > li {
