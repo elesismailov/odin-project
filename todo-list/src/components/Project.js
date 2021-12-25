@@ -7,6 +7,7 @@ export default function ProjectComponent(project) {
     const h1 = document.createElement("h1");
     const ul = document.createElement("ul");
     const backBtn = document.createElement("button");
+    const msg = document.createElement("h2");
     wrapper.id = "project-page";
 
     backBtn.onclick = () => {
@@ -14,25 +15,24 @@ export default function ProjectComponent(project) {
         wrapper.remove();
     };
 
-
     backBtn.innerHTML = "<";
     backBtn.className = "back";
     wrapper.appendChild(backBtn);
-
 
     h1.innerHTML = project.title;
 
     wrapper.appendChild(h1);
     wrapper.appendChild(QuickTask(project, renderUl));
 
+    msg.className = "msg"
+    msg.innerHTML = "No tasks yet!";
+    
     function renderUl() {
         ul.innerHTML = "";
         if (!project.tasks.length) {
-            let msg = document.createElement("h2");
-            msg.className = "msg"
-            msg.innerHTML = "No tasks yet!";
             wrapper.appendChild(msg);
         } else {
+            msg.remove()
             wrapper.appendChild(ul);
             let done = sortByDateDone(sortByComplete(project.tasks)[1]);
             let undone = sortByPriority(
