@@ -146,52 +146,6 @@ button {
   max-height: 400px;
   overflow: auto;
 }
-#project-page .task {
-  display: flex;
-  align-items: center;
-  background: #ffffff40;
-  max-width: 60rem;
-  margin: auto;
-  margin-bottom: 2rem;
-  color: #fff;
-  border-radius: 4px;
-  overflow: hidden;
-}
-#project-page .task .line-through {
-  text-decoration: line-through;
-}
-#project-page .task input, #project-page .task button {
-  width: 3rem;
-  height: 3rem;
-  background: #fff;
-}
-#project-page .task input {
-  margin-right: 2rem;
-}
-#project-page .task button {
-  margin-left: auto;
-}
-#project-page .task button:last-child {
-  margin: 0 0 0 1rem;
-}
-#project-page .task .priority {
-  width: 0.5rem;
-  height: 3rem;
-  display: inline-block;
-  margin-right: 0.5rem;
-}
-#project-page .task .priority-3 {
-  background: red;
-}
-#project-page .task .priority-2 {
-  background: yellow;
-}
-#project-page .task .priority-1 {
-  background: green;
-}
-#project-page .task .priority-0 {
-  background: transparent;
-}
 
 #quick-task form {
   display: flex;
@@ -277,7 +231,15 @@ button {
   max-height: 400px;
   overflow: auto;
 }
-#all-tasks .task {
+
+.details-task {
+  display: flex;
+  align-items: center;
+  background: #ffffff40;
+  max-width: 60rem;
+  margin: auto;
+}
+.details-task .task {
   display: flex;
   align-items: center;
   background: #ffffff40;
@@ -288,48 +250,43 @@ button {
   border-radius: 4px;
   overflow: hidden;
 }
-#all-tasks .task .line-through {
+.details-task .task .line-through {
   text-decoration: line-through;
 }
-#all-tasks .task .project-title {
-  margin: 0 1rem 0 auto;
-}
-#all-tasks .task input, #all-tasks .task button {
+.details-task .task input, .details-task .task button {
   width: 3rem;
   height: 3rem;
   background: #fff;
 }
-#all-tasks .task input {
+.details-task .task input {
   margin-right: 2rem;
 }
-#all-tasks .task button:last-child {
+.details-task .task .special {
+  margin-left: auto;
+}
+.details-task .task button:last-child {
   margin: 0 0 0 1rem;
 }
-#all-tasks .task .priority {
+.details-task .task .project-title {
+  margin: 0 1rem 0 auto;
+}
+.details-task .task .priority {
   width: 0.5rem;
   height: 3rem;
   display: inline-block;
   margin-right: 0.5rem;
 }
-#all-tasks .task .priority-3 {
+.details-task .task .priority-3 {
   background: red;
 }
-#all-tasks .task .priority-2 {
+.details-task .task .priority-2 {
   background: yellow;
 }
-#all-tasks .task .priority-1 {
+.details-task .task .priority-1 {
   background: green;
 }
-#all-tasks .task .priority-0 {
+.details-task .task .priority-0 {
   background: transparent;
-}
-
-.details-task {
-  display: flex;
-  align-items: center;
-  background: #ffffff40;
-  max-width: 60rem;
-  margin: auto;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -150,44 +150,6 @@ button {
 		max-height: 400px;
 		overflow: auto;
 	}
-	.task {
-		display: flex;
-		align-items: center;
-		background: #ffffff40;
-		max-width: 60rem;
-		margin: auto;
-		margin-bottom: 2rem;
-		color: #fff;
-		border-radius: 4px;
-		overflow: hidden;
-		.line-through {
-			text-decoration: line-through;
-		}
-		input, button {
-			width: 3rem;
-			height: 3rem;
-			background: #fff;
-		}
-		input {
-			margin-right: 2rem;
-		}
-		button {
-			margin-left: auto;
-		}
-		button:last-child {
-			margin: 0 0 0 1rem;
-		}
-		.priority {
-			width: .5rem;
-			height: 3rem;
-			display: inline-block;
-			margin-right: 0.5rem;
-			&-3{background: red;}
-			&-2{background: yellow;}
-			&-1{background: green;}
-			&-0{background: transparent;}
-		}
-	}
 }
 
 
@@ -278,6 +240,15 @@ button {
 		max-height: 400px;
 		overflow: auto;
 	}
+}
+
+
+.details-task {
+	display: flex;
+	align-items: center;
+	background: #ffffff40;
+	max-width: 60rem;
+	margin: auto;
 	.task {
 		display: flex;
 		align-items: center;
@@ -291,9 +262,6 @@ button {
 		.line-through {
 			text-decoration: line-through;
 		}
-		.project-title {
-			margin: 0 1rem 0 auto;
-		}
 		input, button {
 			width: 3rem;
 			height: 3rem;
@@ -302,8 +270,14 @@ button {
 		input {
 			margin-right: 2rem;
 		}
+		.special {
+			margin-left: auto;
+		}
 		button:last-child {
 			margin: 0 0 0 1rem;
+		}
+		.project-title {
+			margin: 0 1rem 0 auto;
 		}
 		.priority {
 			width: .5rem;
@@ -316,13 +290,4 @@ button {
 			&-0{background: transparent;}
 		}
 	}
-}
-
-
-.details-task {
-	display: flex;
-	align-items: center;
-	background: #ffffff40;
-	max-width: 60rem;
-	margin: auto;
 }
