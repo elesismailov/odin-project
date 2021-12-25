@@ -44,6 +44,8 @@ function task(t) {
 			<button class="delete-task"></button>
 		</div>
 	`;
-
+    li.querySelector("input").addEventListener("change", function(event) {
+        t.markComplete(this.checked)
+    })
     return li;
 }

@@ -9,8 +9,8 @@ const proto = {
 		this.project = project;
 		this.isComplete = isComplete;
 	},
-	markComplete() {
-		this.isComplete = true;
+	markComplete(value) {
+		this.isComplete = value;
 	},
 };
 
