@@ -26,14 +26,14 @@ export default function ProjectComponent(project) {
             wrapper.appendChild(msg);
         } else {
             wrapper.appendChild(ul);
-            const allTasks = [];
-            project.tasks.forEach((t) => {
-                allTasks.push(t)
+            let done = (sortByDate(sortByComplete(project.tasks)[1]))
+            let undone = sortByPriority(sortByDate(sortByComplete(project.tasks)[0]))
+            undone.forEach((t) => {
                 ul.appendChild(task(t, renderUl));
             });
-            // let done = sortByComplete(allTasks)[1]
-            // let undone = sortByComplete(allTasks)[0]
-            // console.log(sortByDate(undone))
+            done.forEach((t) => {
+                ul.appendChild(task(t, renderUl));
+            });
         }
     }
     renderUl()
@@ -67,5 +67,9 @@ function sortByComplete(arr) {
 }
 
 function sortByDate(arr) {
-    return arr.sort((a,b) => a.date.getTime() - b.date.getTime())
+    return arr.sort( (a,b) => a.date.getTime() - b.date.getTime() )
+}
+
+function sortByPriority(arr) {
+    return arr.sort( (a,b) => b.priority - a.priority )
 }
