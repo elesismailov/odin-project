@@ -11,6 +11,7 @@ const proto = {
 	},
 	markComplete(value) {
 		this.isComplete = value;
+		this.dateDone = value ? new Date() : null;
 	},
 };
 
@@ -21,6 +22,7 @@ export default function Todo(
 	isComplete = false,
 	project = "Personal",
 	description = "",
+	dateDone = isComplete ? new Date() : null,
 	subtasks = [],
 ) {
 	let todo = {
@@ -31,6 +33,7 @@ export default function Todo(
 		subtasks,
 		project,
 		isComplete,
+		dateDone,
 		id: new Date().getTime(),
 	};
 

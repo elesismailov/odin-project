@@ -16,9 +16,9 @@ const root = document.querySelector('#root');
 state.projects.personal.addTask(Todo("Change the name", new Date('01, 02, 2061')))
 state.projects.personal.addTask(Todo("Third task", new Date('01, 02, 2031'), 1, false, ""))
 state.projects.personal.addTask(Todo("First task", new Date('01, 02, 2051'), 3, true, ""))
-state.projects.personal.addTask(Todo("Fifth task", new Date('01, 02, 2111'), 0, false, ""))
+state.projects.personal.addTask(Todo("Fifth task", new Date('01, 02, 2111'), 3, false, ""))
 state.projects.personal.addTask(Todo("Forth task", new Date('01, 02, 2021'), 2, true, ""))
-state.projects.personal.addTask(Todo("Second task", new Date('01, 02, 2041'), 0, false, ""))
+state.projects.personal.addTask(Todo("Second task", new Date('01, 02, 2041'), 3, false, ""))
 
 
 

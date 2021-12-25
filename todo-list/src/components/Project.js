@@ -26,8 +26,10 @@ export default function ProjectComponent(project) {
             wrapper.appendChild(msg);
         } else {
             wrapper.appendChild(ul);
-            let done = (sortByDate(sortByComplete(project.tasks)[1]))
-            let undone = sortByPriority(sortByDate(sortByComplete(project.tasks)[0]))
+            let done = sortByDateDone(sortByComplete(project.tasks)[1]);
+            let undone = sortByPriority(
+                sortByDate(sortByComplete(project.tasks)[0])
+            );
             undone.forEach((t) => {
                 ul.appendChild(task(t, renderUl));
             });
@@ -36,7 +38,7 @@ export default function ProjectComponent(project) {
             });
         }
     }
-    renderUl()
+    renderUl();
 
     return wrapper;
 }
@@ -52,24 +54,26 @@ function task(t, rerender) {
 			<button class="delete-task"></button>
 		</div>
 	`;
-    li.querySelector("input").addEventListener("change", function(event) {
-        t.markComplete(this.checked)
-        rerender()
-    })
+    li.querySelector("input").addEventListener("change", function (event) {
+        t.markComplete(this.checked);
+        rerender();
+    });
     return li;
 }
 
-
 function sortByComplete(arr) {
-    let arr1 = arr.filter(task => !task.isComplete)
-    let arr2 = arr.filter(task => task.isComplete)
-    return [arr1, arr2]
+    let arr1 = arr.filter((task) => !task.isComplete);
+    let arr2 = arr.filter((task) => task.isComplete);
+    return [arr1, arr2];
 }
 
 function sortByDate(arr) {
-    return arr.sort( (a,b) => a.date.getTime() - b.date.getTime() )
+    return arr.sort((a, b) => a.date.getTime() - b.date.getTime());
 }
 
 function sortByPriority(arr) {
-    return arr.sort( (a,b) => b.priority - a.priority )
+    return arr.sort((a, b) => b.priority - a.priority);
+}
+function sortByDateDone(arr) {
+    return arr.sort((a, b) => b.dateDone.getTime() - a.dateDone.getTime());
 }
