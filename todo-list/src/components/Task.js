@@ -1,3 +1,4 @@
+import state from "../state.js";
 
 
 export default function Task(t, rerender, pr) {
@@ -12,12 +13,16 @@ export default function Task(t, rerender, pr) {
 			<button class="delete-task" data-id="${t.id}"></button>
 		</div>
 	`;
+    let keys = Object.keys(state.projects)
+    let name = keys.filter(key => state.projects[key].title === t.project)
+    let project = !pr ? state.projects[name] : pr;
+
     li.querySelector("input").addEventListener("change", function (event) {
         t.markComplete(this.checked);
         rerender();
     });
     li.querySelector('.delete-task').addEventListener('click', function(event) {
-        pr.deleteTask(+this.dataset.id)
+        project.deleteTask(+this.dataset.id)
         rerender()
     })
     
