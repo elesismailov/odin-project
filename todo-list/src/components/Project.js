@@ -16,24 +16,27 @@ export default function ProjectComponent(project) {
     h1.innerHTML = project.title;
 
     wrapper.appendChild(h1);
-
-    if (!project.tasks.length) {
-        let msg = document.createElement("h2");
-        msg.innerHTML = "No tasks yet!";
-        wrapper.appendChild(msg);
-    } else {
-        wrapper.appendChild(ul);
-        project.tasks.forEach((t) => {
-            ul.appendChild(task(t));
-        });
-    }
-
     wrapper.id = "project-page";
+
+    function renderUl() {
+        ul.innerHTML = "";
+        if (!project.tasks.length) {
+            let msg = document.createElement("h2");
+            msg.innerHTML = "No tasks yet!";
+            wrapper.appendChild(msg);
+        } else {
+            wrapper.appendChild(ul);
+            project.tasks.forEach((t) => {
+                ul.appendChild(task(t, renderUl));
+            });
+        }
+    }
+    renderUl()
 
     return wrapper;
 }
 
-function task(t) {
+function task(t, rerender) {
     const li = document.createElement("li");
     li.innerHTML = `
 		<div class='task'>
@@ -46,6 +49,7 @@ function task(t) {
 	`;
     li.querySelector("input").addEventListener("change", function(event) {
         t.markComplete(this.checked)
+        rerender()
     })
     return li;
 }
