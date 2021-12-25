@@ -130,7 +130,7 @@ button {
 #project-page .back:active {
   filter: brightness(0.8);
 }
-#project-page h1 {
+#project-page h1, #project-page h2 {
   max-width: 60rem;
   margin: auto;
   margin-bottom: 3rem;
