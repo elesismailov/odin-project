@@ -147,6 +147,8 @@ button {
   margin: auto;
   margin-bottom: 2rem;
   color: #fff;
+  border-radius: 4px;
+  overflow: hidden;
 }
 #project-page .task .line-through {
   text-decoration: line-through;
@@ -182,6 +184,64 @@ button {
 }
 #project-page .task .priority-0 {
   background: transparent;
+}
+
+#quick-task form {
+  display: flex;
+  align-items: center;
+  background: #ffffff40;
+  border-radius: 4px;
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  color: #fff;
+  overflow: hidden;
+}
+#quick-task form .line-through {
+  text-decoration: line-through;
+}
+#quick-task form input[type=text] {
+  height: 3rem;
+  border: none;
+  appearance: none;
+  color: #fff;
+  background: transparent;
+  font-size: 1.6rem;
+  outline: none;
+  flex-grow: 1;
+}
+#quick-task form input[type=text]::placeholder {
+  color: #fff;
+}
+#quick-task form select {
+  height: 3rem;
+  width: 3rem;
+  background: #fff;
+  border: none;
+  appearance: none;
+}
+#quick-task form .plus {
+  width: 3rem;
+  height: 3rem;
+  background: transparent;
+  margin-right: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+#quick-task form input[type=checkbox] {
+  width: 3rem;
+  height: 3rem;
+  background: #fff;
+  margin: 0 1rem 0 auto;
+}
+#quick-task form .priority {
+  width: 0.5rem;
+  height: 3rem;
+  display: inline-block;
+  margin-right: 0.5rem;
+  background: #fff;
 }
 
 /*# sourceMappingURL=style.css.map */

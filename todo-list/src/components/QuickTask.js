@@ -7,14 +7,15 @@ export default function QuickTask() {
 
     wrapper.innerHTML = `
         <form>
-			<span class="priority priority-new"></span>
-			<input type="checkbox" ${0 ? "checked" : ""}>
+			<span class="priority"></span>
+			<span class="plus">+</span>
             <input type="text" placeholder="New Task..."/>
+			<input type="checkbox" ${0 ? "checked" : ""}>
             <select>
                 <option>None</option>
                 <option>!</option>
                 <option>!!</option>
-                <option>!!!</option>
+                <option selected>!!!</option>
             </select>
         </form>
     `;
