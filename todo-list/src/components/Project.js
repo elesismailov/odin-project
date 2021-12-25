@@ -29,6 +29,7 @@ export default function ProjectComponent(project) {
         ul.innerHTML = "";
         if (!project.tasks.length) {
             let msg = document.createElement("h2");
+            msg.className = "msg"
             msg.innerHTML = "No tasks yet!";
             wrapper.appendChild(msg);
         } else {

@@ -135,6 +135,13 @@ button {
   margin: auto;
   margin-bottom: 3rem;
 }
+#project-page .msg {
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
 #project-page ul {
   max-height: 400px;
   overflow: auto;
