@@ -375,4 +375,50 @@ p {
   transform: translateX(0);
 }
 
+#new-project form {
+  display: flex;
+  align-items: center;
+  background: #ffffff40;
+  border-radius: 4px;
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 3rem;
+  color: #fff;
+  overflow: hidden;
+}
+#new-project form input[type=text] {
+  height: 4rem;
+  border: none;
+  appearance: none;
+  color: #fff;
+  background: transparent;
+  font-size: 1.6rem;
+  outline: none;
+  flex-grow: 1;
+}
+#new-project form input[type=text]::placeholder {
+  color: #fff;
+}
+#new-project form .plus {
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  margin: 0 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+#new-project form label {
+  display: flex;
+  flex-grow: 1;
+}
+#new-project form button {
+  width: 10rem;
+  height: 4rem;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 1.5rem;
+}
+
 /*# sourceMappingURL=style.css.map */
