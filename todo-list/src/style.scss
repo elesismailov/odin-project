@@ -14,7 +14,7 @@ body {
 	font-size: 1.6rem;
 }
 
-ul, ol, li {
+ul, ol, li, details, summary {
 	list-style: none;
 }
 button {
@@ -22,6 +22,9 @@ button {
 	border: none;
 	// &:hover {filter: brightness(1.1)}
 	// &:active {filter: brightness(0.9)}
+}
+p {
+	margin-bottom: -4px;
 }
 
 #sidebar {
@@ -325,7 +328,15 @@ button {
 			background: #fff;
 		}
 		input {
-			margin-right: 2rem;
+			margin-right: 1rem;
+		}
+		input[type='checkbox'] {
+			appearance: none;
+			border-radius: 10rem;
+			border: 1px solid #fff;
+			background: transparent;
+			width: 2.1rem;
+			height: 2.1rem;
 		}
 		.special {
 			margin-left: auto;
@@ -347,7 +358,7 @@ button {
 			width: .5rem;
 			height: 3rem;
 			display: inline-block;
-			margin-right: 0.5rem;
+			margin-right: 1rem;
 			&-3{background: red;}
 			&-2{background: yellow;}
 			&-1{background: green;}
