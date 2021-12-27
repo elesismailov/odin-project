@@ -69,6 +69,7 @@ function render() {
 	})
 
 	root.appendChild(tabs[state.activeTab])
+	tabs.forEach(tab => tab.render())
 
 }
 

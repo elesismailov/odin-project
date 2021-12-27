@@ -47,6 +47,7 @@ export default function ProjectsComponent(projects) {
 	}
 	renderUl()
 	wrapper.appendChild(ul);
+	wrapper.render = renderUl;
 	return wrapper;
 
 }

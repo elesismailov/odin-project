@@ -43,5 +43,6 @@ export default function AllTasks(projects, rerender) {
     renderUl();
     wrapper.appendChild(QuickTask(undefined, renderUl))
     wrapper.appendChild(ul)
+	wrapper.render = renderUl;
     return wrapper;
 }
