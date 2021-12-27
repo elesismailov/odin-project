@@ -318,11 +318,16 @@ button {
 .details-task .task .special {
   margin-left: auto;
 }
-.details-task .task button:last-child {
-  margin: 0 0 0 1rem;
-}
 .details-task .task .project-title {
   margin: 0 1rem 0 auto;
+  transform: translateX(3rem);
+  transition: 250ms ease;
+}
+.details-task .task .delete-task {
+  transform: translateX(100%);
+  transition: 250ms ease;
+  cursor: pointer;
+  font-size: 2rem;
 }
 .details-task .task .priority {
   width: 0.5rem;
@@ -341,6 +346,12 @@ button {
 }
 .details-task .task .priority-0 {
   background: transparent;
+}
+.details-task .task:hover .project-title {
+  transform: translateX(0);
+}
+.details-task .task:hover .delete-task {
+  transform: translateX(0);
 }
 
 /*# sourceMappingURL=style.css.map */

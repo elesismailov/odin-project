@@ -330,11 +330,18 @@ button {
 		.special {
 			margin-left: auto;
 		}
-		button:last-child {
-			margin: 0 0 0 1rem;
-		}
 		.project-title {
 			margin: 0 1rem 0 auto;
+			transform: translateX(3rem);
+			transition: 250ms ease;
+		}
+		.delete-task {
+			transform: translateX(100%);
+			transition: 250ms ease;
+			cursor: pointer;
+			font-size: 2rem;
+			// background: transparent;
+			// color: #FFF;
 		}
 		.priority {
 			width: .5rem;
@@ -347,6 +354,11 @@ button {
 			&-0{background: transparent;}
 		}
 
-		
+		&:hover .project-title {
+			transform: translateX(0)
+		}
+		&:hover .delete-task {
+			transform: translateX(0)
+		}
 	}
 }

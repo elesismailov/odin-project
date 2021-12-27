@@ -10,8 +10,7 @@ export default function Task(t, rerender, pr) {
                 <input type="checkbox" ${t.isComplete ? "checked" : ""}>
                 <p class="task-title ${t.isComplete ? "line-through" : ""}">${t.title}</p>
                 ${!pr ? `<p class="project-title">${t.project}</p>`: ''}
-                <button class="edit-task  ${pr ? 'special' : ''}"></button>
-                <button class="delete-task" data-id="${t.id}"></button>
+                <button class="delete-task  ${pr ? 'special' : ''}" data-id="${t.id}">x</button>
             </summary>
             <div>
                 <form class="edit-form">
