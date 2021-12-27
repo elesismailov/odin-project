@@ -33,6 +33,8 @@ export default function Task(t, rerender, pr) {
     form.description.value = t.description;
 
     form.oninput = function (event) {
+        if (t.project !== this.project.value) t.changeProject(this.project.value);
+
         t.edit(
             this.priority.value, 
             this.project.value, 
@@ -46,7 +48,7 @@ export default function Task(t, rerender, pr) {
 
     // set the priority checkbox
     form.querySelector(`input[value='${t.priority}']`).checked = "true"
-    
+
     // add projects to form project dropdown
     state.projects.forEach(project => {
         form.project.innerHTML +=

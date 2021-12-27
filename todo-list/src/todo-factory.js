@@ -1,3 +1,5 @@
+import state from "./state";
+
 const proto = {
 	edit( 
 			priority = this.priority, 
@@ -18,6 +20,13 @@ const proto = {
 		this.isComplete = value;
 		this.dateDone = value ? new Date() : null;
 	},
+	changeProject(newProjectTitle) {
+		const old_ = state.projects.find(p => p.title === this.project);
+		const new_ = state.projects.find(p => p.title === newProjectTitle);
+		
+		new_.addTask(this)
+		old_.deleteTask(this.id)
+	}
 };
 
 export default function Todo(
@@ -44,3 +53,10 @@ export default function Todo(
 
 	return Object.assign({}, proto, todo);
 }
+
+
+/*
+	this is not a factory function
+	a factory function supposed expose an interaface
+	but this one actually just returns the object itself
+ */
