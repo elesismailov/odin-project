@@ -1,9 +1,14 @@
 const proto = {
-	edit( title, priority, isComplete, project, description, subtasks,) {
-		console.log("edit me");
+	edit( 
+			priority = this.priority, 
+			project = this.project, 
+			description = this.description, 
+			title = this.title,
+			isComplete = this.isComplete, 
+			subtasks = this.subtasks,	) {
+
 		this.title = title;
 		this.description = description;
-		// this.date = date;
 		this.priority = priority;
 		this.subtasks = subtasks;
 		this.project = project;

@@ -34,7 +34,17 @@ export default function Task(t, rerender, pr) {
 
     let form = li.querySelector(".edit-form");
     form.oninput = function (event) {
-        console.log("this is ", this)
+        console.log(this.priority.value)
+        console.log(this.description.value)
+        console.log(this.project.value)
+        t.edit(
+            this.priority.value, 
+            this.project.value, 
+            this.description.value, 
+        //     t.title, 
+        //     isComplete, 
+        //     subtasks
+        );
     }
 
     // set the priority checkbox
