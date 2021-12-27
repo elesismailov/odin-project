@@ -7,6 +7,10 @@ const state = {
 		this.activeTab = tab;
 	},
 
+	addProject(title) {
+		this.projects.push(Project(title))
+	},
+	
 	projects: [
 		Project("First Project"),
 		// Project("Second"),
