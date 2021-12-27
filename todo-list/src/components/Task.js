@@ -22,9 +22,6 @@ export default function Task(t, rerender, pr) {
                         <label>!!!<input type="radio" name="priority" id="" value="3"/></label>
                     </div>
                     <select name="project" id="">
-                        <option value="">Hello</option>
-                        <option value="">Hell</option>
-                        <option value="">Hel</option>
                     </select>
                     <textarea spellcheck="false" placeholder="Description..." name="description" id=""></textarea>
                 </form>
@@ -33,10 +30,9 @@ export default function Task(t, rerender, pr) {
 	`;
 
     let form = li.querySelector(".edit-form");
+    form.description.value = t.description;
+
     form.oninput = function (event) {
-        console.log(this.priority.value)
-        console.log(this.description.value)
-        console.log(this.project.value)
         t.edit(
             this.priority.value, 
             this.project.value, 
@@ -45,6 +41,7 @@ export default function Task(t, rerender, pr) {
         //     isComplete, 
         //     subtasks
         );
+        // rerender()
     }
 
     // set the priority checkbox
@@ -52,7 +49,8 @@ export default function Task(t, rerender, pr) {
     
 
     state.projects.forEach(project => {
-        // console.log(project)
+        form.project.innerHTML +=
+         `<option value="${project.title}" ${t.project === project.title ? "selected" : ""}>${project.title}</option>`;
     })
 
     // set object if not defined
