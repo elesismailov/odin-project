@@ -39,7 +39,6 @@ export default function AllProjects(projects) {
 			project.appendChild(title);
 
 			if (tasks.length === 0) {
-				console.log("hello empty")
 				const msg = document.createElement('h3')
 				msg.className = "msg"
 				msg.textContent = "No Tasks Here!";

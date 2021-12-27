@@ -67,6 +67,7 @@ function render() {
 	})
 
 	root.appendChild(tabs[state.activeTab])
+	
 	tabs[state.activeTab].render()
 
 }

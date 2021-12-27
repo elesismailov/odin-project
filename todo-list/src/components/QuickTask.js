@@ -31,7 +31,6 @@ export default function QuickTask(project, rerender) {
     wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
         
-        console.log(this.title)
         project.addTask(
             Todo(
                 this.title.value.trim() ? this.title.value : "New Task",
