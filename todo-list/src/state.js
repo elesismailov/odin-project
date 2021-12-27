@@ -10,6 +10,10 @@ const state = {
 	addProject(title) {
 		this.projects.push(Project(title))
 	},
+	deleteProject(id) {
+		const index = this.projects.indexOf(this.projects.find(p => p.id === id));
+		this.projects.splice(index, 1)
+	},
 
 	
 	projects: [
