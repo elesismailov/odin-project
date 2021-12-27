@@ -10,7 +10,7 @@ const state = {
 	addProject(title) {
 		this.projects.push(Project(title))
 	},
-	
+
 	
 	projects: [
 		Project("First Project"),

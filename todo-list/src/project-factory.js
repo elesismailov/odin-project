@@ -11,7 +11,7 @@ const proto = {
 	},
 }
 export default function Project(title="New Project", tasks=[]) {
-
-	return Object.assign({}, proto, {title, tasks});
+	const id = new Date().getTime()
+	return Object.assign({}, proto, {title, tasks, id});
 
 }
