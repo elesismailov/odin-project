@@ -11,6 +11,7 @@ const state = {
 		this.projects.push(Project(title))
 	},
 	
+	
 	projects: [
 		Project("First Project"),
 		// Project("Second"),

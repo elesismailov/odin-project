@@ -13,7 +13,7 @@ export default function ProjectsComponent(projects) {
 	h1.innerHTML = "All Projects";
 	wrapper.appendChild(h1)
 
-    wrapper.appendChild(NewProject())
+    wrapper.appendChild(NewProject(renderUl))
 
 
 	// wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
