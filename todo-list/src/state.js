@@ -12,12 +12,12 @@ const state = {
 
 	// tabs: [ProjectsComponent(this.projects), document.createElement('span')],
 
-	projects: {
-		personal: Project("First Project"),
-		second: Project("Second"),
-		first: Project("Third"),
-		third: Project("Forth"),
-	},
+	projects: [
+		Project("First Project"),
+		Project("Second"),
+		Project("Third"),
+		Project("Forth"),
+	],
 }
 state.setTab = state.setTab.bind(state);
 

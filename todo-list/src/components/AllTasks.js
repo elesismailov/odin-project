@@ -21,7 +21,7 @@ export default function AllTasks(projects, rerender) {
 
     function renderUl() {
         tasks.length = 0;
-        Object.keys(projects).forEach((key) => tasks.push(...projects[key].tasks));
+        projects.forEach(project => tasks.push(...project.tasks))
         ul.innerHTML = "";
         if (!tasks.length) {
             wrapper.appendChild(msg);

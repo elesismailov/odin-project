@@ -26,14 +26,28 @@ export default function Task(t, rerender, pr) {
                         <option value="">Hell</option>
                         <option value="">Hel</option>
                     </select>
-                    <textarea placeholder="Description..." name="description" id=""></textarea>
+                    <textarea spellcheck="false" placeholder="Description..." name="description" id=""></textarea>
                 </form>
             </div>
         </details>
 	`;
-    let keys = Object.keys(state.projects)
-    let name = keys.filter(key => state.projects[key].title === t.project)
-    let project = !pr ? state.projects[name] : pr;
+
+    let form = li.querySelector(".edit-form");
+    form.oninput = function (event) {
+        console.log("this is ", this)
+    }
+
+    // set the priority checkbox
+    form.querySelector(`input[value='${t.priority}']`).checked = "true"
+    
+
+    state.projects.forEach(project => {
+        // console.log(project)
+    })
+
+    // set object if not defined
+    let name = state.projects.find(project => project.title === t.project)
+    let project = !pr ? state.projects.find(project => project.title === t.project) : pr;
 
     li.querySelector("input").addEventListener("change", function (event) {
         t.markComplete(this.checked);

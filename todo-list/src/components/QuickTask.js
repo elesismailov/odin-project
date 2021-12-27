@@ -27,7 +27,7 @@ export default function QuickTask(project, rerender) {
     wrapper.innerHTML = html;
 
     // delete
-    project = !project ? state.projects.personal : project;
+    project = !project ? state.projects[0] : project;
 
     wrapper.querySelector('form').addEventListener('submit', function(event) {
         event.preventDefault()

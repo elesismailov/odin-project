@@ -7,8 +7,6 @@ export default function ProjectsComponent(projects) {
 	const ul = document.createElement("ul");
 	const h1 = document.createElement('h1');
 
-	const keys = Object.keys(projects);
-
 	wrapper.id = "all-projects";
 	h1.innerHTML = "All Projects";
 	wrapper.appendChild(h1)
@@ -18,15 +16,15 @@ export default function ProjectsComponent(projects) {
 
 	function renderUl() {
 		ul.innerHTML = '';
-		keys.forEach( key => {
+		projects.forEach( pr => {
 			const li = document.createElement("li");
 			const project = document.createElement("div");
 			const title = document.createElement("h2");
 			const taskUl = document.createElement("ul");
-			const tasks = projects[key].tasks.slice(0,8);
+			const tasks = pr.tasks.slice(0,8);
 			
 			project.onclick = ()=> {
-				wrapper.appendChild(ProjectComponent(projects[key], renderUl))
+				wrapper.appendChild(ProjectComponent(pr, renderUl))
 				document.body.style.overflow = "hidden";
 			}
 
@@ -39,7 +37,7 @@ export default function ProjectsComponent(projects) {
 			})
 
 			project.className = "project";
-			title.innerHTML = projects[key].title;
+			title.innerHTML = pr.title;
 			project.appendChild(title);
 			project.appendChild(taskUl);
 
