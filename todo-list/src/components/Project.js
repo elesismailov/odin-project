@@ -27,7 +27,7 @@ export default function ProjectComponent(project, rerender) {
     wrapper.appendChild(QuickTask(project, renderUl));
 
     msg.className = "msg"
-    msg.innerHTML = "No tasks yet!";
+    msg.innerHTML = "No tasks Here!";
     
     function renderUl() {
         ul.innerHTML = "";

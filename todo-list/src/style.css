@@ -23,10 +23,6 @@ button {
   border: none;
 }
 
-p {
-  margin-bottom: -4px;
-}
-
 #sidebar {
   background: transparent;
   position: fixed;
@@ -110,6 +106,14 @@ p {
 }
 #all-projects > ul .project h2 {
   font-size: 2rem;
+}
+#all-projects > ul .project .msg {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
 }
 #all-projects > ul .project > ul {
   padding: 1.4rem;

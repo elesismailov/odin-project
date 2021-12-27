@@ -34,18 +34,27 @@ export default function AllProjects(projects) {
 				document.body.style.overflow = "hidden";
 			}
 
-			tasks.forEach(task => {
-				const title = document.createElement("p");
-				const taskLi = document.createElement("li");
-				title.innerHTML = task.title;
-				taskLi.appendChild(title)
-				taskUl.appendChild(taskLi);
-			})
-
 			project.className = "project";
 			title.innerHTML = pr.title;
 			project.appendChild(title);
-			project.appendChild(taskUl);
+
+			if (tasks.length === 0) {
+				console.log("hello empty")
+				const msg = document.createElement('h3')
+				msg.className = "msg"
+				msg.textContent = "No Tasks Here!";
+				project.appendChild(msg)
+			} else {
+				tasks.forEach(task => {
+					const title = document.createElement("p");
+					const taskLi = document.createElement("li");
+					title.innerHTML = task.title;
+					taskLi.appendChild(title)
+					taskUl.appendChild(taskLi);
+				})
+				project.appendChild(taskUl);
+			}
+
 
 			li.appendChild(project)
 			ul.appendChild(li)
