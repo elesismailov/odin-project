@@ -24,6 +24,7 @@ export default function Task(t, rerender, pr) {
                     <select name="project" id="">
                     </select>
                     <textarea spellcheck="false" placeholder="Description..." name="description" id=""></textarea>
+                    <button type="submit">Save</button>
                 </form>
             </div>
         </details>
@@ -36,12 +37,12 @@ export default function Task(t, rerender, pr) {
         t.edit(
             this.priority.value, 
             this.project.value, 
-            this.description.value, 
-        //     t.title, 
-        //     isComplete, 
-        //     subtasks
+            this.description.value,
         );
-        // rerender()
+    }
+    form.onsubmit = function(event) {
+        event.preventDefault()
+        rerender()
     }
 
     // set the priority checkbox

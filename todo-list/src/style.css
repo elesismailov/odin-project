@@ -253,8 +253,23 @@ button {
 .details-task > div .edit-form > * {
   flex: 0 48%;
 }
+.details-task > div .edit-form button {
+  max-width: 10rem;
+  margin-left: auto;
+  padding: 0.6rem;
+  border-radius: 4px;
+  background: #2466e4;
+  color: #fff;
+  font-size: 1.5rem;
+}
+.details-task > div .edit-form button:hover {
+  filter: brightness(1.1);
+}
+.details-task > div .edit-form button:active {
+  filter: brightness(0.9);
+}
 .details-task > div .edit-form textarea {
-  flex: 1;
+  flex: 1 100%;
   min-height: 100px;
   border-radius: 4px;
   appearance: none;
