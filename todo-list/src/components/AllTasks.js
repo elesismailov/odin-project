@@ -9,10 +9,12 @@ export default function AllTasks(projects, rerender) {
     const h1 = document.createElement("h1");
     const ul = document.createElement("ul");
     const msg = document.createElement("h2");
-    h1.innerHTML = "All Tasks";
-    wrapper.appendChild(h1);
     wrapper.id = "all-tasks";
 
+    h1.innerHTML = "All Tasks";
+    wrapper.appendChild(h1);
+
+    
     msg.className = "msg"
     msg.innerHTML = "No tasks yet!";
     

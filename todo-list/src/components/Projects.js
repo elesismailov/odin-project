@@ -1,4 +1,5 @@
 import ProjectComponent from "./Project.js";
+import NewProject from "./NewProject.js";
 
 
 export default function ProjectsComponent(projects) {
@@ -8,8 +9,12 @@ export default function ProjectsComponent(projects) {
 	const h1 = document.createElement('h1');
 
 	wrapper.id = "all-projects";
+	
 	h1.innerHTML = "All Projects";
 	wrapper.appendChild(h1)
+
+    wrapper.appendChild(NewProject())
+
 
 	// wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
 	// document.body.style.overflow = "hidden";
