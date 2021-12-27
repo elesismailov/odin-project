@@ -4,7 +4,7 @@ import state from "../state.js";
 export default function Task(t, rerender, pr) {
     const li = document.createElement("li");
     li.innerHTML = `
-        <details class="details-task">
+        <details class="details-task" open>
             <summary class='task'>
                 <span class="priority priority-${t.priority}"></span>
                 <input type="checkbox" ${t.isComplete ? "checked" : ""}>
@@ -15,18 +15,18 @@ export default function Task(t, rerender, pr) {
             </summary>
             <div>
                 <form class="edit-form">
-                    <textarea name="description" id=""></textarea>
-                    <div>
-                        <label><input type="radio" name="priority" id="" value="0"/></label>
-                        <label><input type="radio" name="priority" id="" value="1"/></label>
-                        <label><input type="radio" name="priority" id="" value="2"/></label>
-                        <label><input type="radio" name="priority" id="" value="3"/></label>
+                    <div class="priority-select">
+                        <label>None<input type="radio" name="priority" id="" value="0"/></label>
+                        <label>!<input type="radio" name="priority" id="" value="1"/></label>
+                        <label>!!<input type="radio" name="priority" id="" value="2"/></label>
+                        <label>!!!<input type="radio" name="priority" id="" value="3"/></label>
                     </div>
                     <select name="project" id="">
                         <option value="">Hello</option>
                         <option value="">Hell</option>
                         <option value="">Hel</option>
                     </select>
+                    <textarea placeholder="Description..." name="description" id=""></textarea>
                 </form>
             </div>
         </details>
