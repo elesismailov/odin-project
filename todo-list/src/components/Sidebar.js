@@ -9,7 +9,8 @@ export default function Sidebar(setTab) {
 
 	nav.appendChild(SidebarIcon(0, "P", 'Projects'))
 	nav.appendChild(SidebarIcon(1, "T", 'Tasks'))
-	nav.appendChild(SidebarIcon(2, "#", 'Tags'))
+	// nav.appendChild(SidebarIcon(2, "#", 'Tags'))
+	
 	wrapper.appendChild(nav)
 
 	nav.addEventListener('click', function(event) {
