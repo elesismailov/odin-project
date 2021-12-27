@@ -85,6 +85,9 @@ p {
 	position: relative;
 	padding: 2.4rem;
 	h1 {
+		color: #fff;
+		max-width: 60rem;
+		margin: auto;
 		margin-bottom: 2rem;
 	}
 	> ul {
@@ -234,6 +237,9 @@ p {
 	height: 100vh;
 	// width: 100%;
 
+	h1 {
+		color: #fff;
+	}
 	h1, h2 {
 		max-width: 60rem;
 		margin: auto;

@@ -81,6 +81,9 @@ p {
   padding: 2.4rem;
 }
 #all-projects h1 {
+  color: #fff;
+  max-width: 60rem;
+  margin: auto;
   margin-bottom: 2rem;
 }
 #all-projects > ul {
@@ -224,6 +227,9 @@ p {
   padding: 2.4rem;
   background-color: magenta;
   height: 100vh;
+}
+#all-tasks h1 {
+  color: #fff;
 }
 #all-tasks h1, #all-tasks h2 {
   max-width: 60rem;

@@ -17,7 +17,7 @@ const state = {
 
 	
 	projects: [
-		Project("First Project"),
+		Project("Personal"),
 		// Project("Second"),
 		// Project("Third"),
 		// Project("Forth"),
