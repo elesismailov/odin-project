@@ -15,7 +15,7 @@ export default function QuickTask(project, rerender) {
                 <input name='title' type="text" placeholder="New Task..."/>
             </label>
             ${!project ? `<p>project</p>`/* here is supposed to be a project select dropdown */ : ''}
-			<input name='isComplete' type="checkbox" ${0 ? "checked" : ""}>
+			<input name='isComplete' type="checkbox">
             <select name='priority'>
                 <option value='0'>None</option>
                 <option value='1'>!</option>
@@ -27,10 +27,11 @@ export default function QuickTask(project, rerender) {
     wrapper.innerHTML = html;
 
     project = !project ? state.projects[0] : project;
-
-    wrapper.onsubmit = function(event) {
+    
+    wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
         
+        console.log(this.title)
         project.addTask(
             Todo(
                 this.title.value.trim() ? this.title.value : "New Task",
@@ -45,3 +46,6 @@ export default function QuickTask(project, rerender) {
     }
     return wrapper
 }
+
+// bug: the checked attribute is not being added to the input, 
+// but the checked value changes

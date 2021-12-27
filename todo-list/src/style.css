@@ -178,6 +178,9 @@ p {
 #quick-task form input[type=text]::placeholder {
   color: #fff;
 }
+#quick-task form input[type=checkbox][checked=""] {
+  background: #03f3f3;
+}
 #quick-task form select {
   height: 3rem;
   width: 3rem;
@@ -329,6 +332,9 @@ p {
   background: transparent;
   width: 2.1rem;
   height: 2.1rem;
+}
+.details-task .task input[type=checkbox][checked=""] {
+  background: #03f3f3;
 }
 .details-task .task .special {
   margin-left: auto;
