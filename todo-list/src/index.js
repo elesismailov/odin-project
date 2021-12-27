@@ -2,7 +2,7 @@
 import state from "./state.js";
 import Todo from "./todo-factory.js";
 import Sidebar from "./components/Sidebar.js";
-import ProjectsComponent from "./components/Projects.js";
+import AllProjects from "./components/AllProjects.js";
 import AllTasks from "./components/AllTasks.js";
 
 import "./style.css";
@@ -52,7 +52,7 @@ const sidebar = Sidebar((tab) => {
 
 
 const tabs = [
-	ProjectsComponent(state.projects), 
+	AllProjects(state.projects), 
 	AllTasks(state.projects, render),
 	// document.createElement('span'),
 ];

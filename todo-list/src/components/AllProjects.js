@@ -1,8 +1,9 @@
+
 import ProjectComponent from "./Project.js";
 import NewProject from "./NewProject.js";
 
 
-export default function ProjectsComponent(projects) {
+export default function AllProjects(projects) {
 
 	const wrapper = document.createElement("div");
 	const ul = document.createElement("ul");
@@ -54,9 +55,5 @@ export default function ProjectsComponent(projects) {
 	wrapper.appendChild(ul);
 	wrapper.render = renderUl;
 	return wrapper;
-
-}
-
-function Project() {
 
 }
