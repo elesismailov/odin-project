@@ -15,5 +15,3 @@ export default function Project(title="New Project", tasks=[]) {
 	return Object.assign({}, proto, {title, tasks});
 
 }
-
-// function addTask(task) {}

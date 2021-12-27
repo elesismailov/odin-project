@@ -36,10 +36,12 @@ export default function ProjectComponent(project, rerender) {
         } else {
             msg.remove()
             wrapper.appendChild(ul);
+            
             let done = sortByDateDone(sortByComplete(project.tasks)[1]);
             let undone = sortByPriority(
                 sortByDate(sortByComplete(project.tasks)[0])
             );
+
             undone.forEach((t) => {
                 ul.appendChild(Task(t, renderUl, project));
             });

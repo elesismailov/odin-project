@@ -4,7 +4,7 @@ import state from "../state.js";
 export default function Task(t, rerender, pr) {
     const li = document.createElement("li");
     li.innerHTML = `
-        <details class="details-task" open>
+        <details class="details-task">
             <summary class='task'>
                 <span class="priority priority-${t.priority}"></span>
                 <input type="checkbox" ${t.isComplete ? "checked" : ""}>
@@ -48,13 +48,13 @@ export default function Task(t, rerender, pr) {
     // set the priority checkbox
     form.querySelector(`input[value='${t.priority}']`).checked = "true"
     
-
+    // add projects to form project dropdown
     state.projects.forEach(project => {
         form.project.innerHTML +=
          `<option value="${project.title}" ${t.project === project.title ? "selected" : ""}>${project.title}</option>`;
     })
 
-    // set object if not defined
+    // set project if not defined
     let name = state.projects.find(project => project.title === t.project)
     let project = !pr ? state.projects.find(project => project.title === t.project) : pr;
 

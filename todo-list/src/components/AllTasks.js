@@ -17,11 +17,11 @@ export default function AllTasks(projects, rerender) {
     msg.innerHTML = "No tasks yet!";
     
     const tasks = [];
-    // Object.keys(projects).forEach((key) => tasks.push(...projects[key].tasks));
 
     function renderUl() {
         tasks.length = 0;
         projects.forEach(project => tasks.push(...project.tasks))
+        
         ul.innerHTML = "";
         if (!tasks.length) {
             wrapper.appendChild(msg);

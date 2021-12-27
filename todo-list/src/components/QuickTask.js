@@ -26,14 +26,11 @@ export default function QuickTask(project, rerender) {
     `;
     wrapper.innerHTML = html;
 
-    // delete
     project = !project ? state.projects[0] : project;
 
-    wrapper.querySelector('form').addEventListener('submit', function(event) {
+    wrapper.onsubmit = function(event) {
         event.preventDefault()
         
-        // project = !project ? state.projects[this.project.value] : project;
-
         project.addTask(
             Todo(
                 this.title.value.trim() ? this.title.value : "New Task",
@@ -45,6 +42,6 @@ export default function QuickTask(project, rerender) {
         );
         this.title.value = '';
         rerender()
-    })
+    }
     return wrapper
 }
