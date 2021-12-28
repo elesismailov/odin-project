@@ -157,7 +157,7 @@ button {
   justify-content: space-between;
   max-width: 60rem;
   margin: auto;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 #project-page header .title-wrapper h1 {
   margin: 0;
@@ -175,14 +175,19 @@ button {
   margin-bottom: 3rem;
 }
 #project-page .msg {
-  height: 40vh;
+  height: 100vh;
+  width: 100vw;
+  max-width: unset;
+  top: 0;
+  left: 3.2rem;
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #fff;
 }
 #project-page ul {
-  margin-top: 15rem;
+  margin-top: 17.4rem;
   overflow: auto;
 }
 
