@@ -34,18 +34,24 @@ export default function QuickTask(project, rerender) {
         </form>
     `;
     wrapper.innerHTML = html;
-    
+    try{
+    wrapper.querySelector('.select-project').addEventListener('click', function(event) {
+        if (event.explicitOriginalTarget !== this) return 
+        event.preventDefault()
+        wrapper.querySelector('.select-project').setAttribute("aria-expanded", true)
+
+    })
     wrapper.querySelectorAll('.project-option').forEach(opt => {
         opt.addEventListener('click', function(event) {
             event.preventDefault()
             wrapper.querySelector('.select-project').dataset.value = this.dataset.value;
             wrapper.querySelector('.select-project').innerHTML = this.dataset.value;
+            wrapper.querySelector('.select-project').setAttribute("aria-expanded", false)
         })
-    })
+    })} catch {}
     
     wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
-        console.log(this.project.dataset.value)
         project = !project
             ? state.projects.find(p => this.project.dataset.value === p.title)
             : project;
@@ -61,9 +67,10 @@ export default function QuickTask(project, rerender) {
         this.title.value = '';
         rerender()
         state.saveState()
+        project = null;
     }
     return wrapper
 }
 
-// bug: the checked attribute is not being added to the input, 
-// but the checked value changes
+// bug: the checked='' attribute is not being added to the input, 
+// but the 'checked' value changes
