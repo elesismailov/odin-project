@@ -23,18 +23,12 @@ const state = {
 		// Project("Forth"),
 	],
 }
-state.setTab = state.setTab.bind(state);
+// state.setTab = state.setTab.bind(state);
 
-let proxy = new Proxy(state.projects, {
-	// get : (target, key) => {
-	// 	return target[key]
-	// },
-	set: (target, key, value) => {
-		console.log("setting", key, ' to ', value)
-		target[key] = value;
-		return true
-	}
-})
-state.projects = proxy;
+function saveState() {
+	console.log("hello proxy saver")
+	console.log(state)
+}
+
 
 export default state;
