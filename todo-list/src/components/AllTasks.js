@@ -37,7 +37,9 @@ export default function AllTasks(projects, rerender) {
             undone.forEach((t) => {
                 ul.appendChild(Task(t, renderUl, ));
             });
-            ul.lastElementChild.classList.add("last-active")
+            ul.lastElementChild
+                ? ul.lastElementChild.classList.add("last-active")
+                : 0;
             done.forEach((t) => {
                 ul.appendChild(Task(t, renderUl, ));
             });
