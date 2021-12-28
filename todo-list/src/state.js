@@ -18,7 +18,17 @@ const state = {
 	saveState() {
 		localStorage.setItem('state', JSON.stringify(this))
 	},
-	
+	retrieveState() {
+		// console.log(localStorage.state)
+		if (!localStorage.state) {
+			localStorage.setItem('state', JSON.stringify(this))
+			return
+		}
+		let data = JSON.parse(localStorage.state);
+		Object.defineProperty(this, 'activeTab', {'value': data.activeTab})
+		Object.defineProperty(this, 'projects', {'value': data.projects})
+		
+	},
 	projects: [
 		Project("Personal"),
 		// Project("Second"),
@@ -28,6 +38,7 @@ const state = {
 }
 // state.setTab = state.setTab.bind(state);
 
+state.retrieveState()
 
 
 export default state;
