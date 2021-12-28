@@ -214,7 +214,7 @@ button {
 	margin: auto;
 	margin-bottom: 1rem;
 	color: #fff;
-	overflow: hidden;
+	// overflow: hidden;
 	.line-through {
 		text-decoration: line-through;
 	}
@@ -240,6 +240,7 @@ button {
 		background: #fff;
 		border: none;
 		appearance: none;
+		border-radius: 0 4px 4px 0;
 	}
 	.plus {
 		width: 3rem;
@@ -270,7 +271,32 @@ button {
 		height: 3rem;
 		display: inline-block;
 		margin-right: 0.5rem;
+		border-radius: 4px 0 0 4px;
 		background: #fff;
+	}
+
+	.dropdown {
+		// background: yellow;
+
+		position: relative;
+		button {
+			width: 10rem;
+			height: 3rem;
+			border-radius: 4px;
+		}
+		ul {
+			position: absolute;
+			background: #fff;
+			border-radius: 4px;
+			display: none;
+			top: -100px;
+			li {
+				margin-bottom: 2px;
+			}
+		}
+		> button[aria-expanded='true'] ~ ul {
+			display: block;
+		}
 	}
 }
 
