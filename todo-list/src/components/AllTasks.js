@@ -9,11 +9,13 @@ export default function AllTasks(projects, rerender) {
     const h1 = document.createElement("h1");
     const ul = document.createElement("ul");
     const msg = document.createElement("h2");
+    const header = document.createElement('header')
     wrapper.id = "all-tasks";
 
     h1.innerHTML = "All Tasks";
-    wrapper.appendChild(h1);
 
+    header.appendChild(h1);
+    header.appendChild(QuickTask(undefined, renderUl))
     
     msg.className = "msg"
     msg.innerHTML = "No tasks yet!";
@@ -46,7 +48,7 @@ export default function AllTasks(projects, rerender) {
         }
     }
     renderUl();
-    wrapper.appendChild(QuickTask(undefined, renderUl))
+    wrapper.appendChild(header)
     wrapper.appendChild(ul)
 	wrapper.render = renderUl;
     return wrapper;

@@ -26,7 +26,7 @@ export default function ProjectComponent(project, rerender) {
     del.onclick = () => {
         state.deleteProject(+del.dataset.id);
         state.saveState();
-        document.body.style.overflow = "auto";
+        // document.body.style.overflow = "auto";
         wrapper.remove();
         rerender();
     };

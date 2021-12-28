@@ -32,7 +32,7 @@ export default function AllProjects(projects) {
 			
 			project.onclick = ()=> {
 				wrapper.appendChild(ProjectComponent(pr, renderUl))
-				document.body.style.overflow = "hidden";
+				// document.body.style.overflow = "hidden";
 			}
 
 			project.className = "project";
