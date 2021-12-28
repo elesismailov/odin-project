@@ -14,7 +14,16 @@ export default function QuickTask(project, rerender) {
                 <span class="plus">+</span>
                 <input name='title' type="text" placeholder="New Task..."/>
             </label>
-            ${!project ? `<p>project</p>`/* here is supposed to be a project select dropdown */ : ''}
+            ${!project ? `
+            <div class="dropdown" >
+                <button class="select-project" aria-expanded="false">${state.projects[0].title}</button>
+                <ul>
+                    ${state.projects.map(p => {
+                        return `<li>${p.title}</li>`
+                    }).join('')}
+                </ul>
+            </div>
+            ` : ''}
 			<input name='isComplete' type="checkbox">
             <select name='priority'>
                 <option value='0'>None</option>
