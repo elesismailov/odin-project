@@ -16,8 +16,7 @@ const state = {
 	},
 
 	saveState() {
-		console.log("hello proxy saver")
-		console.log(this)
+		localStorage.setItem('state', JSON.stringify(this))
 	},
 	
 	projects: [
