@@ -10,7 +10,9 @@ const state = {
 	},
 
 	addProject(title) {
-		if (!this.projects.every(p => p.title !== title)) throw new Error()
+		if (!this.projects.every(p => p.title !== title)) {
+			throw new Error("The project already exists!")
+		}
 		this.projects.push(Project(title))
 	},
 	deleteProject(id) {
