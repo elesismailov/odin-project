@@ -15,13 +15,9 @@ export default function QuickTask(project, rerender) {
                 <input name='title' type="text" placeholder="New Task..."/>
             </label>
             ${!project ? `
-            <div class="dropdown" >
+            <div class="project-dropdown" >
                 <button name='project' data-value='${state.projects[0].title}' class="select-project" aria-expanded="false">${state.projects[0].title}</button>
-                <ul>
-                    ${state.projects.map(p => {
-                        return `<li><button data-value='${p.title}' class='project-option'>${p.title}</button></li>`
-                    }).join('')}
-                </ul>
+                <ul class='project-options'></ul>
             </div>
             ` : ''}
 			<input name='isComplete' type="checkbox">
@@ -34,28 +30,38 @@ export default function QuickTask(project, rerender) {
         </form>
     `;
     wrapper.innerHTML = html;
-    try{
-    wrapper.querySelector('.select-project').addEventListener('click', function(event) {
-        if (event.explicitOriginalTarget !== this) return 
-        event.preventDefault()
-        wrapper.querySelector('.select-project').setAttribute("aria-expanded", true)
-        function open(event) {
-            if (event.target.className !== "project-option" && event.target !== wrapper.querySelector('.select-project')) {
-                wrapper.querySelector('.select-project').setAttribute("aria-expanded", false)
-                document.removeEventListener('click', open)
-            }
+
+    function render() {
+        try{
+            let ul = wrapper.querySelector('.project-options')
+            ul.innerHTML = state.projects.map(p => {
+                return `<li><button data-value='${p.title}' class='project-option'>${p.title}</button></li>`
+            }).join('');
+
+            wrapper.querySelector('.select-project').addEventListener('click', function(event) {
+                if (event.explicitOriginalTarget !== this) return 
+                event.preventDefault()
+                wrapper.querySelector('.select-project').setAttribute("aria-expanded", true)
+                function open(event) {
+                    if (event.target.className !== "project-option" && event.target !== wrapper.querySelector('.select-project')) {
+                        wrapper.querySelector('.select-project').setAttribute("aria-expanded", false)
+                        document.removeEventListener('click', open)
+                    }
+                }
+                document.addEventListener('click', open)
+            })
+            wrapper.querySelectorAll('.project-option').forEach(opt => {
+                opt.addEventListener('click', function(event) {
+                    event.preventDefault()
+                    wrapper.querySelector('.select-project').dataset.value = this.dataset.value;
+                    wrapper.querySelector('.select-project').innerHTML = this.dataset.value;
+                    wrapper.querySelector('.select-project').setAttribute("aria-expanded", false)
+                })
+            })
+        } catch (err) {
+            console.info(err)
         }
-        document.addEventListener('click', open)
-    })
-    wrapper.querySelectorAll('.project-option').forEach(opt => {
-        opt.addEventListener('click', function(event) {
-            event.preventDefault()
-            wrapper.querySelector('.select-project').dataset.value = this.dataset.value;
-            wrapper.querySelector('.select-project').innerHTML = this.dataset.value;
-            wrapper.querySelector('.select-project').setAttribute("aria-expanded", false)
-        })
-    })} catch {}
-    
+    }
     wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
         console.log(this.project.dataset.value)
@@ -78,6 +84,9 @@ export default function QuickTask(project, rerender) {
         state.saveState()
         project = null;
     }
+
+    render()
+    wrapper.render = render;
     return wrapper
 }
 

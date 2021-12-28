@@ -10,12 +10,13 @@ export default function AllTasks(projects, rerender) {
     const ul = document.createElement("ul");
     const msg = document.createElement("h2");
     const header = document.createElement('header')
+    const quickTask = QuickTask(undefined, renderUl)
     wrapper.id = "all-tasks";
 
     h1.innerHTML = "All Tasks";
 
     header.appendChild(h1);
-    header.appendChild(QuickTask(undefined, renderUl))
+    header.appendChild(quickTask)
     
     msg.className = "msg"
     msg.innerHTML = "No tasks yet!";
@@ -23,6 +24,7 @@ export default function AllTasks(projects, rerender) {
     const tasks = [];
 
     function renderUl() {
+        quickTask.render()
         tasks.length = 0;
         projects.forEach(project => tasks.push(...project.tasks))
         

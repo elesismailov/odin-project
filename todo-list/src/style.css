@@ -260,25 +260,25 @@ button {
   border-radius: 4px 0 0 4px;
   background: #fff;
 }
-#quick-task form .dropdown {
+#quick-task form .project-dropdown {
   position: relative;
 }
-#quick-task form .dropdown button {
+#quick-task form .project-dropdown button {
   width: 10rem;
   height: 3rem;
   border-radius: 4px;
 }
-#quick-task form .dropdown ul {
+#quick-task form .project-dropdown ul {
   position: absolute;
   background: #fff;
   border-radius: 4px;
   display: none;
   top: -100px;
 }
-#quick-task form .dropdown ul li {
+#quick-task form .project-dropdown ul li {
   margin-bottom: 2px;
 }
-#quick-task form .dropdown > button[aria-expanded=true] ~ ul {
+#quick-task form .project-dropdown > button[aria-expanded=true] ~ ul {
   display: block;
 }
 
