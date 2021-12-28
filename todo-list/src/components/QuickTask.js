@@ -16,10 +16,10 @@ export default function QuickTask(project, rerender) {
             </label>
             ${!project ? `
             <div class="dropdown" >
-                <button class="select-project" aria-expanded="false">${state.projects[0].title}</button>
+                <button name='project' data-value='${state.projects[0].title}' class="select-project" aria-expanded="false">${state.projects[0].title}</button>
                 <ul>
                     ${state.projects.map(p => {
-                        return `<li>${p.title}</li>`
+                        return `<li><button data-value='${p.title}' class='project-option'>${p.title}</button></li>`
                     }).join('')}
                 </ul>
             </div>
@@ -34,12 +34,21 @@ export default function QuickTask(project, rerender) {
         </form>
     `;
     wrapper.innerHTML = html;
-
-    project = !project ? state.projects[0] : project;
+    
+    wrapper.querySelectorAll('.project-option').forEach(opt => {
+        opt.addEventListener('click', function(event) {
+            event.preventDefault()
+            wrapper.querySelector('.select-project').dataset.value = this.dataset.value;
+            wrapper.querySelector('.select-project').innerHTML = this.dataset.value;
+        })
+    })
     
     wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
-        
+        console.log(this.project.dataset.value)
+        project = !project
+            ? state.projects.find(p => this.project.dataset.value === p.title)
+            : project;
         project.addTask(
             Todo(
                 this.title.value.trim() ? this.title.value : "New Task",
