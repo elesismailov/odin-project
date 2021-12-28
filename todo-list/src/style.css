@@ -141,7 +141,25 @@ button {
 #project-page .back:active {
   filter: brightness(0.8);
 }
-#project-page h1, #project-page h2 {
+#project-page header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 60rem;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+#project-page header h1 {
+  margin: 0;
+}
+#project-page header button {
+  width: 7rem;
+  height: 3rem;
+  border-radius: 4px;
+  background: #fff;
+  font-size: 1.5rem;
+}
+#project-page h2 {
   max-width: 60rem;
   margin: auto;
   margin-bottom: 3rem;
