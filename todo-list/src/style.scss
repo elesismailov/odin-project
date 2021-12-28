@@ -130,12 +130,11 @@ button {
 
 
 #project-page {
-	// margin-left: 6.4rem;
-
 	padding: 2.4rem;
 	position: absolute;
 	background-color: #8000ff;
 	min-height: 100vh;
+	// height: 100%;
 	width: 100%;
 	left: 0;
 	top: 0;
@@ -193,7 +192,7 @@ button {
 	border-radius: 4px;
 	max-width: 60rem;
 	margin: auto;
-	margin-bottom: 3rem;
+	margin-bottom: 1rem;
 	color: #fff;
 	overflow: hidden;
 	.line-through {
@@ -269,10 +268,10 @@ button {
 		background-color: #831b83;
 		// box-shadow: #521952 0px -11px 81px 1px;
 		top: 0;
-		left: 3.2rem;
-		width: 100%;
+		left: 6.4rem;
 		padding: 2.4rem 2.4rem 1rem;
 		z-index: 1;
+		width: calc(100% - 6.4rem);
 	}
 	h1 {
 		color: #fff;
@@ -280,7 +279,7 @@ button {
 	h1, h2 {
 		max-width: 60rem;
 		margin: auto;
-		margin-bottom: 3rem;
+		margin-bottom: 2rem;
 	}
 	.msg {
 		height: 40vh;
@@ -291,7 +290,7 @@ button {
 	}
 	ul {
 		// max-height: 400px;
-		margin-top: 15.2rem;
+		margin-top: 13.2rem;
 		overflow: auto;
 	}
 }

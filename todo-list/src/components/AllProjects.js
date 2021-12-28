@@ -13,16 +13,18 @@ export default function AllProjects(projects) {
 	wrapper.id = "all-projects";
 	
 	h1.innerHTML = "All Projects";
-	wrapper.appendChild(h1)
-
-    wrapper.appendChild(NewProject(renderUl))
 
 
 	// wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
 	// document.body.style.overflow = "hidden";
 
 	function renderUl() {
+		wrapper.innerHTML = '';
 		ul.innerHTML = '';
+
+		wrapper.appendChild(h1)
+		wrapper.appendChild(NewProject(renderUl))
+
 		projects.forEach( pr => {
 			const li = document.createElement("li");
 			const project = document.createElement("div");
@@ -31,6 +33,7 @@ export default function AllProjects(projects) {
 			const tasks = sortByComplete(pr.tasks)[0].slice(0, 8);
 			
 			project.onclick = ()=> {
+				wrapper.innerHTML = '';
 				wrapper.appendChild(ProjectComponent(pr, renderUl))
 				// document.body.style.overflow = "hidden";
 			}
@@ -58,10 +61,10 @@ export default function AllProjects(projects) {
 
 			li.appendChild(project)
 			ul.appendChild(li)
+			wrapper.appendChild(ul);
 		})
 	}
 	renderUl()
-	wrapper.appendChild(ul);
 	wrapper.render = renderUl;
 	return wrapper;
 
