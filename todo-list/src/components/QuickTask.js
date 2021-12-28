@@ -39,7 +39,13 @@ export default function QuickTask(project, rerender) {
         if (event.explicitOriginalTarget !== this) return 
         event.preventDefault()
         wrapper.querySelector('.select-project').setAttribute("aria-expanded", true)
-
+        function open(event) {
+            if (event.target.className !== "project-option" && event.target !== wrapper.querySelector('.select-project')) {
+                wrapper.querySelector('.select-project').setAttribute("aria-expanded", false)
+                document.removeEventListener('click', open)
+            }
+        }
+        document.addEventListener('click', open)
     })
     wrapper.querySelectorAll('.project-option').forEach(opt => {
         opt.addEventListener('click', function(event) {
@@ -52,6 +58,9 @@ export default function QuickTask(project, rerender) {
     
     wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
+        console.log(this.project.dataset.value)
+        console.log(state.projects.find(p => this.project.dataset.value === p.title))
+        console.log(project)
         project = !project
             ? state.projects.find(p => this.project.dataset.value === p.title)
             : project;
