@@ -1,6 +1,7 @@
 
 import ProjectComponent from "./Project.js";
 import NewProject from "./NewProject.js";
+import { sortByComplete } from "../sort.js";
 
 
 export default function AllProjects(projects) {
@@ -27,7 +28,7 @@ export default function AllProjects(projects) {
 			const project = document.createElement("div");
 			const title = document.createElement("h2");
 			const taskUl = document.createElement("ul");
-			const tasks = pr.tasks.slice(0,8);
+			const tasks = sortByComplete(pr.tasks)[0].slice(0, 8);
 			
 			project.onclick = ()=> {
 				wrapper.appendChild(ProjectComponent(pr, renderUl))
