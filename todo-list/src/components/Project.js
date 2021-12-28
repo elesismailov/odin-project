@@ -14,6 +14,8 @@ export default function ProjectComponent(project, rerender) {
     const ul = document.createElement("ul");
     const backBtn = document.createElement("button");
     const msg = document.createElement("h2");
+    const h1wrapper = document.createElement("div")
+
     const header = document.createElement("header");
     const del = document.createElement("button");
     wrapper.id = "project-page";
@@ -33,17 +35,21 @@ export default function ProjectComponent(project, rerender) {
 
     backBtn.innerHTML = "<";
     backBtn.className = "back";
-    wrapper.appendChild(backBtn);
 
     h1.innerHTML = project.title;
     del.textContent = "Delete";
     del.dataset.id = project.id;
-    header.appendChild(h1);
-    project.title !== "Personal" ? header.appendChild(del) : 0;
+    h1wrapper.className = 'title-wrapper'
+    
+    h1wrapper.appendChild(h1);
+    project.title !== "Personal" ? h1wrapper.appendChild(del) : 0;
+
+    header.appendChild(backBtn);
+    header.appendChild(h1wrapper)
+    header.appendChild(QuickTask(project, renderUl));
 
     wrapper.appendChild(header);
 
-    wrapper.appendChild(QuickTask(project, renderUl));
 
     msg.className = "msg";
     msg.innerHTML = "No tasks Here!";

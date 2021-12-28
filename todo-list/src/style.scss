@@ -143,27 +143,40 @@ button {
 		height: 4rem;
 		background: #fff;
 		border-radius: 10rem;
-		margin-bottom: 2.4rem;
+		margin-bottom: 1rem;
 		&:hover {filter: brightness(0.9)}
 		&:active {filter: brightness(0.8)}
 	}
 	header {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
+		position: fixed;
+		top: 0;
+		left: 6.4rem;
+		padding: 2.4rem 2.4rem 1rem;
+		z-index: 1;
+		width: calc(100% - 6.4rem);
 		
-		max-width: 60rem;
-		margin: auto;
-		margin-bottom: 3rem;
-		h1 {
-			margin: 0;
-		}
-		button {
-			width: 7rem;
-			height: 3rem;
-			border-radius: 4px;
-			background: #fff;
-			font-size: 1.5rem;
+		background-color: #8000ff;
+		padding-bottom: 1rem;
+		// max-width: 120rem;
+		// margin: auto;
+		.title-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			
+			max-width: 60rem;
+			margin: auto;
+			margin-bottom: 1rem;
+			h1 {
+				margin: 0;
+			}
+			button {
+				width: 7rem;
+				height: 3rem;
+				border-radius: 4px;
+				background: #fff;
+				font-size: 1.5rem;
+			}
 		}
 	}
 	h2 {
@@ -180,6 +193,7 @@ button {
 	}
 	ul {
 		// max-height: 400px;
+		margin-top: 15rem;
 		overflow: auto;
 	}
 }
