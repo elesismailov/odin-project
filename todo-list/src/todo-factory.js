@@ -1,4 +1,5 @@
 import state from "./state";
+import debouncer from "./debouncer.js";
 
 const proto = {
 	edit( 
