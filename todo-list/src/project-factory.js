@@ -10,8 +10,7 @@ const proto = {
 		this.tasks.splice(index, 1)
 	},
 }
-export default function Project(title="New Project", tasks=[]) {
-	const id = new Date().getTime()
+export default function Project(title="New Project", tasks=[], id = new Date().getTime()) {
 	return Object.assign({}, proto, {title, tasks, id});
 
 }

@@ -40,10 +40,12 @@ export default function Task(t, rerender, pr) {
             this.project.value, 
             this.description.value,
         );
+        state.saveState()
     }
     form.onsubmit = function(event) {
         event.preventDefault()
         rerender()
+        state.saveState()
     }
 
     // set the priority checkbox

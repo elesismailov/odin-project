@@ -69,7 +69,7 @@ function render() {
 	root.appendChild(tabs[state.activeTab])
 	
 	tabs[state.activeTab].render()
-	// state.saveState()
+	state.saveState()
 }
 
 render()

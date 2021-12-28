@@ -1,5 +1,6 @@
 
 import Project from "./project-factory.js";
+import Todo from "./todo-factory.js";
 
 const state = {
 	activeTab: 0,
@@ -25,9 +26,30 @@ const state = {
 			return
 		}
 		let data = JSON.parse(localStorage.state);
-		Object.defineProperty(this, 'activeTab', {'value': data.activeTab})
-		Object.defineProperty(this, 'projects', {'value': data.projects})
 		
+		let projects = [];
+		data.projects.forEach(p => {		// p - is just a shell of data, no methods
+			let tasks = [];
+			p.tasks.forEach(t => {		// t - is just a shell of data, no methods
+				tasks.push(
+                    Todo(
+                        t.title,
+                        new Date(t.date),
+                        t.priority,
+                        t.isComplete,
+                        t.project,
+                        t.description,
+                        new Date(t.dateDone),
+                        t.subtasks,
+                        t.id
+                    )
+                );
+			})
+			projects.push(Project(p.title, tasks, p.id))
+		})
+		Object.defineProperty(this, 'activeTab', {'value': data.activeTab})
+		Object.defineProperty(this, 'projects', {'value': projects})
+
 	},
 	projects: [
 		Project("Personal"),
