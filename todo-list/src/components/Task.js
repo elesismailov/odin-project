@@ -37,10 +37,8 @@ export default function Task(t, rerender, pr) {
 
         t.edit(
             this.priority.value, 
-            this.project.value, 
             this.description.value,
         );
-        state.saveState()
     }
     form.onsubmit = function(event) {
         event.preventDefault()

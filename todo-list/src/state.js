@@ -1,4 +1,5 @@
 
+import debouncer from "./debouncer.js";
 import Project from "./project-factory.js";
 import Todo from "./todo-factory.js";
 
@@ -62,5 +63,7 @@ const state = {
 
 state.retrieveState()
 
+state.saveState = state.saveState.bind(state)
+state.saveState = debouncer(state.saveState, 400)
 
 export default state;
