@@ -14,10 +14,6 @@ export default function AllProjects(projects) {
 	
 	h1.innerHTML = "All Projects";
 
-
-	// wrapper.appendChild(ProjectComponent(projects[keys[0]], renderUl))
-	// document.body.style.overflow = "hidden";
-
 	function renderUl() {
 		wrapper.innerHTML = '';
 		ul.innerHTML = '';
@@ -35,7 +31,6 @@ export default function AllProjects(projects) {
 			project.onclick = ()=> {
 				wrapper.innerHTML = '';
 				wrapper.appendChild(ProjectComponent(pr, renderUl))
-				// document.body.style.overflow = "hidden";
 			}
 
 			project.className = "project";

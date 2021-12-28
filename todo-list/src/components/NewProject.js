@@ -22,7 +22,7 @@ export default function NewProject(rerender) {
         event.preventDefault()
         if (this.title.value.trim()) {
             try{state.addProject(this.title.value.trim())}
-            catch (err) {console.log('it says', err)}
+            catch (err) {console.info('it says', err)}
             this.title.value = '';
             rerender()
             state.saveState()

@@ -19,7 +19,7 @@ export default function AllTasks(projects, rerender) {
     header.appendChild(quickTask)
     
     msg.className = "msg"
-    msg.innerHTML = "No tasks yet!";
+    msg.innerHTML = "No tasks here!";
     
     const tasks = [];
 

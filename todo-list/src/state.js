@@ -24,7 +24,6 @@ const state = {
 		localStorage.setItem('state', JSON.stringify(this))
 	},
 	retrieveState() {
-		// console.log(localStorage.state)
 		if (!localStorage.state) {
 			localStorage.setItem('state', JSON.stringify(this))
 			return
@@ -57,12 +56,8 @@ const state = {
 	},
 	projects: [
 		Project("Personal"),
-		// Project("Second"),
-		// Project("Third"),
-		// Project("Forth"),
 	],
 }
-// state.setTab = state.setTab.bind(state);
 
 state.retrieveState()
 

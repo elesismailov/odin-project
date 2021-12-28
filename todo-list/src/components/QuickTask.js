@@ -62,11 +62,10 @@ export default function QuickTask(project, rerender) {
             console.info(err)
         }
     }
+
+    
     wrapper.querySelector("form").onsubmit = function(event) {
         event.preventDefault()
-        console.log(this.project.dataset.value)
-        console.log(state.projects.find(p => this.project.dataset.value === p.title))
-        console.log(project)
         project = !project
             ? state.projects.find(p => this.project.dataset.value === p.title)
             : project;
