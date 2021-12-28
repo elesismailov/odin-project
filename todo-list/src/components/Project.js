@@ -39,10 +39,10 @@ export default function ProjectComponent(project, rerender) {
     del.textContent = "Delete";
     del.dataset.id = project.id;
     header.appendChild(h1);
-    header.appendChild(del);
+    project.title !== "Personal" ? header.appendChild(del) : 0;
 
     wrapper.appendChild(header);
-    
+
     wrapper.appendChild(QuickTask(project, renderUl));
 
     msg.className = "msg";
