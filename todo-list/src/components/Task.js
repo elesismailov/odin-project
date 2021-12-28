@@ -62,10 +62,12 @@ export default function Task(t, rerender, pr) {
     li.querySelector("input").addEventListener("change", function (event) {
         t.markComplete(this.checked);
         rerender();
+        state.saveState()
     });
     li.querySelector('.delete-task').addEventListener('click', function(event) {
         project.deleteTask(+this.dataset.id)
         rerender()
+        state.saveState()
     })
     
     return li;

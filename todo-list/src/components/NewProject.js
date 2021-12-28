@@ -23,6 +23,7 @@ export default function NewProject(rerender) {
         state.addProject(this.title.value)
         this.title.value = '';
         rerender()
+        state.saveState()
     })
     
     return wrapper;

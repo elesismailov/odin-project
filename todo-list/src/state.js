@@ -15,6 +15,10 @@ const state = {
 		this.projects.splice(index, 1)
 	},
 
+	saveState() {
+		console.log("hello proxy saver")
+		console.log(this)
+	},
 	
 	projects: [
 		Project("Personal"),
@@ -25,10 +29,6 @@ const state = {
 }
 // state.setTab = state.setTab.bind(state);
 
-function saveState() {
-	console.log("hello proxy saver")
-	console.log(state)
-}
 
 
 export default state;

@@ -26,6 +26,7 @@ const proto = {
 		
 		new_.addTask(this)
 		old_.deleteTask(this.id)
+		state.saveState()
 	}
 };
 

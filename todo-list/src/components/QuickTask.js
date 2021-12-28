@@ -42,6 +42,7 @@ export default function QuickTask(project, rerender) {
         );
         this.title.value = '';
         rerender()
+        state.saveState()
     }
     return wrapper
 }
