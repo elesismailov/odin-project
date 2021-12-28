@@ -20,10 +20,13 @@ export default function NewProject(rerender) {
 
     wrapper.querySelector("form").addEventListener('submit', function(event) {
         event.preventDefault()
-        state.addProject(this.title.value)
-        this.title.value = '';
-        rerender()
-        state.saveState()
+        if (this.title.value.trim()) {
+            try{state.addProject(this.title.value.trim())}
+            catch (err) {console.log('it says', err)}
+            this.title.value = '';
+            rerender()
+            state.saveState()
+        }
     })
     
     return wrapper;

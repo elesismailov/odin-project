@@ -10,6 +10,7 @@ const state = {
 	},
 
 	addProject(title) {
+		if (!this.projects.every(p => p.title !== title)) throw new Error()
 		this.projects.push(Project(title))
 	},
 	deleteProject(id) {
