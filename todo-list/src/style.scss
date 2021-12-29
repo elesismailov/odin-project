@@ -526,6 +526,15 @@ button {
 		&:hover .delete-task {
 			transform: translateX(0)
 		}
+		@media (max-width: 600px) {
+			.project-title {
+				display: none;
+			}
+			.delete-task {
+				transform: none;
+				margin-left: auto;
+			}
+		}
 	}
 }
 
