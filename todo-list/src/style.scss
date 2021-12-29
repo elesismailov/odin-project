@@ -147,6 +147,10 @@ button {
 			}
 		}
 	}
+	@media screen and (max-width: 600px) {
+		margin: 0;
+		padding-bottom: 11vh;
+	}
 }
 
 
