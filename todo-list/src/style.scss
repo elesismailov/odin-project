@@ -227,6 +227,14 @@ button {
 		margin-top: 17.4rem;
 		overflow: auto;
 	}
+	@media screen and (max-width: 600px) {
+		padding-bottom: 11vh;
+		header {
+			width: 100%;
+			left: 0;
+
+		}
+	}
 }
 
 
