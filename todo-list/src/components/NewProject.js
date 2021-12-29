@@ -9,10 +9,9 @@ export default function NewProject(rerender) {
     let html = `
         <form>
             <label>
-                <span class="plus">+</span>
                 <input name='title' type="text" placeholder="New Project..." maxlength="25"/>
             </label>
-            <button type="submit">Add</button>
+            <button class="plus" type="submit">+</button>
         </form>
     `;
     wrapper.innerHTML = html;
