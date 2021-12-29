@@ -63,7 +63,9 @@ button {
 				border-radius: 7px;
 				font-size: 1.6rem;
 				padding: 1rem;
-
+				
+				pointer-events: none;
+				
 				position: absolute;
 				top: .6rem;
 				left: 75px;
