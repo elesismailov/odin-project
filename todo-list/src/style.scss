@@ -260,6 +260,7 @@ button {
 		font-size: 1.6rem;
 		outline: none;
 		flex-grow: 1;
+		width: 100%;
 		&::placeholder {
 			color: #fff;
 		}
@@ -269,25 +270,31 @@ button {
 	}
 	select {
 		height: 3rem;
-		width: 3rem;
+		width: 4rem;
 		background: #fff;
 		border: none;
 		appearance: none;
-		border-radius: 0 4px 4px 0;
+		// border-radius: 0 4px 4px 0;
 	}
 	.plus {
-		width: 3rem;
+		width: 6rem;
 		height: 3rem;
 		background: transparent;
-		margin-right: 2rem;
 		display: flex;
 		justify-content: center;
+		color: #fff;
 		align-items: center;
 		font-size: 3rem;
 	}
-	label {
+	.input {
 		display: flex;
 		flex-grow: 1;
+	}
+	.checkbox {
+		background: transparent;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	input[type='checkbox'] {
 		margin: 0 1rem 0 1rem;
