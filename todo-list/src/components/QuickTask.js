@@ -3,8 +3,10 @@ import state from "../state.js";
 import Todo from "../todo-factory.js";
 
 export default function QuickTask(project, rerender) {
-
+    
     const wrapper = document.createElement("div");
+    let projectIsGiven = project ? true : false;
+
     wrapper.id = 'quick-task';
 
     let html = `
@@ -80,7 +82,7 @@ export default function QuickTask(project, rerender) {
         this.title.value = '';
         rerender()
         state.saveState()
-        project = null;
+        project = projectIsGiven ? project : null;
     }
 
     render()
