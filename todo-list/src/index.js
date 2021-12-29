@@ -5,7 +5,7 @@ import Sidebar from "./components/Sidebar.js";
 import AllProjects from "./components/AllProjects.js";
 import AllTasks from "./components/AllTasks.js";
 
-import "./style.css";
+import "./style.scss";
 
 document.body.innerHTML = "<div id='root'></div>"
 
