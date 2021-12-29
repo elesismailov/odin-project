@@ -10,23 +10,22 @@ export default function QuickTask(project, rerender) {
     let html = `
         <form>
 			<span class="priority"></span>
-            <label>
-                <span class="plus">+</span>
-                <input name='title' type="text" placeholder="New Task..."/>
-            </label>
+            <label class='checkbox'><input name='isComplete' type="checkbox"></label>
+            
+            <label class='input'><input name='title' type="text" placeholder="New Task..."/></label>
             ${!project ? `
             <div class="project-dropdown" >
                 <button name='project' data-value='${state.projects[0].title}' class="select-project" aria-expanded="false">${state.projects[0].title}</button>
                 <ul class='project-options'></ul>
             </div>
             ` : ''}
-			<input name='isComplete' type="checkbox">
             <select name='priority'>
                 <option value='0'>None</option>
                 <option value='1'>!</option>
                 <option value='2'>!!</option>
                 <option value='3' selected>!!!</option>
             </select>
+            <button type='submit' class="plus">+</button>
         </form>
     `;
     wrapper.innerHTML = html;
