@@ -1,8 +1,14 @@
 
+import GeneralInformation from './components/GeneralInformation';
+
 function App() {
   return (
-    <div className="App">
-      hello world
+    <div>
+
+      <GeneralInformation>
+
+      </GeneralInformation>
+      
     </div>
   );
 }
