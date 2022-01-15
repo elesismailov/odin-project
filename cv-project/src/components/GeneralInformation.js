@@ -14,7 +14,8 @@ class GeneralInformation extends React.Component {
     }
 
     handleChange(event) {
-        this.setState({ name: event.target.value })
+        const name = event.target.name;
+        this.setState({ [name]: event.target.value })
     }
 
     render() {
@@ -29,12 +30,24 @@ class GeneralInformation extends React.Component {
                         onChange={this.handleChange}
                     />
                     <label htmlFor="">Your email:</label>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        name="email"
+                        value={this.state.email}
+                        onChange={this.handleChange}
+                    />
                     <label htmlFor="">Your phone number:</label>
-                    <input type="text" />
+                    <input
+                        type="text"
+                        name="phone"
+                        value={this.state.phone}
+                        onChange={this.handleChange}
+                    />
                 </form>
 
-                <p>{this.state.name}</p>
+                <p>Name: {this.state.name}</p>
+                <p>Email: {this.state.email}</p>
+                <p>Phone number: {this.state.phone}</p>
             </div>
         );
     }
