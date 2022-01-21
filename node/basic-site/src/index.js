@@ -1,6 +1,7 @@
 
 
 const http = require('http');
+const { readFile } = require('fs');
 
 const port = process.env.PORT || 3000;
 
@@ -10,16 +11,24 @@ const server = http.createServer((req, res) => {
   // console.log(req)
   switch(req.url) {
   	case '/': 
-  		console.log("home page");
+  		readFile('./index.html', 'utf8', (err, data) => {
+  			res.end(data)
+  		})
   		break;
   	case '/about': 
-  		console.log('about page')
+  		readFile('./about.html', 'utf8', (err, data) => {
+  			res.end(data)
+  		})
   		break;
   	case '/contact-me': 
-  		console.log('contact page')
+  		readFile('./contact-me.html', 'utf8', (err, data) => {
+  			res.end(data)
+  		})
   		break;
-  	case '/404': 
-  		console.log('not found page')
+  	default: 
+  		readFile('./404.html', 'utf8', (err, data) => {
+  			res.end(data)
+  		})
   		break;
 	}
 });
