@@ -1,10 +1,11 @@
 extends layout
 
 block content
-	h1 Create a new message
+	h1 Create a new message hello
+	a(href='/') Home
 	form(method='POST' action='/new')
 		label Your message
-			input(type='text' required name='message')
+			input(type='text' required name='text')
 		label Your name
-			input(type='text' required name='name')
+			input(type='text' required name='user')
 		button Save
