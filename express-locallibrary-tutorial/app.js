@@ -18,7 +18,7 @@ mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
 var db = mongoose.connection;
 
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.on('open', function() {console.log(db)})
+// db.on('open', function() {console.log(db)})
 
 var app = express();
 // view engine setup
