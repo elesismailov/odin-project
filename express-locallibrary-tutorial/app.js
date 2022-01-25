@@ -8,16 +8,17 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var catalogRouter = require('./routes/catalog');  //Import routes for "catalog" area of site
 
 process.env.MONGODB_CONNECTION_URL
 
-var mongoose = require('mongoose');
-var mongoDB = process.env.MONGODB_CONNECTION_URL;
-mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
-var db = mongoose.connection;
+// var mongoose = require('mongoose');
+// var mongoDB = process.env.MONGODB_CONNECTION_URL;
+// mongoose.connect(mongoDB, { useNewUrlParser: true , useUnifiedTopology: true});
+// var db = mongoose.connection;
 
-db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.on('open', function() {console.log(db)})
+// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+// db.on('open', function() {console.log(db)})
 
 var app = express();
 // view engine setup
@@ -32,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/catalog', catalogRouter);  // Add catalog routes to middleware chain.
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
