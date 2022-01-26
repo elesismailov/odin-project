@@ -33,7 +33,6 @@ AuthorSchema.virtual('lifespan').get(function() {
   if (this.date_of_birth) {
     lifetime_string = this.date_of_birth.getFullYear().toString();
   }
-  console.log(lifetime_string)
   lifetime_string += ' - ';
   if (this.date_of_death) {
     lifetime_string += this.date_of_death.getFullYear()
