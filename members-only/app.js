@@ -22,6 +22,14 @@ const User = mongoose.model(
     password: { type: String, required: true }
   })
 );
+const Message = mongoose.model(
+  "Message",
+  new Schema({
+    user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+    title: {type: String, required: true},
+    body: {type: String, required: true},
+  })
+);
 
 passport.use(
   new LocalStrategy((username, password, done) => {
