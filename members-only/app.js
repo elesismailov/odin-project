@@ -66,6 +66,7 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
+  console.log(req.user)
   res.render("index", { user: req.user });
 });
 
@@ -105,5 +106,10 @@ app.get("/log-out", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
+app.get('/new-message', (req, res) => {
+  if (!req.user) res.redirect('/');
+  else res.render('new-message-form', {user: req.user});
+})
 
 app.listen(3000, () => console.log("app listening on port 3000!"));
