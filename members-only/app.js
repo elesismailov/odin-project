@@ -26,7 +26,7 @@ const Message = mongoose.model(
   "Message",
   new Schema({
     user: {type: Schema.Types.ObjectId, ref: 'User', required: true},
-    title: {type: String, required: true},
+    // title: {type: String, required: true},
     body: {type: String, required: true},
   })
 );
@@ -119,5 +119,17 @@ app.get('/new-message', (req, res) => {
   if (!req.user) res.redirect('/');
   else res.render('new-message-form', {user: req.user});
 })
-
+app.post('/new-message', (req, res) => {
+  console.log(req.body.message)
+  console.log(req.user)
+  const message = new Message({
+    body: req.body.message,
+    user: req.user.id
+  }).save(err => {
+    if (err) { 
+      return next(err);
+    }
+    res.redirect("/");
+  });
+})
 app.listen(3000, () => console.log("app listening on port 3000!"));
