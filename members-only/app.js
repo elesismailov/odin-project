@@ -2,6 +2,7 @@ require('dotenv').config()
 
 const express = require("express");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
@@ -12,7 +13,7 @@ const mongoDb = process.env.MONGODB_URL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
-db.on("open", () => console.log("Database interactions are ready..."));
+db.on("open", () => console.log("Database is ready for interactions..."));
 
 const User = mongoose.model(
   "User",
@@ -31,9 +32,15 @@ passport.use(
       if (!user) {
         return done(null, false, { message: "Incorrect username" });
       }
-      if (user.password !== password) {
-        return done(null, false, { message: "Incorrect password" });
-      }
+      bcrypt.compare(password, user.password, (err, res) => {
+        if (res) {
+          // passwords match! log user in
+          return done(null, user)
+        } else {
+          // passwords do not match!
+          return done(null, false, { message: "Incorrect password" })
+        }
+      })
       return done(null, user);
     });
   })
@@ -65,15 +72,24 @@ app.get("/", (req, res) => {
 app.get("/sign-up", (req, res) => res.render("sign-up-form"));
 
 app.post("/sign-up", (req, res, next) => {
-  const user = new User({
-    username: req.body.username,
-    password: req.body.password
-  }).save(err => {
-    if (err) { 
-      return next(err);
-    }
-    res.redirect("/");
+  bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+  // if err, do something
+  if (err) { 
+    return next(err);
+  }
+
+  // otherwise, store hashedPassword in DB
+    const user = new User({
+      username: req.body.username,
+      password: hashedPassword
+    }).save(err => {
+      if (err) { 
+        return next(err);
+      }
+      res.redirect("/");
+    });
   });
+
 });
 
 app.post(
@@ -85,6 +101,7 @@ app.post(
 );
 
 app.get("/log-out", (req, res) => {
+  console.log(req.user)
   req.logout();
   res.redirect("/");
 });
