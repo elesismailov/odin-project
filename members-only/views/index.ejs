@@ -3,6 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <title></title>
+  <style>
+    body {
+      background-color: #fff;
+      font-family: sans-serif;
+    }
+    .message {
+      max-width: 600px;
+      margin: 20px auto;
+      border-radius: 5px;
+      background-color: #aaa;
+      padding: 20px;
+      color: #fff;
+    }
+    .message-author {
+
+    }
+    label, input, a {
+      display:  block;
+    }
+    h1 {
+      display: inline;
+    }
+  </style>
 </head>
 <body>
   <% if (user) {%>
@@ -10,24 +33,40 @@
     <a href="/log-out">LOG OUT</a>
     <a href="/new-message">Add a message</a>
   <% } else { %>
-    <h1>please log in</h1>
-    <form action="/log-in" method="POST">
-      <label for="username">Username</label>
-      <input name="username" placeholder="username" type="text" />
-      <label for="password">Password</label>
-      <input name="password" type="password" />
-      <button>Log In</button>
-    </form>
+    <details>
+      <summary><h1>Log in</h1></summary>
+      <form action="/log-in" method="POST">
+        <label for="username">Username</label>
+        <input name="username" placeholder="username" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <button>Log In</button>
+      </form>
+    </details>
+    
+    <details>
+      <summary><h1>Sign Up</h1></summary>
+      <form action="/sign-up" method="POST">
+        <label for="username">Username</label>
+        <input name="username" placeholder="username" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <button>Sign Up</button>
+      </form>
+    </details>
+    
   <%}%>
   <% if (messages.length) {%>
     <% for (message of messages) {%>
+      <div class='message'>
       <% if (user) {%>
         <% let sender = users.find(user => user._id.toString() === message.user.toString()) %>
-        <p><%= sender.username %></p>
+        <p class='message-author'><%= sender.username %></p>
       <% } else { %>
-        <p>undefined!3</p>
+        <p class='message-author'>undefined000</p>
       <%}%>
-      <p><%= message.body %></p>
+      <pre class='message-body'><%= message.body %></pre>
+    </div>
     <%}%>
   <% } else { %>
     <h2>There are no messages yet!</h2>
