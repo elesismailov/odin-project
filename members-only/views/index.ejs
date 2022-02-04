@@ -46,13 +46,25 @@
     
     <details>
       <summary><h1>Sign Up</h1></summary>
-      <form action="/sign-up" method="POST">
+      <form action="/sign-up" method="POST" class="sign-up">
         <label for="username">Username</label>
-        <input name="username" placeholder="username" type="text" />
+        <input name="username" placeholder="username" class="sign-up" type="text" />
         <label for="password">Password</label>
-        <input name="password" type="password" />
+        <input name="password" type="password" class="sign-up" />
+        <label for="cpassword">Confirm Password</label>
+        <input name="cpassword" type="password" class="sign-up" />
         <button>Sign Up</button>
       </form>
+      <script defer>
+        let signUpForm = document.querySelector('form.sign-up')
+        signUpForm.onsubmit = function(event) {
+          if (signUpForm.password.value !== signUpForm.cpassword.value) {
+            event.preventDefault()
+            // here supposed to be the code to tell the 
+            // user about not matching passwords
+          }
+        }
+      </script>
     </details>
     
   <%}%>

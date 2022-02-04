@@ -73,10 +73,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
+app.use(function(req, res, next) {
+  console.log(req.path)
+  next()
+})
+
 app.get("/", (req, res) => {
   Message.find()
   .exec((err, message_list) => {
-    console.log(message_list)
     if (req.user) {
       User.find().exec((err, user_list) => {
         res.render('index', {user: req.user, messages: message_list, users: user_list})
