@@ -74,11 +74,22 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/", (req, res) => {
-  console.log(req.user)
-  res.render("index", { user: req.user });
+  Message.find()
+  .exec((err, message_list) => {
+    console.log(message_list)
+    if (req.user) {
+      User.find().exec((err, user_list) => {
+        res.render('index', {user: req.user, messages: message_list, users: user_list})
+      })
+    } else {
+      res.render("index", { user: req.user, messages: message_list });
+    }
+  })
 });
 
-app.get("/sign-up", (req, res) => res.render("sign-up-form"));
+app.get("/sign-up", (req, res) => {
+  res.render("sign-up-form");
+});
 
 app.post("/sign-up", (req, res, next) => {
   bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {

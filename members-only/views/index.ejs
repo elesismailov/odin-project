@@ -19,5 +19,19 @@
       <button>Log In</button>
     </form>
   <%}%>
+  <% if (messages.length) {%>
+    <% for (message of messages) {%>
+      <% if (user) {%>
+        <% let sender = users.find(user => user._id.toString() === message.user.toString()) %>
+        <p><%= sender.username %></p>
+      <% } else { %>
+        <p>undefined!3</p>
+      <%}%>
+      <p><%= message.body %></p>
+    <%}%>
+  <% } else { %>
+    <h2>There are no messages yet!</h2>
+  <%}%>
+
 </body>
 </html>
