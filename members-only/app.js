@@ -87,10 +87,6 @@ app.get("/", (req, res) => {
   })
 });
 
-app.get("/sign-up", (req, res) => {
-  res.render("sign-up-form");
-});
-
 app.post("/sign-up", (req, res, next) => {
   bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
   // if err, do something
