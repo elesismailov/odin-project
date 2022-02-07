@@ -49,21 +49,25 @@ app.get("/", (req, res) => {
 
 // GET All posts
 app.get('/all-posts', (req, res) => {
-	Post.find().exec((err, posts) => {
+	Post.find({}, 'title text date').exec((err, posts) => {
 		console.log(posts.map(p => p.url))
 		res.send(posts)
 	})
 })
 // CREATE new post
 app.post('/all-posts', (req, res) => {
-	new Post({
-		title: req.body.title,
-		text: req.body.text,
-		date: req.body.date
-	}).save((err) => {
-		if (err) {res.sendStatus(403)}
-		else {res.sendStatus(202)}
-	})
+	if (req.body.title && req.body.text && req.body.date) {
+		new Post({
+			title: req.body.title,
+			text: req.body.text,
+			date: req.body.date
+		}).save((err) => {
+			if (err) {res.sendStatus(400)}
+			else {res.sendStatus(202)}
+		})
+	} else {
+		res.sendStatus(400)
+	}
 })
 
 // Get ONE post
