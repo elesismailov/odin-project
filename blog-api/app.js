@@ -71,22 +71,30 @@ app.post('/all-posts', (req, res) => {
 })
 
 // Get ONE post
-app.get('/all-posts/:postId', (req, res) => {
-	Post.findById(req.params.postId).exec((err, post) => {
+app.get('/all-posts/:id', (req, res) => {
+	Post.findById(req.params.id).exec((err, post) => {
 		if (err) { res.sendStatus(404) }
 		res.send(post)
 	})
 })
 // UPDATE new post
-app.put('/all-posts/:postId', (req, res) => {
+app.put('/all-posts/:id', (req, res) => {
 
-	Post.findById(req.params.postId, (err, post) => {
+	Post.findById(req.params.id, (err, post) => {
 		post.title = req.body.title || post.title;
 		post.text = req.body.text || post.text;
 		post.save((err) => {
 			if (err) { res.sendStatus(400) }
 			else { res.sendStatus(202) }
 		})
+	})
+})
+
+// DELETE a post
+app.delete('/all-posts/:id', (req, res) => {
+	Post.deleteOne({'_id': req.params.id}).exec((err) => {
+		if (err) { res.sendStatus(400) }
+		else { res.sendStatus(202) }
 	})
 })
 
