@@ -1,0 +1,24 @@
+{
+  "name": "blog-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node app.js",
+    "dev": "NODE_ENV=development node app.js",
+    "watch": "NODE_ENV=development nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^16.0.0",
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "express": "^4.17.2",
+    "mongoose": "^6.2.0",
+    "passport": "^0.5.2"
+  }
+}
