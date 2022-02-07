@@ -15,17 +15,19 @@ const db = mongoose.connection;
 db.on("error", console.error.bind(console, "mongo connection error"));
 db.on("open", () => console.log("Database is ready for interactions..."));
 
-const Post = mongoose.model(
-  "Post",
-  new Schema({
+const PostSchema =   new Schema({
     title: { type: String, required: true, maxLength: 250 },
     text: { type: String, required: true },
     date: { type: Date, required: true }
-  })
-);
+  });
 
-Post.virtual('url')
- .get(function() { return '/all-posts/' + this._id }); 
+PostSchema.virtual('url')
+ .get(function() { return '/all-posts/' + this._id })
+
+const Post = mongoose.model(
+  "Post",
+  PostSchema
+);
 
 const app = express();
 
@@ -42,10 +44,11 @@ app.get("/", (req, res) => {
 
 app.get('/all-posts', (req, res) => {
 	Post.find().exec((err, posts) => {
-		console.log(posts)
+		console.log(posts.map(p => p.url))
 		res.send(posts)
 	})
 })
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Running on ${PORT}`));
