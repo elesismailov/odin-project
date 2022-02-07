@@ -8,6 +8,7 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const bodyParser = require('body-parser')
 
 const mongoDb = process.env.MONGODB_CONNECTION_URL;
 mongoose.connect(mongoDb, { useUnifiedTopology: true, useNewUrlParser: true });
@@ -33,6 +34,10 @@ const app = express();
 
 app.use(express.urlencoded({ extended: false }));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
+
 app.use(function(req, res, next) {
   console.log(req.path)		// log the path
   next()
@@ -47,6 +52,17 @@ app.get('/all-posts', (req, res) => {
 	Post.find().exec((err, posts) => {
 		console.log(posts.map(p => p.url))
 		res.send(posts)
+	})
+})
+// CREATE new post
+app.post('/all-posts', (req, res) => {
+	new Post({
+		title: req.body.title,
+		text: req.body.text,
+		date: req.body.date
+	}).save((err) => {
+		if (err) {res.sendStatus(403)}
+		else {res.sendStatus(202)}
 	})
 })
 
