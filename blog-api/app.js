@@ -42,10 +42,19 @@ app.get("/", (req, res) => {
 	res.send("hello world")
 })
 
+// GET All posts
 app.get('/all-posts', (req, res) => {
 	Post.find().exec((err, posts) => {
 		console.log(posts.map(p => p.url))
 		res.send(posts)
+	})
+})
+
+// Get ONE post
+app.get('/all-posts/:postId', (req, res) => {
+	Post.findById(req.params.postId).exec((err, post) => {
+		if (err) { res.sendStatus(404) }
+		res.send(post)
 	})
 })
 
