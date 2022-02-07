@@ -77,7 +77,18 @@ app.get('/all-posts/:postId', (req, res) => {
 		res.send(post)
 	})
 })
+// UPDATE new post
+app.put('/all-posts/:postId', (req, res) => {
 
+	Post.findById(req.params.postId, (err, post) => {
+		post.title = req.body.title || post.title;
+		post.text = req.body.text || post.text;
+		post.save((err) => {
+			if (err) { res.sendStatus(400) }
+			else { res.sendStatus(202) }
+		})
+	})
+})
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => console.log(`Running on ${PORT}`));
