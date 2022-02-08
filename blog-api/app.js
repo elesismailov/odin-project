@@ -83,15 +83,19 @@ app.get('/all-posts/:id', (req, res) => {
 	})
 })
 // UPDATE new post
-app.put('/all-posts/:id', (req, res) => {
-
-	Post.findById(req.params.id, (err, post) => {
-		post.title = req.body.title || post.title;
-		post.text = req.body.text || post.text;
-		post.save((err) => {
-			if (err) { res.sendStatus(400) }
-			else { res.sendStatus(202) }
-		})
+app.put('/all-posts/:id', verifyToken, (req, res) => {
+	jwt.verify(req.token, process.env.JWT_KEY, (err, authData) => {
+		if (err) {res.sendStatus(403)}
+		else {
+			Post.findById(req.params.id, (err, post) => {
+				post.title = req.body.title || post.title;
+				post.text = req.body.text || post.text;
+				post.save((err) => {
+					if (err) { res.sendStatus(400) }
+					else { res.sendStatus(202) }
+				})
+			})
+		}
 	})
 })
 
