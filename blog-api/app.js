@@ -96,10 +96,16 @@ app.put('/all-posts/:id', (req, res) => {
 })
 
 // DELETE a post
-app.delete('/all-posts/:id', (req, res) => {
-	Post.deleteOne({'_id': req.params.id}).exec((err) => {
-		if (err) { res.sendStatus(400) }
-		else { res.sendStatus(202) }
+app.delete('/all-posts/:id', verifyToken, (req, res) => {
+
+	jwt.verify(req.token, process.env.JWT_KEY, (err, authData) => {
+		if (err) {res.sendStatus(403)}
+		else {
+			Post.deleteOne({'_id': req.params.id}).exec((err) => {
+				if (err) { res.sendStatus(400) }
+				else { res.sendStatus(202) }
+			})
+		}
 	})
 })
 
