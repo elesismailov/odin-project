@@ -4,14 +4,15 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const mongoose = require('mongoose');
+function initializeMongoServer() {
+	const mongodb = process.env.MONGODB_CONNECTION_URL;
 
-const mongodb = process.env.MONGODB_CONNECTION_URL;
+	mongoose.connect(mongodb, {});
 
-mongoose.connect(mongodb, {});
+	const db = mongoose.connection;
 
-const db = mongoose.connection;
+	db.on("error", () => console.log("DB Connection error"));
+	db.on('open', () => console.log('Ready for interactions'));
+}
 
-db.on("error", () => console.log("DB Connection error"));
-db.on('open', () => console.log('Ready for interactions'));
-
-
+module.exports = initializeMongoServer;

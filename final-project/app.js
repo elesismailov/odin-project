@@ -4,8 +4,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 const mongoose = require("mongoose");
+const express = require('express');
+
+const initializeMongoServer = require('./mongoConfig'); 
+// const initializeMongoServer = require('./mongoConfigTesting'); 
 
 const app = express();
+initializeMongoServer()
 
 app.use(function(req, res, next) {
   console.log(req.path)		// log the path
