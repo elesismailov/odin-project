@@ -10,4 +10,11 @@ router.get('/', function(req, res) {
 		res.json(user.friends)
 	});
 });
+
+router.get('/:id', function(req, res) {
+	UserModel.findById(req.params.id).exec((err, user) => {
+		res.json(user)
+	})
+});
+
 module.exports = router;

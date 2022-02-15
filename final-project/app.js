@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
 
 	console.log(req.body);
 	if (req.body.username === 'hello' && req.body.password === 123) {
-		res.locals.user = { _id: '620a110ae7fcf3c55afe99b0'};
+		res.locals.user = { _id: '620b6a107706bfd187ad1a7e'};
 		next()
 	} else {
 		next(new Error("not allowed wuwu"))
