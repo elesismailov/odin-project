@@ -24,8 +24,8 @@ app.use(function(req, res, next) {
 
 // ROUTERS
 app.use('/api/feed', feedRouter)
-app.use('/api/users', usersRouter)
-app.use('/api/posts', postsRouter)
+//app.use('/api/users', usersRouter)
+//app.use('/api/posts', postsRouter)
 
 app.get("/", (req, res) => {
 	res.send("hello world")
