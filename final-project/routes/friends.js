@@ -17,4 +17,12 @@ router.get('/:id', function(req, res) {
 	})
 });
 
+router.delete('/:id', function(req, res) {
+	res.send('not implemented: delete a friend')
+});
+
+router.post('/:id', function(req, res) {
+	res.send('not implemented: send a friend request')
+});
+
 module.exports = router;
