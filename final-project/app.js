@@ -31,6 +31,17 @@ app.use(function(req, res, next) {
   next()
 })
 
+function tokenExists(req, res, next) {
+	const bearerHeader = req.headers['authorization'];
+	if (typeof bearerHeader !== 'undefined') {
+		const token = bearerHeader.split(' ')[1];
+		req.token = token;
+		next()
+	} else {
+		res.sendStatus(400)
+	}
+}
+
 // verify token
 app.use(function(req, res, next) {
 	if (req.path === '/log-in') { 
