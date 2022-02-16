@@ -8,6 +8,7 @@ const usersRouter = require('./routes/users.js');
 const postsRouter = require('./routes/posts.js');
 const friendsRouter = require('./routes/friends.js');
 
+const UserModel = require('./models/user.js');
 const mongoose = require("mongoose");
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -50,13 +51,16 @@ app.use('/api/users', usersRouter)
 app.use('/api/friends', friendsRouter)
 
 app.post('/log-in', async function(req, res) {
-	// const {username, password} = req.body;
-	// const user = await UserModel.find({username})
-	// if (user.password === password) {
-	//     const token = await jwt.sign({user}, 'a very secret key');
-	//     res.json(token)
-	// }
-	res.send('success');
+	const { email, password } = req.body;
+	const user = await UserModel.findOne({email})
+	if (user === null) {
+		res.sendStatus(400)
+	} else if (user.password === password) {
+	    const token = await jwt.sign({user}, 'a very secret key');
+	    res.json({token})
+	} else {
+		res.sendStatus(400)
+	}
 })
 
 //app.use((err, req, res) => {
