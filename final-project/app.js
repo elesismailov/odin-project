@@ -31,27 +31,33 @@ app.use(function(req, res, next) {
   next()
 })
 
-function tokenExists(req, res, next) {
+function tokenExists(req) {
 	const bearerHeader = req.headers['authorization'];
 	if (typeof bearerHeader !== 'undefined') {
 		const token = bearerHeader.split(' ')[1];
-		req.token = token;
-		next()
-	} else {
-		res.sendStatus(400)
+		return token;
 	}
+	return null
 }
 
 // verify token
 app.use(function(req, res, next) {
+	const token = tokenExists(req);
 	if (req.path === '/log-in') { 
 		// the only allowed path
 		next()
-	} else if (req.body.username === 'hello' && req.body.password === 123) {
-		res.locals.user = { _id: '620b6a107706bfd187ad1a7e'};
-		next()
+	} else if (token) {
+		jwt.verify(token, 'a very secret key', (err, authData) => {
+			console.log(authData)
+			if (err) { res.sendStatus(403) }
+			else {
+				res.locals.user = authData;
+				next()		
+			}
+		})
 	} else {
-		next(new Error("not allowed wuwu"))
+		res.sendStatus(403)
+		// next(new Error("Please log in to access..."))
 	}
 });
 
