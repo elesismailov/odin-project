@@ -34,14 +34,18 @@ function createUser(username, cb) {
 }
 
 function createPost(user, cb) {
-	const post = {user, title: faker.lorem.sentence(), text: faker.lorem.paragraph()};
+	const post = {user, title: faker.lorem.sentence(), text: faker.lorem.paragraph(), date: faker.datatype.datetime()};
 	const p = new Post(post);
 	p.save((err) => {
 		if (err) {
+			console.log(p)
+			console.log(err)
 			cb(err, null)
 		}
-		posts.push(p)
-		cb(null, p)
+		else {
+			posts.push(p)
+			cb(null, p)
+		}
 	})
 }
 
@@ -74,7 +78,7 @@ function createUsers(cb) {
 
 
 function createPosts(cb) {
-	async.parallel([
+	async.series([
 		function(callback) {
 			createPost(users[0], callback)
 		},
@@ -96,12 +100,10 @@ function createPosts(cb) {
 		function(callback) {
 			createPost(users[6], callback)
 		},
-		function(callback) {
-			createPost(users[7], callback)
-		},
 	], cb)
 }
 
 async.series([
 	createUsers,
+	createPosts,
 ], function() {mongoose.connection.close()})
