@@ -50,7 +50,7 @@ app.use(function(req, res, next) {
 		jwt.verify(token, 'a very secret key', (err, authData) => {
 			if (err) { res.sendStatus(403) }
 			else {
-				res.locals.user = authData.user;
+				req.currentUserId = authData.user._id
 				next()		
 			}
 		})
