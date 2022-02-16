@@ -10,6 +10,7 @@ const PostSchema = new Schema(
     likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
 	title: {type: String, required: true},
 	text: {type: String, required: true},
+	date: {type: Date, required: true},
   }
 );
 
