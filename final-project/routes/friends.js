@@ -6,10 +6,10 @@ const UserModel = require('../models/user.js');
 
 router.get('/', function(req, res) {
 	// get the current user id and look up the friends
-	UserModel.findById(res.locals.user._id).exec((err, user) => {
+	UserModel.findById(req.currentUserId).exec((err, user) => {
 		if (err) { res.sendStatus(400); console.log(err)}
 		else {
-			res.json(user.friends)
+			res.json({friends: user.friends})
 		}
 	});
 });

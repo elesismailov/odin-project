@@ -8,8 +8,8 @@ const PostModel = require('../models/post.js');
 
 // '/feed' === '/'
 router.get('/', function(req, res) {
+	console.log(req.currentUserId)
 	PostModel.find().exec((err, result) => {
-		console.log(result)
 		res.send(result)
 	})
 });
