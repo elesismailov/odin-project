@@ -22,7 +22,7 @@ const users = [];
 const posts = [];
 
 function createUser(username, cb) {
-	const user = {username};
+	const user = {username, email: faker.internet.email(), password: faker.internet.password()};
 	const u = new User(user);
 	u.save((err) => {
 		if (err) {
@@ -104,5 +104,4 @@ function createPosts(cb) {
 
 async.series([
 	createUsers,
-	createPosts
 ], function() {mongoose.connection.close()})
