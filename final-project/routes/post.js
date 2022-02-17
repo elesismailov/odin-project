@@ -18,6 +18,7 @@ router.get('/:id', async function(req,res) {
 
 router.get('/:id/comments/:limit', async function(req, res) {
 	const post = await PostModel.findById(req.params.id);
+	if (!post) { res.sendStatus(404); return }
 	const comments =  [];
 	if (post.comments.length) {
 		for (let i = 0; i < +req.params.limit; i++) {
@@ -47,6 +48,8 @@ router.post('/', function(req, res) {
 // UPDATE POST
 router.put('/:id', async function(req, res) {
 	const post = await PostModel.findById(req.params.id);
+	if (!post) { res.sendStatus(404); return }
+
 	const { title, text } = req.body;
 	post.title = title || post.title;
 	post.text = text || post.text;
@@ -59,11 +62,10 @@ router.put('/:id', async function(req, res) {
 // DELETE POST
 router.delete('/:id', async function(req, res) {
 	const post = await PostModel.findById(req.params.id);
-	if (!post) { res.sendStatus(404) }
-	else {
-		const d = await PostModel.deleteOne({ _id: post._id})
-		if (d) { res.sendStatus(202) }
-		else { res.sendStatus(400) }
-	}
+	if (!post) { res.sendStatus(404); return }
+	
+	const d = await PostModel.deleteOne({ _id: post._id})
+	if (d) { res.sendStatus(202) }
+	else { res.sendStatus(400) }
 });
 module.exports = router;
