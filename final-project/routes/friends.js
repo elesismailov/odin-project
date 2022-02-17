@@ -20,8 +20,24 @@ router.get('/:id', function(req, res) {
 	})
 });
 
-router.delete('/:id', function(req, res) {
-	res.send('not implemented: delete a friend')
+router.delete('/:id', async function(req, res) {
+	const currentUser = await UserModel.findById(req.currentUserId);
+	const d = await UserModel.findById(req.params.id);
+	if (!currentUser && !d) {
+		res.sendStatus(404)
+		return
+	}
+	if (currentUser.friends.includes(d._id)) {
+		currentUser.friends.splice(currentUser.friends.indexOf(d._id), 1)
+		const s = await currentUser.save();
+		if (s) {
+			res.sendStatus(202)
+			return
+		}
+		res.sendStatus(400)
+	} else {
+		res.sendStatus(400)
+	}
 });
 
 router.post('/:id', async function(req, res) {
