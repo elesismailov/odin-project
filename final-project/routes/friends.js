@@ -23,14 +23,16 @@ router.get('/:id', function(req, res) {
 router.delete('/:id', async function(req, res) {
 	const currentUser = await UserModel.findById(req.currentUserId);
 	const d = await UserModel.findById(req.params.id);
-	if (!currentUser && !d) {
+	if (!d) {
 		res.sendStatus(404)
 		return
 	}
 	if (currentUser.friends.includes(d._id)) {
 		currentUser.friends.splice(currentUser.friends.indexOf(d._id), 1)
+		d.friends.splice(d.friends.indexOf(currentUser._id), 1)
 		const s = await currentUser.save();
-		if (s) {
+		const c = await d.save();
+		if (s && c) {
 			res.sendStatus(202)
 			return
 		}
