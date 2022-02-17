@@ -5,7 +5,7 @@ if (process.env.NODE_ENV === 'development') {
 
 const feedRouter = require('./routes/feed.js');
 const usersRouter = require('./routes/users.js');
-const postsRouter = require('./routes/posts.js');
+const postRouter = require('./routes/post.js');
 const friendsRouter = require('./routes/friends.js');
 
 const UserModel = require('./models/user.js');
@@ -63,7 +63,7 @@ app.use(function(req, res, next) {
 // ROUTERS
 app.use('/api/feed', feedRouter)
 app.use('/api/users', usersRouter)
-//app.use('/api/posts', postsRouter)
+app.use('/api/post', postRouter)
 app.use('/api/friends', friendsRouter)
 
 app.post('/log-in', async function(req, rs) {
