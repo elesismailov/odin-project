@@ -28,4 +28,20 @@ router.get('/:id/comments/:limit', async function(req, res) {
 	}
 	res.json({ comments })
 });
+
+
+router.post('/', function(req, res) {
+	const { title, text } = req.body;
+	const post = {
+		title,
+		text,
+		user: req.currentUserId,
+		date: new Date(),
+	};
+	new PostModel(post).save(err => {
+		if (err) { res.sendStatus(400) }
+		else { res.sendStatus(202) }
+	});
+});
+
 module.exports = router;
