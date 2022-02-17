@@ -66,7 +66,7 @@ app.use('/api/users', usersRouter)
 //app.use('/api/posts', postsRouter)
 app.use('/api/friends', friendsRouter)
 
-app.post('/log-in', async function(req, res) {
+app.post('/log-in', async function(req, rs) {
 	const { email, password } = req.body;
 	const user = await UserModel.findOne({email})
 	if (user === null) {
