@@ -24,8 +24,25 @@ router.delete('/:id', function(req, res) {
 	res.send('not implemented: delete a friend')
 });
 
-router.post('/:id', function(req, res) {
-	res.send('not implemented: send a friend request')
+router.post('/:id', async function(req, res) {
+	const sender = await UserModel.findById(req.currentUserId);
+	const reciever = await UserModel.findById(req.params.id);
+	if (!sender && !reciever) {
+		res.sendStatus(400)
+		return
+	}
+	if (sender.friendRequestsTo.includes(reciever._id)) {
+		res.sendStatus(202)
+		return
+	}
+	sender.friendRequestsTo.push(reciever._id)
+	reciever.friendRequestsFrom.push(sender._id)
+	const s = await sender.save();
+	const r = await reciever.save();
+	if (s && r) {
+		res.sendStatus(202);
+		return
+	}
 });
 
 module.exports = router;
