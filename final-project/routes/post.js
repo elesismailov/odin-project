@@ -29,7 +29,7 @@ router.get('/:id/comments/:limit', async function(req, res) {
 	res.json({ comments })
 });
 
-
+// CREATE NEW POST
 router.post('/', function(req, res) {
 	const { title, text } = req.body;
 	const post = {
@@ -43,5 +43,18 @@ router.post('/', function(req, res) {
 		else { res.sendStatus(202) }
 	});
 });
+
+// UPDATE POST
+router.put('/:id', async function(req, res) {
+	const post = await PostModel.findById(req.params.id);
+	const { title, text } = req.body;
+	post.title = title || post.title;
+	post.text = text || post.text;
+	post.save(err => {
+		if (err) { res.sendStatus(400) }
+		else { res.sendStatus(202) }
+	});
+});
+
 
 module.exports = router;
