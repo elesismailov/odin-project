@@ -41,7 +41,7 @@ router.post('/', function(req, res) {
 	};
 	new PostModel(post).save(err => {
 		if (err) { res.sendStatus(400) }
-		else { res.sendStatus(202) }
+		else { res.sendStatus(201) }
 	});
 });
 
@@ -54,8 +54,8 @@ router.put('/:id', async function(req, res) {
 	post.title = title || post.title;
 	post.text = text || post.text;
 	post.save(err => {
-		if (err) { res.sendStatus(400) }
-		else { res.sendStatus(202) }
+		if (err) { res.sendStatus(500) }
+		else { res.sendStatus(201) }
 	});
 });
 
