@@ -40,6 +40,7 @@ router.delete('/:id', async function(req, res) {
 	}
 });
 
+// SEND A FRIEND REQUEST
 router.post('/:id', async function(req, res) {
 	const sender = await UserModel.findById(req.currentUserId);
 	const reciever = await UserModel.findById(req.params.id);
@@ -58,6 +59,32 @@ router.post('/:id', async function(req, res) {
 	if (s && r) {
 		res.sendStatus(202);
 		return
+	}
+});
+
+// ACCEPT A FRIEND REQUEST
+router.put('/:id', async function(req, res) {
+	const currentUser = await UserModel.findById(req.currentUserId);
+	if (currentUser.friendRequestsFrom.includes(req.params.id)) {
+		const sender = await UserModel.findById(req.params.id);
+		currentUser.friends.push(sender._id)
+		sender.friends.push(currentUser._id)
+		currentUser.friendRequestsFrom.splice(
+			currentUser.friendRequestsFrom.indexOf(sender._id), 1
+		)
+
+		sender.friendRequestsTo.splice(
+			sender.friendRequestsTo.indexOf(currentUser._id), 1
+		)
+		const s = await currentUser.save();
+		const c = await sender.save();
+		if (s && c) {
+			res.sendStatus(202);
+			return
+		}
+		res.sendStatus(500)
+	} else {
+		res.sendStatus(404)
 	}
 });
 
