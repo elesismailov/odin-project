@@ -30,6 +30,23 @@ router.get('/:id/comments/:limit', async function(req, res) {
 	res.json({ comments })
 });
 
+// ADD A COMMENT
+router.post('/:id/comments', async function(req, res) {
+	const post = await PostModel.findById(req.params.id);
+	if (!post) { res.sendStatus(404); return }
+	const { text } = req.body;
+	const comment = new CommentModel ({
+		user: req.currentUserId,
+		text,
+	});
+	const c = await comment.save();
+	if (!c) { res.sendStatus(500); return }
+	post.comments.push(comment._id)
+	const p = await post.save();
+	if (!p) { res.sendStatus(500); return }
+	res.sendStatus(201);
+})
+
 // CREATE NEW POST
 router.post('/', function(req, res) {
 	const { title, text } = req.body;
