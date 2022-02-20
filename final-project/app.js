@@ -8,6 +8,8 @@ const usersRouter = require('./routes/users.js');
 const postRouter = require('./routes/post.js');
 const friendsRouter = require('./routes/friends.js');
 
+const path = require('path');
+
 const UserModel = require('./models/user.js');
 const mongoose = require("mongoose");
 const express = require('express');
@@ -27,9 +29,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
-  console.log(req.path)		// log the path
+  //console.log(req.path)		// log the path
   next()
 })
+
+app.use(express.static(path.resolve(__dirname, './client/build')));
 
 function tokenExists(req) {
 	const bearerHeader = req.headers['authorization'];
@@ -43,20 +47,22 @@ function tokenExists(req) {
 // verify token
 app.use(function(req, res, next) {
 	const token = tokenExists(req);
-	if (req.path === '/log-in') { 
+	if (req.path.slice(0,4) === '/api') { 
 		// the only allowed path
-		next()
-	} else if (token) {
-		jwt.verify(token, 'a very secret key', (err, authData) => {
-			if (err) { res.sendStatus(403) }
-			else {
-				req.currentUserId = authData.user._id
-				next()		
-			}
-		})
+		if (token) {
+			jwt.verify(token, 'a very secret key', (err, authData) => {
+				if (err) { res.sendStatus(403) }
+				else {
+					req.currentUserId = authData.user._id
+					next()		
+				}
+			})
+		} else {
+			res.sendStatus(403)
+			// next(new Error("Please log in to access..."))
+		}
 	} else {
-		res.sendStatus(403)
-		// next(new Error("Please log in to access..."))
+		res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
 	}
 });
 
@@ -66,7 +72,7 @@ app.use('/api/users', usersRouter)
 app.use('/api/post', postRouter)
 app.use('/api/friends', friendsRouter)
 
-app.post('/log-in', async function(req, rs) {
+app.post('/api/log-in', async function(req, rs) {
 	const { email, password } = req.body;
 	const user = await UserModel.findOne({email})
 	if (user === null) {
@@ -77,7 +83,7 @@ app.post('/log-in', async function(req, rs) {
 	} else {
 		res.sendStatus(400)
 	}
-})
+});
 
 //app.use((err, req, res) => {
 //	res.sendStatus(404);
