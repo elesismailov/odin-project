@@ -22,8 +22,25 @@ function LogIn() {
 }
 
 function handleSubmit(event) {
-	console.log(event)
 	event.preventDefault()
+	const response = fetch('/api/log-in', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+		},
+		body: JSON.stringify({
+			email: event.target.email.value,
+			password: event.target.password.value
+		})
+	});
+	response
+		.then(res => res.json())
+		.then(res => saveToken(res.token))
+		.catch(err => console.log('Email or password are wrong'))
+}
+
+function saveToken(token) {
+	localStorage.setItem('token', token)
 }
 
 export default LogIn;

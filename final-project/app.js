@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(function(req, res, next) {
-  //console.log(req.path)		// log the path
+  console.log(req.path)		// log the path
   next()
 })
 
@@ -76,7 +76,8 @@ app.use('/api/users', usersRouter)
 app.use('/api/post', postRouter)
 app.use('/api/friends', friendsRouter)
 
-app.post('/api/log-in', async function(req, rs) {
+app.post('/api/log-in', async function(req, res) {
+	console.log(req.body)
 	const { email, password } = req.body;
 	const user = await UserModel.findOne({email})
 	if (user === null) {
