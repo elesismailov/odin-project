@@ -47,6 +47,10 @@ function tokenExists(req) {
 // verify token
 app.use(function(req, res, next) {
 	const token = tokenExists(req);
+	if (req.path === '/api/sign-up' || req.path === '/api/log-in') {
+		next();
+		return
+	}
 	if (req.path.slice(0,4) === '/api') { 
 		// the only allowed path
 		if (token) {
@@ -61,9 +65,9 @@ app.use(function(req, res, next) {
 			res.sendStatus(403)
 			// next(new Error("Please log in to access..."))
 		}
-	} else {
-		res.sendFile(path.resolve(__dirname, './react/dist', 'index.html'));
+		return 
 	}
+	res.sendFile(path.resolve(__dirname, './react/dist', 'index.html'));
 });
 
 // ROUTERS
@@ -83,6 +87,19 @@ app.post('/api/log-in', async function(req, rs) {
 	} else {
 		res.sendStatus(400)
 	}
+});
+
+app.post('/api/sign-up', async function(req, res) {
+	const {email, password} = req.body;
+	// validate the data
+	//
+	const user = new UserModel({email, username: email, password});
+	const s = await user.save();
+	if (!s) {
+		res.sendStatus(500);
+		return
+	}
+	res.sendStatus(202);
 });
 
 //app.use((err, req, res) => {
