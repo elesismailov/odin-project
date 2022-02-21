@@ -1,11 +1,12 @@
+
 import React from 'react';
 
-function SignUp() {
+function LogIn() {
 
 	return (
 		<div>
-			<h1> Sign Up </h1>
-			<form action='/api/sign-up' method='POST'>
+			<h1> Log In </h1>
+			<form onSubmit={handleSubmit}>
 				<label>
 					<p>Email:</p>
 					<input type='text' name='email' required />
@@ -14,10 +15,15 @@ function SignUp() {
 					<p>Password:</p>
 					<input type='text' name='password' required />
 				</label>
-				<button type='submit'>Sign Up</button>
+				<button type='submit'>Log In</button>
 			</form>
 		</div>
 	);
 }
 
-export default SignUp;
+function handleSubmit(event) {
+	console.log(event)
+	event.preventDefault()
+}
+
+export default LogIn;
