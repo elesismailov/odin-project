@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.use(express.static(path.resolve(__dirname, './client/build')));
+app.use(express.static(path.resolve(__dirname, './react/dist')));
 
 function tokenExists(req) {
 	const bearerHeader = req.headers['authorization'];
@@ -62,7 +62,7 @@ app.use(function(req, res, next) {
 			// next(new Error("Please log in to access..."))
 		}
 	} else {
-		res.sendFile(path.resolve(__dirname, './client/build', 'index.html'));
+		res.sendFile(path.resolve(__dirname, './react/dist', 'index.html'));
 	}
 });
 
