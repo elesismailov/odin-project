@@ -1,10 +1,10 @@
 
 import React, {useState, useEffect} from 'react';
 
-function Feed() {
+function Friends() {
 	useEffect( () => {
 		const response =  fetch(
-			'/api/feed',
+			'/api/friends',
 			{
 				headers: {
 					'Content-Type': 'application/json',
@@ -20,9 +20,9 @@ function Feed() {
 	
 	return (
 		<div>
-			<h1>Feed Page</h1>
+			<h1>Friends Page</h1>
 		</div>
 	);
 }
 
-export default Feed;
+export default Friends;

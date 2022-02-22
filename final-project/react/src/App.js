@@ -8,6 +8,7 @@ import {
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Feed from './pages/Feed';
+import Friends from './pages/Friends';
 
 function App() {
 	return (
@@ -21,6 +22,9 @@ function App() {
 				</Route>
 				<Route exact path='/feed'>
 					<Feed />
+				</Route>
+				<Route exact path='/friends'>
+					<Friends />
 				</Route>
 			</Switch>
 		</Router>
