@@ -9,12 +9,14 @@ import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import Feed from './pages/Feed';
 import Friends from './pages/Friends';
+import Post from './pages/Post';
 
 function App() {
 	return (
 		<Router>
 			<Switch>
 				<Route exact path="/sign-up">
+
 					<SignUp />
 				</Route>
 				<Route exact path="/log-in">
@@ -25,6 +27,9 @@ function App() {
 				</Route>
 				<Route exact path='/friends'>
 					<Friends />
+				</Route>
+				<Route exact path="/post/:id">
+					<Post />
 				</Route>
 			</Switch>
 		</Router>

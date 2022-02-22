@@ -10,7 +10,7 @@ module.exports = {
   module: {
 	  rules: [
 		  {
-			  test: /\.?js$/,
+			  test: /\.jsx?$/,
 			  exclude: /node_modules/,
 			  use: {
 				  loader: "babel-loader",
@@ -22,8 +22,9 @@ module.exports = {
 	  ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: path.join(__dirname, "src", "index.html"),
-    }),
+    //new HtmlWebpackPlugin({
+    //  template: path.join(__dirname, "src", "index.html"),
+
+    //}),
   ],
 }
