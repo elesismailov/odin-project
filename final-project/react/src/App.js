@@ -7,6 +7,7 @@ import {
 
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
+import Feed from './pages/Feed';
 
 function App() {
 	return (
@@ -17,6 +18,9 @@ function App() {
 				</Route>
 				<Route exact path="/log-in">
 					<LogIn />
+				</Route>
+				<Route exact path='/feed'>
+					<Feed />
 				</Route>
 			</Switch>
 		</Router>

@@ -52,6 +52,7 @@ app.use(function(req, res, next) {
 		return
 	}
 	if (req.path.slice(0,4) === '/api') { 
+	console.log(req.headers)
 		// the only allowed path
 		if (token) {
 			jwt.verify(token, 'a very secret key', (err, authData) => {
@@ -77,7 +78,6 @@ app.use('/api/post', postRouter)
 app.use('/api/friends', friendsRouter)
 
 app.post('/api/log-in', async function(req, res) {
-	console.log(req.body)
 	const { email, password } = req.body;
 	const user = await UserModel.findOne({email})
 	if (user === null) {
