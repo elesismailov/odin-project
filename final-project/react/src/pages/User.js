@@ -17,12 +17,22 @@ function User() {
 		});
 		response
 			.then(res => res.json())
-			.then(res => {console.log(res)})
+			.then(res => setUser(res))
 	});
 	return (
 		<div>
-			<h1>A User page</h1>
-			<p ref={msg}>Loading...</p>
+		{user
+			? <div> 
+				<p>	Username: {user.username}</p>
+				<p>	Email: {user.email}</p>
+				<p>	Friends: {user.friends.length}</p>
+			  </div>
+			: 
+			<div>
+				<h1>A User page</h1>
+				<p ref={msg}>Loading...</p>
+			</div>
+		}
 		</div>
 	);
 }
