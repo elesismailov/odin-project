@@ -10,6 +10,7 @@ import LogIn from './pages/LogIn';
 import Feed from './pages/Feed';
 import Friends from './pages/Friends';
 import Post from './pages/Post';
+import User from './pages/User';
 
 function App() {
 	return (
@@ -30,6 +31,9 @@ function App() {
 				</Route>
 				<Route exact path="/post/:id">
 					<Post />
+				</Route>
+				<Route exact path="/user/:id">
+					<User />
 				</Route>
 			</Switch>
 		</Router>
