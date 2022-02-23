@@ -20,7 +20,7 @@ function Post() {
 		});
 		response
 			.then(res => res.json())
-			.then(res => {console.log(res.post)})
+			.then(res => setPost(res.post))
 	});
 
 	// the idea: instead of using refs, use state and dynamic rendering
@@ -28,8 +28,17 @@ function Post() {
 	// add a conditional statement to the rendering
 	return (
 		<div>
-			<h1>A post page</h1>
-			<p ref={msg}>Loading...</p>
+		{ post
+			? <div> 
+				<p>	Title: {post.title}</p>
+				<p>	Text: {post.text}</p>
+			  </div>
+			: 
+			<div>
+				<h1>A Post page</h1>
+				<p ref={msg}>Loading...</p>
+			</div>
+		}
 		</div>
 	);
 }
