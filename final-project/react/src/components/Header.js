@@ -9,7 +9,9 @@ function Header() {
 	return (
 		<header> 
 			<ul>
-				<li><Link onClick={handleLogOut} to='/log-in'>Log out</Link></li>
+				{ localStorage.token && 
+					<li><Link onClick={handleLogOut} to='/log-in'>Log out</Link></li>
+				}
 			</ul>
 		</header>
 	);
