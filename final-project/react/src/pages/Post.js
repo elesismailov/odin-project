@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 function Post() {
 	
@@ -7,6 +7,13 @@ function Post() {
 	const [post, setPost] = useState(null);
 	const msg = useRef(null);
 
+	const [ loggedIn, setLoggedIn ] = localStorage.token ? useState(true) : useState(false);
+
+	if (!loggedIn) {
+		return (
+			<Redirect to='/log-in' />
+		);
+	}
 	function showPost(post) {
 		msg.current.textContent = post.title;
 	}

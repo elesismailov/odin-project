@@ -1,12 +1,20 @@
 
 import React, { useEffect, useState, useRef } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Redirect } from 'react-router-dom';
 
 function User() {
 	
 	const { id } = useParams();
 	const [user, setUser] = useState(null);
 	const msg = useRef(null);
+
+	const [ loggedIn, setLoggedIn ] = localStorage.token ? useState(true) : useState(false);
+
+	if (!loggedIn) {
+		return (
+			<Redirect to='/log-in' />
+		);
+	}
 
 	useEffect(() => {
 		const response = fetch( '/api/users/' + id, {

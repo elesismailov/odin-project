@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Redirect } from 'react-router-dom';
 
 function SignUp() {
+	
+	const [ loggedIn, setLoggedIn ] = localStorage.token ? useState(true) : useState(false);
 
+	if (loggedIn) {
+		return (
+			<Redirect to='/' />
+		);
+	}
 	return (
 		<div>
 			<h1> Sign Up </h1>
