@@ -41,6 +41,7 @@ function handleSubmit(event) {
 
 function saveToken(token) {
 	localStorage.setItem('token', token)
+	// need to redirect to the /feed page
 }
 
 export default LogIn;

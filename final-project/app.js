@@ -57,6 +57,8 @@ app.use(function(req, res, next) {
 			jwt.verify(token, 'a very secret key', (err, authData) => {
 				if (err) { res.sendStatus(403) }
 				else {
+					// need to check whether the user is 
+					// in the db
 					req.currentUserId = authData.user._id
 					next()		
 				}

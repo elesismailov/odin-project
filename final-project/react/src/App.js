@@ -13,9 +13,12 @@ import Friends from './pages/Friends';
 import Post from './pages/Post';
 import User from './pages/User';
 
+import Header from './components/Header';
+
 function App() {
 	return (
 		<Router>
+			<Header />
 				<Switch>
 					<Route exact path='/'>
 						{localStorage.token ?
