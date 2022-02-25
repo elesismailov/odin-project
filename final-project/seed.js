@@ -27,6 +27,7 @@ function createUser(username, cb) {
 	u.save((err) => {
 		if (err) {
 			cb(err, null)
+			return 
 		}
 		users.push(u)
 		cb(null, u)
@@ -38,15 +39,37 @@ function createPost(user, cb) {
 	const p = new Post(post);
 	p.save((err) => {
 		if (err) {
-			console.log(p)
-			console.log(err)
 			cb(err, null)
+			return
 		}
-		else {
-			posts.push(p)
-			cb(null, p)
+		posts.push(p)
+		cb(null, p)
+	})
+}
+
+function excludeUser(user, users) {
+	console.log(users)
+	return users.filter(u => u !== user)
+}
+
+function makeFriends(user, users) {
+	console.log(users)
+	users.map(u => {
+		user.friends.push(u._id);
+	});
+	user.save(err => {
+		if (err) {
+			console.log(err)
 		}
 	})
+}
+
+function createFriends(cb) {
+	console.log(users)
+	for (const user of users) {
+		makeFriends(user, excludeUser(user, users))
+	}
+	cb()
 }
 
 function createUsers(cb) {
@@ -106,4 +129,6 @@ function createPosts(cb) {
 async.series([
 	createUsers,
 	createPosts,
-], function() {mongoose.connection.close()})
+	createFriends,
+	
+], )
