@@ -2,6 +2,7 @@ import React from 'react';
 import {
 	BrowserRouter as Router,
 	Switch,
+	Redirect,
 	Route,
 } from 'react-router-dom';
 
@@ -15,27 +16,33 @@ import User from './pages/User';
 function App() {
 	return (
 		<Router>
-			<Switch>
-				<Route exact path="/sign-up">
-
-					<SignUp />
-				</Route>
-				<Route exact path="/log-in">
-					<LogIn />
-				</Route>
-				<Route exact path='/feed'>
-					<Feed />
-				</Route>
-				<Route exact path='/friends'>
-					<Friends />
-				</Route>
-				<Route exact path="/post/:id">
-					<Post />
-				</Route>
-				<Route exact path="/user/:id">
-					<User />
-				</Route>
-			</Switch>
+				<Switch>
+					<Route exact path='/'>
+						{localStorage.token ?
+							<Redirect to='/feed' />
+							:
+							<Redirect to='/log-in' />
+						}
+					</Route>
+					<Route exact path="/sign-up">
+						<SignUp />
+					</Route>
+					<Route exact path="/log-in">
+						<LogIn />
+					</Route>
+					<Route exact path='/feed'>
+						<Feed />
+					</Route>
+					<Route exact path='/friends'>
+						<Friends />
+					</Route>
+					<Route exact path="/post/:id">
+						<Post />
+					</Route>
+					<Route exact path="/user/:id">
+						<User />
+					</Route>
+				</Switch>
 		</Router>
 	);
 }
