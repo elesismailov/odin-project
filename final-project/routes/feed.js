@@ -14,7 +14,7 @@ router.get('/',  async function(req, res) {
 		const result = await PostModel.find({user: friendId}).limit(5);
 		posts.push(...result)
 	}
-	res.json({posts})
+	res.json(posts)
 });
 
 module.exports = router;
